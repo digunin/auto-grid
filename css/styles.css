@@ -31,6 +31,12 @@
   --bottomright-light-mark-top: 228mm;
   --bottomright-light-mark-from-middle: 97.5mm;
 
+  --magnetic-stripe-marker-from-top: 7mm;
+  --magnetic-stripe-marker-from-block: 3mm;
+  --magnetic-stripe-marker-width: 4.5mm;
+  --magnetic-stripe-marker-height: 0.25mm;
+  --magnetic-stripe-width: 12.5mm;
+
   --space-between-columns: 8mm;
   --left-column-pos-left: calc(
     var(--page-width) / 2 - var(--space-between-columns) / 2 -
@@ -179,9 +185,56 @@ body {
   );
 }
 
-@media print {
-  .cross,
-  .cross::after {
-    content: black;
-  }
+.left-column .block::after {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: var(--magnetic-stripe-marker-from-top);
+  left: calc(
+    (
+        var(--magnetic-stripe-marker-from-block) +
+          var(--magnetic-stripe-marker-width)
+      ) * -1
+  );
+}
+
+.left-column .block::before {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: calc(
+    var(--magnetic-stripe-marker-from-top) + var(--magnetic-stripe-width)
+  );
+  left: calc(
+    (
+        var(--magnetic-stripe-marker-from-block) +
+          var(--magnetic-stripe-marker-width)
+      ) * -1
+  );
+}
+
+.right-column .block::after {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: var(--magnetic-stripe-marker-from-top);
+  left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
+}
+
+.right-column .block::before {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: calc(
+    var(--magnetic-stripe-marker-from-top) + var(--magnetic-stripe-width)
+  );
+  left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
 }
