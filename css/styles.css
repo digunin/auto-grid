@@ -10,7 +10,7 @@
   --block-height: 57mm;
   --page-width: 203mm;
   --page-height: 288mm;
-  --page-margin-top: 3.75mm;
+  --page-margin-top: 3mm;
   --page-half-width: var(--page-width) / 2;
 
   --cross-size: 5mm;
@@ -22,14 +22,14 @@
 
   --light-mark-radius: 1.5mm;
   --light-mark-line-width: 0.1mm;
-  --topleft-light-mark-top: 57mm;
-  --topleft-light-mark-from-middle: 97.5mm;
-  --topright-light-mark-top: 57mm;
-  --topright-light-mark-from-middle: 97.5mm;
-  --bottomleft-light-mark-top: 228mm;
-  --bottomleft-light-mark-from-middle: 97.5mm;
-  --bottomright-light-mark-top: 228mm;
-  --bottomright-light-mark-from-middle: 97.5mm;
+  --topleft-light-mark-top: 58.5mm;
+  --topleft-light-mark-from-middle: 96.4mm;
+  --topright-light-mark-top: 56mm;
+  --topright-light-mark-from-middle: 96.4mm;
+  --bottomleft-light-mark-top: 228.5mm;
+  --bottomleft-light-mark-from-middle: 96.6mm;
+  --bottomright-light-mark-top: 225.7mm;
+  --bottomright-light-mark-from-middle: 97.1mm;
 
   --magnetic-stripe-marker-from-top: 7mm;
   --magnetic-stripe-marker-from-block: 3mm;
@@ -66,7 +66,6 @@ body {
   width: var(--page-width);
   height: var(--page-height);
   margin: 0 auto;
-  margin-bottom: var(--page-margin-top);
   position: relative;
   border: 1px solid black;
   page-break-after: always;
