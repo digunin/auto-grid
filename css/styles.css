@@ -22,13 +22,13 @@
 
   --light-mark-radius: 1.5mm;
   --light-mark-line-width: 0.1mm;
-  --topleft-light-mark-top: 58.5mm;
+  --topleft-light-mark-top: 60mm;
   --topleft-light-mark-from-middle: 96.4mm;
-  --topright-light-mark-top: 56mm;
+  --topright-light-mark-top: 57.5mm;
   --topright-light-mark-from-middle: 96.4mm;
-  --bottomleft-light-mark-top: 228.5mm;
+  --bottomleft-light-mark-top: 230mm;
   --bottomleft-light-mark-from-middle: 96.6mm;
-  --bottomright-light-mark-top: 225.7mm;
+  --bottomright-light-mark-top: 227.2mm;
   --bottomright-light-mark-from-middle: 97.1mm;
 
   --magnetic-stripe-marker-from-top: 7mm;
@@ -117,7 +117,7 @@ body {
 }
 
 .top-left-lm {
-  top: var(--topleft-light-mark-top);
+  top: calc(var(--topleft-light-mark-top) - var(--light-mark-radius));
   left: calc(
     var(--page-half-width) - var(--topleft-light-mark-from-middle) -
       var(--light-mark-radius)
@@ -125,7 +125,7 @@ body {
 }
 
 .bottom-left-lm {
-  top: var(--bottomleft-light-mark-top);
+  top: calc(var(--bottomleft-light-mark-top) - var(--light-mark-radius));
   left: calc(
     var(--page-half-width) - var(--bottomleft-light-mark-from-middle) -
       var(--light-mark-radius)
@@ -133,7 +133,7 @@ body {
 }
 
 .top-right-lm {
-  top: var(--topright-light-mark-top);
+  top: calc(var(--topright-light-mark-top) - var(--light-mark-radius));
   left: calc(
     var(--page-half-width) + var(--topright-light-mark-from-middle) -
       var(--light-mark-radius)
@@ -141,7 +141,7 @@ body {
 }
 
 .bottom-right-lm {
-  top: var(--bottomright-light-mark-top);
+  top: calc(var(--bottomright-light-mark-top) - var(--light-mark-radius));
   left: calc(
     var(--page-half-width) + var(--bottomright-light-mark-from-middle) -
       var(--light-mark-radius)
