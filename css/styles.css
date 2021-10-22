@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color-adjust: exact !important;
+  -webkit-print-color-adjust: exact;
 }
 
 :root {
@@ -67,7 +68,6 @@ body {
   height: var(--page-height);
   margin: 0 auto;
   position: relative;
-  border: 1px solid black;
   page-break-after: always;
   page-break-inside: avoid;
 }
