@@ -21,16 +21,16 @@
   --top-cross-vert-pos: 50mm;
   --bottom-cross-vert-pos: 260mm;
 
-  --light-mark-radius: 1.5mm;
+  --light-mark-radius: 1.3mm;
   --light-mark-line-width: 0.1mm;
-  --topleft-light-mark-top: 60mm;
-  --topleft-light-mark-from-middle: 96.4mm;
-  --topright-light-mark-top: 57.5mm;
-  --topright-light-mark-from-middle: 96.4mm;
-  --bottomleft-light-mark-top: 230mm;
-  --bottomleft-light-mark-from-middle: 96.6mm;
-  --bottomright-light-mark-top: 227.2mm;
-  --bottomright-light-mark-from-middle: 97.1mm;
+  --topleft-light-mark-top: 59.8mm;
+  --topleft-light-mark-from-middle: 96.8mm;
+  --topright-light-mark-top: 57.1mm;
+  --topright-light-mark-from-middle: 96.8mm;
+  --bottomleft-light-mark-top: 230.3mm;
+  --bottomleft-light-mark-from-middle: 97mm;
+  --bottomright-light-mark-top: 227.8mm;
+  --bottomright-light-mark-from-middle: 96.7mm;
 
   --magnetic-stripe-marker-from-top: 7mm;
   --magnetic-stripe-marker-from-block: 3mm;
