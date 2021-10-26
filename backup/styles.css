@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color-adjust: exact !important;
+  -webkit-print-color-adjust: exact;
+}
+
+:root {
+  --block-width: 90mm;
+  --block-height: 57mm;
+  --page-width: 203mm;
+  --page-height: 288mm;
+  --page-margin-top: 3mm;
+  --page-half-width: var(--page-width) / 2;
+
+  --cross-size: 5mm;
+  --cross-line-width: 0.5mm;
+  --cross-border-size: calc(var(--cross-line-width) / 2);
+  --cross-pos-from-middle: 97mm;
+  --top-cross-vert-pos: 50mm;
+  --bottom-cross-vert-pos: 260mm;
+
+  --light-mark-radius: 1.3mm;
+  --light-mark-line-width: 0.1mm;
+  --topleft-light-mark-top: 59.8mm;
+  --topleft-light-mark-from-middle: 96.8mm;
+  --topright-light-mark-top: 57.1mm;
+  --topright-light-mark-from-middle: 96.8mm;
+  --bottomleft-light-mark-top: 230.3mm;
+  --bottomleft-light-mark-from-middle: 97mm;
+  --bottomright-light-mark-top: 227.8mm;
+  --bottomright-light-mark-from-middle: 96.7mm;
+
+  --magnetic-stripe-marker-from-top: 7mm;
+  --magnetic-stripe-marker-from-block: 3mm;
+  --magnetic-stripe-marker-width: 4.5mm;
+  --magnetic-stripe-marker-height: 0.25mm;
+  --magnetic-stripe-width: 12.5mm;
+
+  --space-between-columns: 8mm;
+  --left-column-pos-left: calc(
+    var(--page-width) / 2 - var(--space-between-columns) / 2 -
+      var(--block-width)
+  );
+  --left-column-pos-top: calc(
+    (var(--page-height) - (var(--block-height) * 5)) / 2
+  );
+  --right-column-pos-left: calc(
+    var(--left-column-pos-left) + var(--space-between-columns) +
+      var(--block-width)
+  );
+  --right-column-pos-top: var(--left-column-pos-top);
+}
+
+@media print {
+  @page {
+    margin: 0;
+    margin-top: 3.75mm;
+  }
+}
+
+body {
+  background-color: white;
+}
+
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  margin: 0 auto;
+  position: relative;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+.column {
+  position: absolute;
+}
+
+.left-column {
+  top: var(--left-column-pos-top);
+  left: var(--left-column-pos-left);
+}
+
+.right-column {
+  top: var(--right-column-pos-top);
+  left: var(--right-column-pos-left);
+}
+
+.block {
+  width: var(--block-width);
+  height: var(--block-height);
+  position: relative;
+}
+
+.block img {
+  max-width: 100%;
+}
+
+.block .numbering {
+  position: absolute;
+  top: 5cm;
+  left: 1cm;
+}
+
+.block .barcode {
+  position: absolute;
+  top: 1cm;
+  left: 6cm;
+}
+
+.light-mark {
+  position: absolute;
+  width: calc(var(--light-mark-radius) * 2);
+  height: calc(var(--light-mark-radius) * 2);
+  border: solid black var(--light-mark-line-width);
+  border-radius: 50%;
+}
+
+.top-left-lm {
+  top: calc(var(--topleft-light-mark-top) - var(--light-mark-radius));
+  left: calc(
+    var(--page-half-width) - var(--topleft-light-mark-from-middle) -
+      var(--light-mark-radius)
+  );
+}
+
+.bottom-left-lm {
+  top: calc(var(--bottomleft-light-mark-top) - var(--light-mark-radius));
+  left: calc(
+    var(--page-half-width) - var(--bottomleft-light-mark-from-middle) -
+      var(--light-mark-radius)
+  );
+}
+
+.top-right-lm {
+  top: calc(var(--topright-light-mark-top) - var(--light-mark-radius));
+  left: calc(
+    var(--page-half-width) + var(--topright-light-mark-from-middle) -
+      var(--light-mark-radius)
+  );
+}
+
+.bottom-right-lm {
+  top: calc(var(--bottomright-light-mark-top) - var(--light-mark-radius));
+  left: calc(
+    var(--page-half-width) + var(--bottomright-light-mark-from-middle) -
+      var(--light-mark-radius)
+  );
+}
+
+.cross,
+.cross::after {
+  background-color: black;
+  /* border: solid black var(--cross-border-size); */
+  /* box-sizing: border-box; */
+}
+
+.cross {
+  position: absolute;
+  width: var(--cross-size);
+  height: var(--cross-line-width);
+}
+
+.cross::after {
+  position: absolute;
+  content: '';
+  top: calc(var(--cross-size) / -2 + var(--cross-line-width) / 2);
+  left: calc(var(--cross-size) / 2 - var(--cross-line-width) / 2);
+  min-height: var(--cross-size);
+  min-width: var(--cross-line-width);
+}
+
+.top-cross {
+  top: calc(var(--top-cross-vert-pos) - var(--cross-line-width) / 2);
+}
+
+.bottom-cross {
+  top: calc(var(--bottom-cross-vert-pos) - var(--cross-line-width) / 2);
+}
+
+.left-cross {
+  left: calc(
+    var(--page-half-width) - var(--cross-pos-from-middle) - var(--cross-size) /
+      2
+  );
+}
+
+.right-cross {
+  left: calc(
+    var(--page-half-width) + var(--cross-pos-from-middle) - var(--cross-size) /
+      2
+  );
+}
+
+.left-column .block::after {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: var(--magnetic-stripe-marker-from-top);
+  left: calc(
+    (
+        var(--magnetic-stripe-marker-from-block) +
+          var(--magnetic-stripe-marker-width)
+      ) * -1
+  );
+}
+
+.left-column .block::before {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: calc(
+    var(--magnetic-stripe-marker-from-top) + var(--magnetic-stripe-width)
+  );
+  left: calc(
+    (
+        var(--magnetic-stripe-marker-from-block) +
+          var(--magnetic-stripe-marker-width)
+      ) * -1
+  );
+}
+
+.right-column .block::after {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: var(--magnetic-stripe-marker-from-top);
+  left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
+}
+
+.right-column .block::before {
+  content: '';
+  width: var(--magnetic-stripe-marker-width);
+  height: var(--magnetic-stripe-marker-height);
+  background-color: black;
+  position: absolute;
+  top: calc(
+    var(--magnetic-stripe-marker-from-top) + var(--magnetic-stripe-width)
+  );
+  left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
+}
