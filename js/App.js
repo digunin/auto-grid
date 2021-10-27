@@ -1,8 +1,8 @@
 import React from 'react'
-import '../css/styles.css'
+import Page from './components/page'
 
 const App = () => {
-  return <div>Hello, react</div>
+  return <Page />
 }
 
 export default App
