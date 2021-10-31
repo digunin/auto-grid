@@ -16,7 +16,6 @@
 
   --cross-size: 5mm;
   --cross-line-width: 0.5mm;
-  --cross-border-size: calc(var(--cross-line-width) / 2);
   --cross-pos-from-middle: 97mm;
   --top-cross-vert-pos: 50mm;
   --bottom-cross-vert-pos: 260mm;
@@ -152,8 +151,6 @@ body {
 .cross,
 .cross::after {
   background-color: black;
-  /* border: solid black var(--cross-border-size); */
-  /* box-sizing: border-box; */
 }
 
 .cross {

@@ -1,14 +1,36 @@
 import React from 'react'
 import Lightmark from './light-mark'
-import { lightMarkClasses } from '../utils'
+import Cross from './cross'
+import Column from './column'
+import { lightMarkClasses, crossClasses } from '../utils'
 
-const Page = () => {
+const Page = ({ img, left_data, right_data }) => {
   return (
     <div className="page">
       {lightMarkClasses.map((subclass, index) => {
-        console.log(index)
         return <Lightmark key={index} subclass={subclass} />
       })}
+
+      {crossClasses.map((subclass, index) => {
+        subclass =
+          index == crossClasses.length - 1
+            ? `${subclass} ${crossClasses[0]}`
+            : `${subclass} ${crossClasses[index + 1]}`
+        return <Cross key={index} subclass={subclass} />
+      })}
+
+      <Column
+        img={img}
+        key="left-column"
+        subclass="left-column"
+        data={left_data}
+      />
+      <Column
+        img={img}
+        key="right-column"
+        subclass="right-column"
+        data={right_data}
+      />
     </div>
   )
 }
