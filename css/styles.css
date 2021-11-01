@@ -7,6 +7,10 @@
 }
 
 :root {
+  padding-top: var(--navHeight);
+
+  --navHeight: 3rem;
+
   --block-width: 90mm;
   --block-height: 57mm;
   --page-width: 203mm;
@@ -52,7 +56,46 @@
   --right-column-pos-top: var(--left-column-pos-top);
 }
 
+nav {
+  width: 100%;
+  background-color: rgb(200, 200, 200);
+  height: var(--navHeight);
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  z-index: 999999;
+}
+
+nav .nav-links {
+  flex-grow: 1;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  gap: 3rem;
+}
+
+nav .nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+nav .nav-links a.active {
+  color: blue;
+  text-decoration: underline;
+}
+
 @media print {
+  nav {
+    display: none;
+  }
+  :root {
+    padding-top: 0;
+  }
   @page {
     margin: 0;
     margin-top: 3.75mm;
@@ -60,7 +103,7 @@
 }
 
 body {
-  background-color: silver;
+  background-color: rgb(225, 225, 225);
 }
 
 .page {

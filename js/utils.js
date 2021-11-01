@@ -11,3 +11,9 @@ export const crossClasses = [
   'bottom-cross',
   'right-cross',
 ]
+
+export const routesNames = {
+  home: '/',
+  setting: '/setting',
+  print: '/print',
+}
