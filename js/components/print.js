@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Page from './page'
-import Context from './settingContext'
+import Context from '../store/settingContext'
 
 const Print = () => {
   const { front_img, back_img, data_set } = useContext(Context)

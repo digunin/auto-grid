@@ -1,15 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import NavBar from './components/navbar'
-import { routesNames, defaultSeting } from './utils'
+import { routesNames } from './utils'
 import Setting from './components/setting'
 import Print from './components/print'
-import Context from './components/settingContext'
+import StyleTag from './components/styles'
+import Provider from './store/provider'
 
 const App = () => {
   return (
-    <Context.Provider value={defaultSeting}>
+    <Provider>
       <Router>
+        <StyleTag />
         <NavBar />
         <Route exact path={routesNames.home}>
           <Redirect to={routesNames.setting} />
@@ -21,7 +23,7 @@ const App = () => {
           <Print />
         </Route>
       </Router>
-    </Context.Provider>
+    </Provider>
   )
 }
 
