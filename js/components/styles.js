@@ -10,8 +10,8 @@ const Styles = () => {
       color: ${style.color};
       font-size: ${style.fontSize};
       text-align: ${style.align};
-      top: ${style.top}mm;
-      left: ${style.left}mm
+      top: ${style.top};
+      left: ${style.left}
   }`
   })
 
@@ -21,8 +21,8 @@ const Styles = () => {
       color: ${style.color};
       font-size: ${style.fontSize};
       text-align: ${style.align};
-      top: ${style.top}mm;
-      left: ${style.left}mm
+      top: ${style.top};
+      left: ${style.left}
   }`
   })
 
@@ -32,8 +32,8 @@ const Styles = () => {
       font-size: ${style.fontSize};
       width: ${style.width};
       height: ${style.height};
-      top: ${style.top}mm;
-      left: ${style.left}mm
+      top: ${style.top};
+      left: ${style.left}
   }`
   })
 
@@ -43,8 +43,8 @@ const Styles = () => {
       font-size: ${style.fontSize};
       width: ${style.width};
       height: ${style.height};
-      top: ${style.top}mm;
-      left: ${style.left}mm
+      top: ${style.top};
+      left: ${style.left}
   }`
   })
   return (

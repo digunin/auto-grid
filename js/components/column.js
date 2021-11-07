@@ -1,11 +1,11 @@
 import React from 'react'
 import Block from './block'
 
-const Column = ({ subclass, data, img }) => {
+const Column = ({ subclass, data, side }) => {
   return (
     <div className={`column ${subclass}`}>
       {data.map((value, i) => {
-        return <Block img={img} key={i} value={value} />
+        return <Block side={side} key={i} index={value} />
       })}
     </div>
   )

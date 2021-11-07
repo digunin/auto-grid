@@ -4,6 +4,7 @@ import backjpg from '../../images/back.jpg'
 import Context from './settingContext'
 import reducer from './reducer'
 import { actions } from './actions'
+import { mock_data_100 } from '../utils'
 
 const initialState = {
   front: {
@@ -11,14 +12,14 @@ const initialState = {
     barcodes: {},
     txt: {
       txt1: {
-        top: 45,
-        left: 10,
-        right: 40,
+        top: '45mm',
+        left: '10mm',
+        right: '40mm',
         align: 'right',
         color: 'black',
         fontFamily: 'Arial',
         fontSize: '24pt',
-        data: [1111, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        data: mock_data_100,
       },
     },
   },
@@ -26,16 +27,17 @@ const initialState = {
     bgImage: backjpg,
     barcodes: {
       ean13: {
-        top: 30,
-        left: 40,
-        width: 30,
-        height: 20,
+        top: '30mm',
+        left: '40mm',
+        width: '30mm',
+        height: '20mm',
         fontSize: '12pt',
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        data: mock_data_100,
       },
     },
     txt: {},
   },
+  cards_count: 100,
 }
 
 const Provider = ({ children }) => {
