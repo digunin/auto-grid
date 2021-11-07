@@ -3,17 +3,17 @@ import Page from './page'
 import Context from '../store/settingContext'
 
 const Print = () => {
-  const { front_img, back_img, data_set } = useContext(Context)
-  let { data } = data_set.txt.txt1
+  const { front, back, txt, barcodes } = useContext(Context)
+  let { data } = front.txt.txt1
   return (
     <>
       <Page
-        img={front_img}
+        img={front.bgImage}
         left_data={data.slice(0, 5)}
         right_data={data.slice(5)}
       />
       <Page
-        img={back_img}
+        img={back.bgImage}
         left_data={data.slice(5)}
         right_data={data.slice(0, 5)}
       />

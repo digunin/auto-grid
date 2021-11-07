@@ -6,18 +6,9 @@ import reducer from './reducer'
 import { actions } from './actions'
 
 const initialState = {
-  front_img: frontjpg,
-  back_img: backjpg,
-  data_set: {
-    barcodes: {
-      ean13: {
-        top: 30,
-        left: 40,
-        width: 30,
-        height: 20,
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      },
-    },
+  front: {
+    bgImage: frontjpg,
+    barcodes: {},
     txt: {
       txt1: {
         top: 45,
@@ -31,6 +22,20 @@ const initialState = {
       },
     },
   },
+  back: {
+    bgImage: backjpg,
+    barcodes: {
+      ean13: {
+        top: 30,
+        left: 40,
+        width: 30,
+        height: 20,
+        fontSize: '12pt',
+        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      },
+    },
+    txt: {},
+  },
 }
 
 const Provider = ({ children }) => {
@@ -38,12 +43,12 @@ const Provider = ({ children }) => {
 
   const value = {
     ...state,
-    changeTextColor: ({ classname, color }) => {
+    changeText: ({ classname, new_props }) => {
       dispatch({
-        type: actions.CHANGE_TEXT_COLOR,
+        type: actions.CHANGE_TEXT,
         payload: {
           classname,
-          color,
+          new_props,
         },
       })
     },

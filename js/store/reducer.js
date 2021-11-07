@@ -1,20 +1,19 @@
 import { actions } from './actions'
 
+const frontOrBack = (state, key) => {
+  if (key in state.front.txt) return 'front'
+  return 'back'
+}
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case actions.CHANGE_TEXT_COLOR:
-      let tmp = {
-        data_set: {
-          txt: {},
-        },
-      }
-      let old = state.data_set.txt[action.payload.classname]
-      tmp.data_set.txt[action.payload.classname] = {
-        ...old,
-        color: action.payload.color,
-      }
+    case actions.CHANGE_TEXT:
+      let { classname, new_props } = action.payload
+      let side = frontOrBack(state, classname)
+      let tmp = { ...state }
+      let old_props = tmp[side].txt[classname]
+      tmp[side].txt[classname] = { ...old_props, ...new_props }
       return {
-        ...state,
         ...tmp,
       }
   }
