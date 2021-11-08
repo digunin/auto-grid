@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color-adjust: exact !important;
-  -webkit-print-color-adjust: exact;
+  -webkit-print-color-adjust: exact !important;
 }
 
 :root {
@@ -100,6 +100,12 @@ nav .nav-links a.active {
     margin: 0;
     margin-top: 3.75mm;
   }
+}
+
+.print-setting {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .page-number {

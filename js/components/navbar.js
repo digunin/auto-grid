@@ -6,6 +6,9 @@ const NavBar = ({ user, logout }) => {
   return (
     <nav>
       <div className="nav-links">
+        <NavLink activeClassName="active" exact to={routesNames.home}>
+          Домой
+        </NavLink>
         <NavLink activeClassName="active" to={routesNames.setting}>
           Настройка печати
         </NavLink>
