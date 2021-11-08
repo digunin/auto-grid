@@ -16,6 +16,13 @@ const reducer = (state, action) => {
       return {
         ...tmp,
       }
+    case actions.SET_ACTIVE_SETTINGS_TAB:
+      return {
+        ...state,
+        active_settings_tab: action.payload,
+      }
+    default:
+      return state
   }
 }
 

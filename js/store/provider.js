@@ -38,6 +38,7 @@ const initialState = {
     txt: {},
   },
   cards_count: 500,
+  active_settings_tab: 'front',
 }
 
 const Provider = ({ children }) => {
@@ -45,14 +46,22 @@ const Provider = ({ children }) => {
 
   const value = {
     ...state,
-    changeText: ({ classname, new_props }) => {
-      dispatch({
-        type: actions.CHANGE_TEXT,
-        payload: {
-          classname,
-          new_props,
-        },
-      })
+    actions: {
+      changeText: ({ classname, new_props }) => {
+        dispatch({
+          type: actions.CHANGE_TEXT,
+          payload: {
+            classname,
+            new_props,
+          },
+        })
+      },
+      setActiveSettingsTab: (tabName) => {
+        dispatch({
+          type: actions.SET_ACTIVE_SETTINGS_TAB,
+          payload: tabName,
+        })
+      },
     },
   }
   return <Context.Provider value={value}>{children}</Context.Provider>

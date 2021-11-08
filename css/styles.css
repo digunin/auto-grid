@@ -11,6 +11,9 @@
 
   --navHeight: 3rem;
 
+  --active-color: rgb(70, 136, 236);
+  --secondary-color: #f1f1f1;
+
   --block-width: 90mm;
   --block-height: 57mm;
   --page-width: 203mm;
@@ -82,10 +85,15 @@ nav .nav-links {
 nav .nav-links a {
   text-decoration: none;
   color: white;
+  transition: 0.2s;
+}
+
+nav .nav-links a:hover {
+  color: var(--active-color);
 }
 
 nav .nav-links a.active {
-  color: blue;
+  color: var(--active-color);
   text-decoration: underline;
 }
 
@@ -106,6 +114,40 @@ nav .nav-links a.active {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: var(--secondary-color);
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: var(--active-color);
+  color: white;
+}
+
+.tab button.active {
+  background-color: var(--active-color);
+  color: white;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
 .page-number {
