@@ -27,11 +27,11 @@ const initialState = {
     bgImage: backjpg,
     barcodes: {
       ean13: {
-        top: '30mm',
-        left: '40mm',
-        width: '30mm',
-        height: '20mm',
-        fontSize: '12pt',
+        top: '39.2mm',
+        left: '52.2mm',
+        width: '33mm',
+        height: '12.9mm',
+        fontSize: '20pt',
         data: mock_data_100,
       },
     },

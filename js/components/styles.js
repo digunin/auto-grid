@@ -29,7 +29,7 @@ const Styles = () => {
   let barcode_front_style_str = Object.keys(front.barcodes).map((key) => {
     let style = front.barcodes[key]
     return `.${key} {
-      font-size: ${style.fontSize};
+      // font-size: ${style.fontSize};
       width: ${style.width};
       height: ${style.height};
       top: ${style.top};
@@ -40,7 +40,7 @@ const Styles = () => {
   let barcode_back_style_str = Object.keys(back.barcodes).map((key) => {
     let style = back.barcodes[key]
     return `.${key} {
-      font-size: ${style.fontSize};
+      // font-size: ${style.fontSize};
       width: ${style.width};
       height: ${style.height};
       top: ${style.top};
