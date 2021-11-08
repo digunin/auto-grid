@@ -102,8 +102,12 @@ nav .nav-links a.active {
   }
 }
 
-body {
-  background-color: rgb(225, 225, 225);
+.page-number {
+  position: absolute;
+  top: 1mm;
+  width: 8mm;
+  text-align: center;
+  left: calc(var(--page-width) / 2 - 4mm);
 }
 
 .page {

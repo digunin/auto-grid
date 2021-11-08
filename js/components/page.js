@@ -4,7 +4,7 @@ import Cross from './cross'
 import Column from './column'
 import { lightMarkClasses, crossClasses } from '../utils'
 
-const Page = ({ side, left_data, right_data }) => {
+const Page = ({ side, left_data, right_data, page_number }) => {
   return (
     <div className="page">
       {lightMarkClasses.map((subclass, index) => {
@@ -18,7 +18,7 @@ const Page = ({ side, left_data, right_data }) => {
             : `${subclass} ${crossClasses[index + 1]}`
         return <Cross key={index} subclass={subclass} />
       })}
-
+      <div className="page-number">{page_number}</div>
       <Column
         side={side}
         key="left-column"

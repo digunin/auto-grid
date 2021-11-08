@@ -18,3 +18,5 @@ const Barcode = ({ subclass, value }) => {
 }
 
 export default Barcode
+
+// setting for barcode https://www.npmjs.com/package/react-barcodes
