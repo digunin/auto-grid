@@ -1,5 +1,6 @@
 import React from 'react'
-import Block from './block'
+import Block from '../block'
+import SizePicker from './sizePicker'
 
 const TabContent = ({ side }) => {
   return (
@@ -7,6 +8,7 @@ const TabContent = ({ side }) => {
       <div className="block-wrapper">
         <Block index={0} side={side} />
       </div>
+      <SizePicker />
     </div>
   )
 }

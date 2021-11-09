@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import Context from '../store/settingContext'
+import Context from '../../store/settingContext'
 import TabContent from './tabContent'
 
 const Setting = () => {
