@@ -150,6 +150,17 @@ nav .nav-links a.active {
   border-top: none;
 }
 
+.block-wrapper {
+  padding: 3cm;
+  margin: 0 auto;
+}
+
+.block-wrapper .block {
+  transform-origin: center;
+  margin: 0 auto;
+  transform: scale(1.5);
+}
+
 .page-number {
   position: absolute;
   top: 1mm;

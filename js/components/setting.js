@@ -37,7 +37,7 @@ const Setting = () => {
           )
         })}
       </div>
-      <TabContent tabName={active_settings_tab} />
+      <TabContent side={active_settings_tab} />
     </div>
   )
 }
