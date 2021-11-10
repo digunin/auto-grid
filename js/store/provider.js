@@ -9,29 +9,31 @@ import { mock_data_500 } from '../utils'
 const initialState = {
   front: {
     bgImage: frontjpg,
+    selected: null,
     barcodes: {},
     txt: {
       // txt1: {
-      //   top: '45mm',
-      //   left: '10mm',
-      //   right: '40mm',
+      //   top: '45',
+      //   left: '10',
+      //   right: '40',
       //   align: 'right',
       //   color: 'black',
       //   fontFamily: 'Arial',
-      //   fontSize: '24pt',
+      //   fontSize: '24',
       //   data: mock_data_500,
       // },
     },
   },
   back: {
     bgImage: backjpg,
+    selected: null,
     barcodes: {
       ean13: {
-        top: '39.2mm',
-        left: '51.2mm',
-        width: '33mm',
-        height: '12.8mm',
-        fontSize: '20pt',
+        top: '39.2',
+        left: '51.2',
+        width: '33',
+        height: '12.8',
+        fontSize: '20',
         data: mock_data_500,
       },
     },
@@ -50,6 +52,15 @@ const Provider = ({ children }) => {
       changeText: ({ classname, new_props }) => {
         dispatch({
           type: actions.CHANGE_TEXT,
+          payload: {
+            classname,
+            new_props,
+          },
+        })
+      },
+      changeBarcode: ({ classname, new_props }) => {
+        dispatch({
+          type: actions.CHANGE_BARCODE,
           payload: {
             classname,
             new_props,

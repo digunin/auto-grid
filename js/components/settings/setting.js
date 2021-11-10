@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Context from '../../store/settingContext'
-import TabContent from './tabContent'
+import BarcodeSettings from './barcodeSettings'
 
 const Setting = () => {
   const { front, back, actions, active_settings_tab } = useContext(Context)
@@ -37,7 +37,7 @@ const Setting = () => {
           )
         })}
       </div>
-      <TabContent side={active_settings_tab} />
+      <BarcodeSettings side={active_settings_tab} />
     </div>
   )
 }
