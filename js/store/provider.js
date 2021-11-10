@@ -26,7 +26,10 @@ const initialState = {
   },
   back: {
     bgImage: backjpg,
-    selected: null,
+    selected: {
+      type: 'barcodes',
+      key: 'ean13',
+    },
     barcodes: {
       ean13: {
         top: '39.2',

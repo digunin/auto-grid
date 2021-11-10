@@ -1,31 +1,21 @@
 import React, { useState } from 'react'
 import Slider from 'react-input-slider'
 
-const ComboSlider = ({ xmax, value, onchange }) => {
+const ComboSlider = ({ xmax, value, onchange, step }) => {
   return (
     <div className="combo-slider">
-      Ширина = {value} mm
-      <br />
       <input
         value={value}
         type="number"
         name="spiner"
         min="0"
         max={xmax}
-        step="0.1"
+        step={step}
         onChange={(e) => {
-          console.log(e.target.value)
-          onchange({ x: e.target.value * 10 })
+          onchange({ x: e.target.value })
         }}
       />
-      <br />
-      <Slider
-        axis="x"
-        xmax={xmax * 10}
-        xstep="1"
-        x={value * 10}
-        onChange={onchange}
-      />
+      <Slider axis="x" xmax={xmax} xstep={step} x={value} onChange={onchange} />
     </div>
   )
 }

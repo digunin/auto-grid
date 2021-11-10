@@ -1,17 +1,12 @@
 import { actions } from './actions'
 
-const frontOrBack = (state, key, type) => {
-  if (key in state.front[type]) return 'front'
-  return 'back'
-}
-
 const reducer = (state, action) => {
   let side = ''
   let tmp = {}
   let old_props = {}
   switch (action.type) {
     case actions.CHANGE_TEXT:
-      side = frontOrBack(state, action.payload.classname)
+      side = state.active_settings_tab
       tmp = { ...state }
       old_props = tmp[side].txt[action.payload.classname]
       tmp[side].txt[action.payload.classname] = {
@@ -23,7 +18,7 @@ const reducer = (state, action) => {
       }
       break
     case actions.CHANGE_BARCODE:
-      side = frontOrBack(state, action.payload.classname)
+      side = state.active_settings_tab
       tmp = { ...state }
       old_props = tmp[side].barcodes[action.payload.classname]
       tmp[side].barcodes[action.payload.classname] = {

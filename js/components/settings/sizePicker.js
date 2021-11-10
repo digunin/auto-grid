@@ -1,37 +1,26 @@
 import React from 'react'
-import Slider from 'react-input-slider'
 import ComboSlider from './comboSlider'
 import Context from '../../store/settingContext'
 
-const SizePicker = ({ selected = 'not null' }) => {
-  const [state, setState] = React.useState({ x: 10, y: 10 })
-
+const SizePicker = ({ onchange, selected }) => {
   return (
     <div className="sliders-wrapper">
-      Ширина = {state.x} mm
-      <Slider
-        axis="x"
-        xmax="900"
-        xstep="1"
-        x={state.x * 10}
-        onChange={({ x }) => setState((state) => ({ ...state, x: x / 10 }))}
-      />
+      <span>Размеры</span>
       <ComboSlider
         xmax="90"
-        value={state.x}
+        step="0.1"
+        value={selected.width}
         onchange={({ x }) => {
-          console.log(`x = ${x}`)
-          setState((state) => ({ ...state, x: x / 10 }))
+          onchange({ width: x })
         }}
       />
-      {/* {({ x }) => setState((state) => ({ ...state, x: x / 10 }))} */}
-      Высота = {state.y} mm
-      <Slider
-        axis="x"
-        xmax="570"
-        xstep="1"
-        x={state.y * 10}
-        onChange={({ x }) => setState((state) => ({ ...state, y: x / 10 }))}
+      <ComboSlider
+        xmax="57"
+        step="0.1"
+        value={selected.height}
+        onchange={({ x }) => {
+          onchange({ height: x })
+        }}
       />
     </div>
   )
