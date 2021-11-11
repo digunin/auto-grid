@@ -207,6 +207,11 @@ nav .nav-links a.active {
   position: relative;
 }
 
+.block .selected {
+  /* border: 5px solid red; */
+  outline: auto;
+}
+
 .block img {
   max-width: 100%;
 }

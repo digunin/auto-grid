@@ -9,7 +9,7 @@ const PositionPicker = ({ onchange, selected }) => {
       <ComboSlider
         xmax="90"
         step="0.1"
-        value={selected.left}
+        value={selected?.left}
         onchange={({ x }) => {
           onchange({ left: x })
         }}
@@ -17,7 +17,7 @@ const PositionPicker = ({ onchange, selected }) => {
       <ComboSlider
         xmax="57"
         step="0.1"
-        value={selected.top}
+        value={selected?.top}
         onchange={({ x }) => {
           onchange({ top: x })
         }}

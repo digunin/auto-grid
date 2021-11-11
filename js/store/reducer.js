@@ -28,6 +28,10 @@ const reducer = (state, action) => {
       return {
         ...tmp,
       }
+    case actions.SET_SELECTED:
+      tmp = { ...state }
+      tmp[action.payload.side].selected = { ...action.payload.selected }
+      return { ...tmp }
     case actions.SET_ACTIVE_SETTINGS_TAB:
       return {
         ...state,

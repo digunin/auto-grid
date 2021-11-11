@@ -1,7 +1,7 @@
 import React from 'react'
 import { useBarcode } from 'react-barcodes'
 
-const Barcode = ({ subclass, value }) => {
+const Barcode = ({ keyID, subclass, value, onclick }) => {
   const { inputRef } = useBarcode({
     value: value,
     options: {
@@ -14,7 +14,15 @@ const Barcode = ({ subclass, value }) => {
     },
   })
 
-  return <svg className={`barcode ${subclass}`} ref={inputRef} />
+  return (
+    <svg
+      onClick={() => {
+        onclick({ type: 'barcodes', key: keyID })
+      }}
+      className={`barcode ${subclass}`}
+      ref={inputRef}
+    />
+  )
 }
 
 export default Barcode

@@ -9,7 +9,7 @@ const SizePicker = ({ onchange, selected }) => {
       <ComboSlider
         xmax="90"
         step="0.1"
-        value={selected.width}
+        value={selected?.width}
         onchange={({ x }) => {
           onchange({ width: x })
         }}
@@ -17,7 +17,7 @@ const SizePicker = ({ onchange, selected }) => {
       <ComboSlider
         xmax="57"
         step="0.1"
-        value={selected.height}
+        value={selected?.height}
         onchange={({ x }) => {
           onchange({ height: x })
         }}

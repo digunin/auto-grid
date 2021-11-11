@@ -8,10 +8,10 @@ const Styles = () => {
     let style = front.txt[key]
     return `.${key} {
       color: ${style.color};
-      font-size: ${style.fontSize};
+      font-size: ${style.fontSize}pt;
       text-align: ${style.align};
-      top: ${style.top};
-      left: ${style.left}
+      top: ${style.top}mm;
+      left: ${style.left}mm
   }`
   })
 
@@ -19,10 +19,10 @@ const Styles = () => {
     let style = front.txt[key]
     return `.${key} {
       color: ${style.color};
-      font-size: ${style.fontSize};
+      font-size: ${style.fontSize}pt;
       text-align: ${style.align};
-      top: ${style.top};
-      left: ${style.left}
+      top: ${style.top}mm;
+      left: ${style.left}mm
   }`
   })
 

@@ -5,7 +5,16 @@ const Column = ({ subclass, data, side }) => {
   return (
     <div className={`column ${subclass}`}>
       {data.map((value, i) => {
-        return <Block side={side} key={i} index={value} />
+        return (
+          <Block
+            onclick={(data) => {
+              return
+            }}
+            side={side}
+            key={i}
+            index={value}
+          />
+        )
       })}
     </div>
   )
