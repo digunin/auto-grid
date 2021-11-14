@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import Context from '../store/settingContext'
+import React from 'react'
+import useSettings from './useSettings'
 
 const Styles = () => {
-  const { front, back } = useContext(Context)
+  const { front, back } = useSettings()
 
   let txt_front_style_str = Object.keys(front.txt).map((key) => {
     let style = front.txt[key]

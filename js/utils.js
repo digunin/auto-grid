@@ -18,6 +18,19 @@ export const routesNames = {
   print: '/print',
 }
 
+export const getArrayWithIndexes = (count) => {
+  let array_with_indexes = []
+  let tmp = []
+  for (let i = 0; i < count; i++) {
+    tmp.push(i)
+    if (tmp.length === 10) {
+      array_with_indexes.push(tmp)
+      tmp = []
+    }
+  }
+  return array_with_indexes
+}
+
 export const mock_data_500 = [
   '999876007501',
   '999876007521',

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import Context from '../store/settingContext'
+import React from 'react'
 import Barcode from './barcode'
+import useSettings from './useSettings'
 
 const Block = ({ index, side, onclick, selected_key }) => {
-  const { bgImage, txt, barcodes } = useContext(Context)[side]
+  const { bgImage, txt, barcodes } = useSettings(side)
   return (
     <div className={`block`}>
       <img src={bgImage} />

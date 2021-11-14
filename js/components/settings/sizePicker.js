@@ -1,6 +1,5 @@
 import React from 'react'
 import ComboSlider from './comboSlider'
-import Context from '../../store/settingContext'
 
 const SizePicker = ({ onchange, selected }) => {
   return (

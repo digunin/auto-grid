@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { routesNames } from '../utils'
 
-const NavBar = ({ user, logout }) => {
+const NavBar = () => {
   return (
     <nav>
       <div className="nav-links">

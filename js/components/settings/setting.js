@@ -1,20 +1,9 @@
-import React, { useContext, useState } from 'react'
-import Context from '../../store/settingContext'
+import React from 'react'
+import useSettings from '../useSettings'
 import TabContent from './tabContent'
 
 const Setting = () => {
-  const { front, back, actions, active_settings_tab } = useContext(Context)
-  // return (
-  //   <div className="print-setting">
-  //     <button
-  //       onClick={() => {
-  //         actions.changeText({ classname: 'txt1', new_props: { color: 'white' } })
-  //       }}
-  //     >
-  //       Поменять цвет
-  //     </button>
-  //   </div>
-  // )
+  const { actions, active_settings_tab } = useSettings()
   const tabNames = [
     ['front', 'Лицевая сторона'],
     ['back', 'Обратная сторона'],
