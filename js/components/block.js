@@ -10,7 +10,7 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
       {txt.map((text) => {
         return (
           <div
-            onClick={() => onclick(text.id)}
+            onClick={(e) => onclick(text.id)}
             key={text.id}
             className={`numbering ${text.id} ${
               selected_id === text.id ? 'selected' : ''
@@ -23,7 +23,7 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
       {barcodes.map((barcode) => {
         return (
           <Barcode
-            onclick={() => onclick(barcode.id)}
+            onclick={(e) => onclick(barcode.id)}
             subclass={`${barcode.id}${
               barcode.id === selected_id ? ' selected' : ''
             }`}

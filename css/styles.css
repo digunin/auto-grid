@@ -164,7 +164,7 @@ nav .nav-links a.active {
   transform: scale(1.5);
 }
 
-.sliders-wrapper {
+.picker-wrapper {
   display: inline-block;
   flex-direction: column;
   padding: 1em;

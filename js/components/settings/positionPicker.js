@@ -3,7 +3,7 @@ import ComboSlider from './comboSlider'
 
 const PositionPicker = ({ onchange, selected }) => {
   return (
-    <div className="sliders-wrapper">
+    <div className="picker-wrapper">
       <span>Расположение</span>
       <ComboSlider
         xmax="90"

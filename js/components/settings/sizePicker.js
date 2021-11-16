@@ -3,7 +3,7 @@ import ComboSlider from './comboSlider'
 
 const SizePicker = ({ onchange, selected }) => {
   return (
-    <div className="sliders-wrapper">
+    <div className="picker-wrapper">
       <span>Размеры</span>
       <ComboSlider
         xmax="90"

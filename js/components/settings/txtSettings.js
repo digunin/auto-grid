@@ -1,6 +1,7 @@
 import React from 'react'
 import useSettings from '../useSettings'
 import PositionPicker from './positionPicker'
+import ColorPicker from './colorPicker'
 
 const TxtSettings = () => {
   let { actions, selected } = useSettings()
@@ -10,6 +11,7 @@ const TxtSettings = () => {
   return (
     <>
       <PositionPicker selected={selected} onchange={changeHandler} />
+      <ColorPicker />
     </>
   )
 }
