@@ -3,30 +3,37 @@ import Context from '../store/settingContext'
 
 const useSettings = (side = null) => {
   const context = useContext(Context)
-  let { actions, cards_count, active_settings_tab, front, back } = context
-
-  let selected = context[active_settings_tab].selected
-  let selectedKey = selected?.key || null
-  let selectedType = selected?.type || null
-  if (selected) {
-    selected = context[active_settings_tab][selected.type][selectedKey]
-  } else {
-    selected = null
-  }
-
-  let tmp = {}
-  if (side) tmp = context[side]
-  let { bgImage, txt, barcodes } = tmp
-
-  return {
+  let {
     actions,
     cards_count,
     active_settings_tab,
-    front,
-    back,
+    entities,
+    frontImage,
+    backImage,
+  } = context
+
+  let selected = context.entities.filter((entity) => {
+    return entity.side == active_settings_tab && entity.selected
+  })
+  selected = selected[0]
+
+  let [bgImage, barcodes, txt] = [null, null, null]
+  if (side) {
+    bgImage = side == 'front' ? frontImage : backImage
+    barcodes = entities.filter((entity) => {
+      return entity.side == side && entity.type == 'barcode'
+    })
+    txt = entities.filter((entity) => {
+      return entity.side == side && entity.type == 'txt'
+    })
+  }
+
+  return {
+    actions,
+    entities,
+    cards_count,
+    active_settings_tab,
     selected,
-    selectedKey,
-    selectedType,
     bgImage,
     barcodes,
     txt,

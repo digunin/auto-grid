@@ -2,59 +2,28 @@ import React from 'react'
 import useSettings from './useSettings'
 
 const Styles = () => {
-  const { front, back } = useSettings()
+  const { entities } = useSettings()
 
-  let txt_front_style_str = Object.keys(front.txt).map((key) => {
-    let style = front.txt[key]
-    return `.${key} {
-      color: ${style.color};
-      font-size: ${style.fontSize}pt;
-      text-align: ${style.align};
-      top: ${style.top}mm;
-      left: ${style.left}mm
-  }`
+  let style_str = entities.map((entity) => {
+    if (entity.type == 'txt') {
+      return `.${entity.id} {
+        color: ${entity.color};
+        font-size: ${entity.fontSize}pt;
+        text-align: ${entity.align};
+        top: ${entity.top}mm;
+        left: ${entity.left}mm
+      }`
+    }
+    if (entity.type == 'barcode') {
+      return `.${entity.id} {
+        width: ${entity.width}mm;
+        height: ${entity.height}mm;
+        top: ${entity.top}mm;
+        left: ${entity.left}mm
+      }`
+    }
   })
-
-  let txt_back_style_str = Object.keys(back.txt).map((key) => {
-    let style = front.txt[key]
-    return `.${key} {
-      color: ${style.color};
-      font-size: ${style.fontSize}pt;
-      text-align: ${style.align};
-      top: ${style.top}mm;
-      left: ${style.left}mm
-  }`
-  })
-
-  let barcode_front_style_str = Object.keys(front.barcodes).map((key) => {
-    let style = front.barcodes[key]
-    return `.${key} {
-      // font-size: ${style.fontSize}pt;
-      width: ${style.width}mm;
-      height: ${style.height}mm;
-      top: ${style.top}mm;
-      left: ${style.left}mm
-  }`
-  })
-
-  let barcode_back_style_str = Object.keys(back.barcodes).map((key) => {
-    let style = back.barcodes[key]
-    return `.${key} {
-      // font-size: ${style.fontSize}pt;
-      width: ${style.width}mm;
-      height: ${style.height}mm;
-      top: ${style.top}mm;
-      left: ${style.left}mm
-  }`
-  })
-  return (
-    <style>
-      {txt_front_style_str}
-      {txt_back_style_str}
-      {barcode_front_style_str}
-      {barcode_back_style_str}
-    </style>
-  )
+  return <style>{style_str}</style>
 }
 
 export default Styles

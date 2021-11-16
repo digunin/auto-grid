@@ -4,9 +4,9 @@ import PositionPicker from './positionPicker'
 import useSettings from '../useSettings'
 
 const BarcodeSettings = () => {
-  let { actions, selected, selectedKey } = useSettings()
+  let { actions, selected } = useSettings()
   const changeHandler = (new_props) => {
-    actions.changeBarcode({ id: selectedKey, new_props })
+    actions.changeEntity({ id: selected.id, new_props })
   }
   return (
     <>

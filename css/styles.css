@@ -120,10 +120,13 @@ nav .nav-links a.active {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: var(--secondary-color);
+  display: flex;
 }
 
 .tab button {
+  flex-grow: 1;
   background-color: inherit;
+  color: gray;
   float: left;
   border: none;
   outline: none;
@@ -135,7 +138,7 @@ nav .nav-links a.active {
 
 .tab button:hover {
   background-color: var(--active-color);
-  color: white;
+  color: gray;
 }
 
 .tab button.active {

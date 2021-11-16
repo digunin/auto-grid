@@ -5,21 +5,21 @@ import BarcodeSettings from './barcodeSettings'
 import TxtSettings from './txtSettings'
 
 const TabContent = ({ side }) => {
-  let { actions, selectedKey, selectedType } = useSettings()
+  let { actions, selected } = useSettings()
   return (
     <div className="tab-content">
       <div className="block-wrapper">
         <Block
-          selected_key={selectedKey}
-          onclick={(data) => {
-            actions.setSelected({ side, selected: data })
+          selected_id={selected?.id}
+          onclick={(id) => {
+            actions.setSelected(id)
           }}
           index={0}
           side={side}
         />
       </div>
-      {selectedType === 'barcodes' && <BarcodeSettings />}
-      {selectedType === 'txt' && <TxtSettings />}
+      {selected?.type === 'barcode' && <BarcodeSettings />}
+      {selected?.type === 'txt' && <TxtSettings />}
     </div>
   )
 }
