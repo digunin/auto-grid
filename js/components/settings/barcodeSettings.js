@@ -6,7 +6,7 @@ import useSettings from '../useSettings'
 const BarcodeSettings = () => {
   let { actions, selected, selectedKey } = useSettings()
   const changeHandler = (new_props) => {
-    actions.changeBarcode({ classname: selectedKey, new_props })
+    actions.changeBarcode({ id: selectedKey, new_props })
   }
   return (
     <>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useBarcode } from 'react-barcodes'
 
-const Barcode = ({ keyID, subclass, value, onclick }) => {
+const Barcode = ({ keyID, subclass, value, onclick, format }) => {
   const { inputRef } = useBarcode({
     value: value,
     options: {
-      format: 'ean13',
+      format: format,
       background: '#ffffff',
       marginTop: 4,
       marginBottom: 4,
