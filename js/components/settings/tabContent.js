@@ -8,7 +8,7 @@ const TabContent = ({ side }) => {
   let { actions, selected } = useSettings()
   return (
     <div className="tab-content">
-      <div className="block-wrapper">
+      <div className="block-wrapper" onClick={() => actions.setSelected(null)}>
         <Block
           selected_id={selected?.id}
           onclick={(id) => {

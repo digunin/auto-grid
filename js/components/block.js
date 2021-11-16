@@ -10,7 +10,10 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
       {txt.map((text) => {
         return (
           <div
-            onClick={(e) => onclick(text.id)}
+            onClick={(e) => {
+              e.stopPropagation()
+              onclick(text.id)
+            }}
             key={text.id}
             className={`numbering ${text.id} ${
               selected_id === text.id ? 'selected' : ''
@@ -23,7 +26,10 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
       {barcodes.map((barcode) => {
         return (
           <Barcode
-            onclick={(e) => onclick(barcode.id)}
+            onclick={(e) => {
+              e.stopPropagation()
+              onclick(barcode.id)
+            }}
             subclass={`${barcode.id}${
               barcode.id === selected_id ? ' selected' : ''
             }`}
