@@ -12,7 +12,7 @@ const TxtSettings = () => {
   return (
     <>
       <PositionPicker selected={selected} onchange={changeHandler} />
-      <ColorPicker />
+      <ColorPicker selected={selected} onchange={changeHandler} />
       <RotatePicker selected={selected} onchange={changeHandler} />
     </>
   )

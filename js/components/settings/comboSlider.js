@@ -5,6 +5,7 @@ const ComboSlider = ({ xmax, value, onchange, step }) => {
   return (
     <div className="combo-slider">
       <input
+        style={{ marginRight: '1em' }}
         value={value}
         type="number"
         name="spiner"
