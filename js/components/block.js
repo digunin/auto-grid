@@ -36,7 +36,7 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
             key={barcode.id}
             keyID={barcode.id}
             value={barcode.data[index]}
-            format={barcode.format}
+            barcode={barcode}
           />
         )
       })}
