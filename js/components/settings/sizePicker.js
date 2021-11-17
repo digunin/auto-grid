@@ -1,7 +1,7 @@
 import React from 'react'
 import ComboSlider from './comboSlider'
 
-const SizePicker = ({ onchange, selected }) => {
+const SizePicker = ({ onchange, selected, onlyWidth = false }) => {
   return (
     <div className="picker-wrapper">
       <span>Размеры</span>
@@ -13,14 +13,16 @@ const SizePicker = ({ onchange, selected }) => {
           onchange({ width: x })
         }}
       />
-      <ComboSlider
-        xmax="57"
-        step="0.1"
-        value={selected?.height}
-        onchange={({ x }) => {
-          onchange({ height: x })
-        }}
-      />
+      {!onlyWidth && (
+        <ComboSlider
+          xmax="57"
+          step="0.1"
+          value={selected?.height}
+          onchange={({ x }) => {
+            onchange({ height: x })
+          }}
+        />
+      )}
     </div>
   )
 }

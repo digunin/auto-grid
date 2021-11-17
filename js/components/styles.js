@@ -11,7 +11,9 @@ const Styles = () => {
         font-size: ${entity.fontSize}pt;
         text-align: ${entity.align};
         top: ${entity.top}mm;
-        left: ${entity.left}mm
+        left: ${entity.left}mm;
+        transform-origin: center;
+        transform: rotate(${entity.rotate}deg) !important;
       }`
     }
     if (entity.type == 'barcode') {
@@ -19,7 +21,9 @@ const Styles = () => {
         width: ${entity.width}mm;
         height: ${entity.height}mm;
         top: ${entity.top}mm;
-        left: ${entity.left}mm
+        left: ${entity.left}mm;
+        transform-origin: center;
+        transform: rotate(${entity.rotate}deg) !important;
       }`
     }
     if (entity.type == 'qrcode') {
@@ -27,7 +31,9 @@ const Styles = () => {
         width: ${entity.width}mm;
         height: ${entity.width}mm;
         top: ${entity.top}mm;
-        left: ${entity.left}mm
+        left: ${entity.left}mm;
+        transform-origin: center;
+        transform: rotate(${entity.rotate}deg) !important;
       }`
     }
   })

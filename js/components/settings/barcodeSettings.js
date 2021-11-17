@@ -2,6 +2,7 @@ import React from 'react'
 import SizePicker from './sizePicker'
 import PositionPicker from './positionPicker'
 import useSettings from '../useSettings'
+import RotatePicker from './rotatePicker'
 
 const BarcodeSettings = () => {
   let { actions, selected } = useSettings()
@@ -12,6 +13,7 @@ const BarcodeSettings = () => {
     <>
       <PositionPicker selected={selected} onchange={changeHandler} />
       <SizePicker selected={selected} onchange={changeHandler} />
+      <RotatePicker selected={selected} onchange={changeHandler} />
     </>
   )
 }
