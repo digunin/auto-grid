@@ -19,9 +19,11 @@ const TabContent = ({ side }) => {
           side={side}
         />
       </div>
-      {selected?.type === 'barcode' && <BarcodeSettings />}
-      {selected?.type === 'txt' && <TxtSettings />}
-      {selected?.type === 'qrcode' && <QRCodeSettings />}
+      <div className="all-picker-wrapper">
+        {selected?.type === 'barcode' && <BarcodeSettings />}
+        {selected?.type === 'txt' && <TxtSettings />}
+        {selected?.type === 'qrcode' && <QRCodeSettings />}
+      </div>
     </div>
   )
 }
