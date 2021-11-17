@@ -2,6 +2,7 @@ import React from 'react'
 import Block from '../block'
 import useSettings from '../useSettings'
 import BarcodeSettings from './barcodeSettings'
+import QRCodeSettings from './qrcodeSettings'
 import TxtSettings from './txtSettings'
 
 const TabContent = ({ side }) => {
@@ -20,6 +21,7 @@ const TabContent = ({ side }) => {
       </div>
       {selected?.type === 'barcode' && <BarcodeSettings />}
       {selected?.type === 'txt' && <TxtSettings />}
+      {selected?.type === 'qrcode' && <QRCodeSettings />}
     </div>
   )
 }

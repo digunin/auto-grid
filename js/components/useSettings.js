@@ -17,7 +17,7 @@ const useSettings = (side = null) => {
   })
   selected = selected[0]
 
-  let [bgImage, barcodes, txt] = [null, null, null]
+  let [bgImage, barcodes, txt, qrcodes] = [null, null, null, null]
   if (side) {
     bgImage = side == 'front' ? frontImage : backImage
     barcodes = entities.filter((entity) => {
@@ -25,6 +25,9 @@ const useSettings = (side = null) => {
     })
     txt = entities.filter((entity) => {
       return entity.side == side && entity.type == 'txt'
+    })
+    qrcodes = entities.filter((entity) => {
+      return entity.side == side && entity.type == 'qrcode'
     })
   }
 
@@ -37,6 +40,7 @@ const useSettings = (side = null) => {
     bgImage,
     barcodes,
     txt,
+    qrcodes,
   }
 }
 

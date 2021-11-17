@@ -4,7 +4,7 @@ import backjpg from '../../images/back.jpg'
 import Context from './settingContext'
 import reducer from './reducer'
 import { actions } from './actions'
-import { mock_data_500 } from '../utils'
+import { mock_data } from '../utils'
 
 const initialState = {
   frontImage: frontjpg,
@@ -24,7 +24,23 @@ const initialState = {
       displayValue: false,
       flat: true,
       barWidth: 2.5,
-      data: mock_data_500,
+      data: mock_data,
+    },
+    {
+      id: 'qr',
+      side: 'front',
+      type: 'qrcode',
+      selected: false,
+      level: 'M',
+      margin: 7,
+      scale: 1,
+      pixelWwidth: 4,
+      width: 30,
+      top: '30',
+      left: '40',
+      darkColor: '#000',
+      lightColor: '#FFF',
+      data: mock_data,
     },
   ],
   cards_count: 20,

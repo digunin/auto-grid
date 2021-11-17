@@ -219,12 +219,11 @@ nav .nav-links a.active {
   max-width: 100%;
 }
 
-.block .numbering {
+.block .numbering,
+.block .barcode,
+.block .qrcode {
   position: absolute;
-}
-
-.block .barcode {
-  position: absolute;
+  z-index: 999;
 }
 
 .light-mark {

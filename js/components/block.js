@@ -1,9 +1,10 @@
 import React from 'react'
 import Barcode from './barcode'
+import QRCode from './qrcode'
 import useSettings from './useSettings'
 
 const Block = ({ index, side, onclick, selected_id = null }) => {
-  const { bgImage, txt, barcodes } = useSettings(side)
+  const { bgImage, txt, barcodes, qrcodes } = useSettings(side)
   return (
     <div className={`block`}>
       <img src={bgImage} />
@@ -37,6 +38,23 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
             keyID={barcode.id}
             value={barcode.data[index]}
             barcode={barcode}
+          />
+        )
+      })}
+      {qrcodes.map((qrcode) => {
+        return (
+          <QRCode
+            onclick={(e) => {
+              e.stopPropagation()
+              onclick(qrcode.id)
+            }}
+            subclass={`${qrcode.id}${
+              qrcode.id === selected_id ? ' selected' : ''
+            }`}
+            key={qrcode.id}
+            keyID={qrcode.id}
+            value={qrcode.data[index]}
+            qrcode={qrcode}
           />
         )
       })}

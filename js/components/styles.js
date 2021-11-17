@@ -22,6 +22,14 @@ const Styles = () => {
         left: ${entity.left}mm
       }`
     }
+    if (entity.type == 'qrcode') {
+      return `.${entity.id} {
+        width: ${entity.width}mm;
+        height: ${entity.width}mm;
+        top: ${entity.top}mm;
+        left: ${entity.left}mm
+      }`
+    }
   })
   return <style>{style_str}</style>
 }
