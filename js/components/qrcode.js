@@ -1,29 +1,17 @@
 import React from 'react'
-import { useQRCode } from 'next-qrcode'
+import { QRCode } from 'react-qr-svg'
 
-const QRCode = ({ subclass, value, onclick, qrcode }) => {
-  const { inputRef } =
-    useQRCode <
-    HTMLImageElement >
-    {
-      type: 'image/jpeg',
-      text: value,
-      options: {
-        level: qrcode.level,
-        margin: qrcode.margin,
-        scale: qrcode.scale,
-        quality: 1,
-        width: qrcode.pixelWidth,
-        color: {
-          dark: qrcode.darkColor,
-          light: qrcode.lightColor,
-        },
-      },
-    }
-
+const QR_Code = ({ subclass, value, onclick, qrcode }) => {
   return (
-    <img onClick={onclick} className={`qrcode ${subclass}`} ref={inputRef} />
+    <QRCode
+      onClick={onclick}
+      className={`qrcode ${subclass}`}
+      bgColor={qrcode.lightColor}
+      fgColor={qrcode.darkColor}
+      level={qrcode.level}
+      value={`${value}`}
+    />
   )
 }
 
-export default QRCode
+export default QR_Code

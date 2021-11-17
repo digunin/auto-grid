@@ -1,6 +1,6 @@
 import React from 'react'
 import Barcode from './barcode'
-import QRCode from './qrcode'
+import QR_Code from './qrcode'
 import useSettings from './useSettings'
 
 const Block = ({ index, side, onclick, selected_id = null }) => {
@@ -43,7 +43,7 @@ const Block = ({ index, side, onclick, selected_id = null }) => {
       })}
       {qrcodes.map((qrcode) => {
         return (
-          <QRCode
+          <QR_Code
             onclick={(e) => {
               e.stopPropagation()
               onclick(qrcode.id)
