@@ -1,7 +1,15 @@
 import React from 'react'
 import { useBarcode } from 'react-barcodes'
+import { checkValue } from '../utils'
 
 const Barcode = ({ subclass, value, onclick, barcode }) => {
+  if (!checkValue(barcode.format, value)) {
+    return (
+      <div onClick={onclick} className={`barcode ${subclass}`}>
+        Некорректное значение
+      </div>
+    )
+  }
   const { inputRef } = useBarcode({
     value: value,
     options: {

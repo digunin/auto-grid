@@ -14,7 +14,7 @@ const initialState = {
       id: 'ean13',
       side: 'back',
       type: 'barcode',
-      format: 'ean13',
+      format: 'code128',
       selected: false,
       top: '31.4',
       left: '50.5',

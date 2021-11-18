@@ -168,14 +168,13 @@ nav .nav-links a.active {
   display: grid;
   place-items: center;
   flex-direction: column;
-  padding: 1em;
-  border: 1px solid var(--active-color);
-  border-radius: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid gray;
 }
 
 .all-picker-wrapper {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr;
   gap: 1em;
 }
 

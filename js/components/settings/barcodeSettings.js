@@ -3,6 +3,7 @@ import SizePicker from './sizePicker'
 import PositionPicker from './positionPicker'
 import useSettings from '../useSettings'
 import RotatePicker from './rotatePicker'
+import BarcodeFormatlPicker from './barcodeFormatPicker'
 
 const BarcodeSettings = () => {
   let { actions, selected } = useSettings()
@@ -14,6 +15,7 @@ const BarcodeSettings = () => {
       <PositionPicker selected={selected} onchange={changeHandler} />
       <SizePicker selected={selected} onchange={changeHandler} />
       <RotatePicker selected={selected} onchange={changeHandler} />
+      <BarcodeFormatlPicker selected={selected} onchange={changeHandler} />
     </>
   )
 }

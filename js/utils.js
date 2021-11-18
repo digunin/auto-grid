@@ -37,3 +37,21 @@ export const mock_data = [
   2300005000103, 2300005000110, 2300005000127, 2300005000134, 2300005000141,
   2300005000158, 2300005000165, 2300005000172, 2300005000189, 2300005000196,
 ]
+
+export const barcodeFormats = [
+  ['ean13', 'EAN-13'],
+  ['code128', 'CODE128'],
+  ['code128a', 'CODE128-A'],
+  ['code128b', 'CODE128-B'],
+  ['code128c', 'CODE128-C'],
+  ['code39', 'CODE39'],
+]
+
+export const checkValue = (format, value) => {
+  switch (format) {
+    case 'code128c':
+      return false
+    default:
+      return true
+  }
+}
