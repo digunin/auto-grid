@@ -2,28 +2,81 @@ import React from 'react'
 import { barcodeFormats } from '../../utils'
 
 const BarcodeFormatlPicker = ({ onchange, selected }) => {
+  console.log(selected?.textPosition)
   return (
     <div className="picker-wrapper">
-      <span style={{ marginRight: '1em' }}>Формат</span>
-      <select
-        name="select"
-        defaultValue={selected.format}
-        onChange={(e) => onchange({ format: e.target.value })}
+      <div
+        style={{
+          display: 'grid',
+          gap: '1em',
+          gridTemplateColumns: '1fr 2fr 2fr',
+        }}
       >
-        {/* <option value="ean13">EAN-13</option>
-        <option value="code128">CODE128</option>
-        <option value="code128a">CODE128-A</option>
-        <option value="code128b">CODE128-B</option>
-        <option value="code128c">CODE128-C</option>
-        <option value="code39">CODE39</option> */}
-        {barcodeFormats.map(([format, formatName]) => {
-          return (
-            <option key={format} value={format}>
-              {formatName}
-            </option>
-          )
-        })}
-      </select>
+        <label>
+          формат
+          <br />
+          <select
+            name="select"
+            defaultValue={selected.format}
+            onChange={(e) => onchange({ format: e.target.value })}
+          >
+            {barcodeFormats.map(([format, formatName]) => {
+              return (
+                <option key={format} value={format}>
+                  {formatName}
+                </option>
+              )
+            })}
+          </select>
+        </label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={!selected.displayValue}
+              onChange={(e) => {
+                let checked = e.target.checked
+                console.log(checked)
+                onchange({
+                  displayValue: !checked,
+                  flat: checked,
+                  textPosition: 'bottom',
+                })
+              }}
+            />
+            Скрыть текст
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              checked={selected.textPosition === 'top' ? true : false}
+              disabled={!selected.displayValue}
+              onChange={(e) => {
+                let checked = e.target.checked
+                console.log(checked)
+                onchange({ textPosition: checked ? 'top' : 'bottom' })
+              }}
+            />
+            Текст вверху
+          </label>
+        </div>
+        <label>
+          Толщина штриха
+          <input
+            style={{ marginRight: '1em' }}
+            value={selected.barWidth}
+            type="number"
+            name="spiner"
+            min="0"
+            max="5"
+            step="0.1"
+            onChange={(e) => {
+              onchange({ barWidth: e.target.value })
+            }}
+          />
+        </label>
+      </div>
     </div>
   )
 }

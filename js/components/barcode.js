@@ -10,10 +10,12 @@ const Barcode = ({ subclass, value, onclick, barcode }) => {
       marginTop: 4,
       marginBottom: 4,
       fontOptions: 'bold',
+      fontSize: barcode.fontSize,
+      textPosition: barcode.textPosition,
       textMargin: 0,
       displayValue: barcode.displayValue,
       flat: barcode.flat,
-      width: barcode.barWidth,
+      width: Number(barcode.barWidth),
     },
   })
 

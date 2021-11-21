@@ -165,9 +165,6 @@ nav .nav-links a.active {
 }
 
 .picker-wrapper {
-  display: grid;
-  place-items: center;
-  flex-direction: column;
   padding-bottom: 0.5em;
   border-bottom: 1px solid gray;
 }
