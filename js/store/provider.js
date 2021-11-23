@@ -55,7 +55,7 @@ const initialState = {
       right: '40',
       align: 'right',
       color: 'white',
-      fontFamily: 'Arial',
+      fontFamily: 'Roboto',
       fontSize: '24',
       rotate: 0,
       data: mock_data,

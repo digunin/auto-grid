@@ -9,6 +9,7 @@ const Styles = () => {
       return `.${entity.id} {
         color: ${entity.color};
         font-size: ${entity.fontSize}pt;
+        font-family: ${entity.fontFamily};
         text-align: ${entity.align};
         top: ${entity.top}mm;
         left: ${entity.left}mm;
