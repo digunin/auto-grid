@@ -3,7 +3,7 @@ import Page from './page'
 import { getArrayWithIndexes } from '../utils'
 import useSettings from './useSettings'
 
-const Print = () => {
+const PrintGrid = () => {
   const { cards_count } = useSettings()
   let array_with_indexes = getArrayWithIndexes(cards_count)
   return (
@@ -32,4 +32,4 @@ const Print = () => {
   )
 }
 
-export default Print
+export default PrintGrid

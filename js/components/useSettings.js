@@ -10,6 +10,7 @@ const useSettings = (side = null) => {
     entities,
     frontImage,
     backImage,
+    systemFonts,
   } = context
 
   let selected = context.entities.filter((entity) => {
@@ -41,6 +42,7 @@ const useSettings = (side = null) => {
     barcodes,
     txt,
     qrcodes,
+    systemFonts,
   }
 }
 

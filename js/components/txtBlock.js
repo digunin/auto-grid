@@ -15,7 +15,7 @@ const TxtBlock = ({ txt, selected_id, onclick, index }) => {
               selected_id === text.id ? 'selected' : ''
             }`}
           >
-            {text.data[index]}
+            <span>{text.data[index]}</span>
           </div>
         )
       })}

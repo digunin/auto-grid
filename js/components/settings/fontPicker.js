@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { possibleFonts, Detector } from '../../utils'
+import useSettings from '../useSettings'
 
 const FontPicker = ({ onchange, selected }) => {
-  let detector = new Detector()
+  let {
+    actions: { setSystemFonts },
+    systemFonts,
+  } = useSettings()
+  useEffect(() => {
+    let detector = new Detector()
+    let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
+    setSystemFonts(fonts)
+  }, [])
   return (
     <div className="picker-wrapper">
       <div
@@ -20,17 +29,15 @@ const FontPicker = ({ onchange, selected }) => {
             defaultValue={selected.fontFamily}
             onChange={(e) => onchange({ fontFamily: e.target.value })}
           >
-            {possibleFonts.map((font_family) => {
+            {systemFonts.map((font_family) => {
               return (
-                detector.detect(font_family) && (
-                  <option
-                    style={{ fontFamily: `${font_family}` }}
-                    key={font_family}
-                    value={font_family}
-                  >
-                    {font_family}
-                  </option>
-                )
+                <option
+                  style={{ fontFamily: `${font_family}` }}
+                  key={font_family}
+                  value={font_family}
+                >
+                  {font_family}
+                </option>
               )
             })}
           </select>

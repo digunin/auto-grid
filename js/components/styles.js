@@ -10,9 +10,10 @@ const Styles = () => {
         color: ${entity.color};
         font-size: ${entity.fontSize}pt;
         font-family: ${entity.fontFamily};
-        text-align: ${entity.align};
         top: ${entity.top}mm;
         left: ${entity.left}mm;
+        width: ${entity.width}mm;
+        height: ${entity.height}mm;
         transform-origin: center;
         transform: rotate(${entity.rotate}deg) !important;
       }`

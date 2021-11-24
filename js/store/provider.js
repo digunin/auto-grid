@@ -14,12 +14,12 @@ const initialState = {
       id: 'ean13',
       side: 'back',
       type: 'barcode',
-      format: 'ean13',
+      format: 'code128',
       selected: false,
-      top: '31.4',
-      left: '50.5',
-      width: '33',
-      height: '11.2',
+      top: '10.2',
+      left: '10',
+      width: '26',
+      height: '9',
       fontSize: '24',
       textPosition: 'bottom',
       displayValue: true,
@@ -52,17 +52,19 @@ const initialState = {
       selected: false,
       top: '45',
       left: '10',
-      right: '40',
-      align: 'right',
+      width: '45',
+      height: '7',
+      align: 'left',
       color: 'white',
-      fontFamily: 'Roboto',
-      fontSize: '24',
+      fontFamily: 'Arial',
+      fontSize: '12',
       rotate: 0,
       data: mock_data,
     },
   ],
-  cards_count: 20,
+  cards_count: 10,
   active_settings_tab: 'front',
+  systemFonts: [],
 }
 
 const Provider = ({ children }) => {
@@ -91,6 +93,9 @@ const Provider = ({ children }) => {
           type: actions.SET_ACTIVE_SETTINGS_TAB,
           payload: { tabName },
         })
+      },
+      setSystemFonts: (fontsArray) => {
+        dispatch({ type: actions.SET_SYSTEM_FONTS, payload: fontsArray })
       },
     },
   }

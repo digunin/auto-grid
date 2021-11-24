@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useSettings from '../useSettings'
 import TabContent from './tabContent'
+import { Detector, possibleFonts } from '../../utils'
 
 const Setting = () => {
-  const { actions, active_settings_tab } = useSettings()
+  const {
+    actions,
+    active_settings_tab,
+    actions: { setSystemFonts },
+  } = useSettings()
   const tabNames = [
     ['front', 'Лицевая сторона'],
     ['back', 'Обратная сторона'],
   ]
+
+  useEffect(() => {
+    let detector = new Detector()
+    let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
+    setSystemFonts(fonts)
+  }, [])
 
   return (
     <div className="print-setting">

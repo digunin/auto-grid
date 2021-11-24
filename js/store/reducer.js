@@ -28,6 +28,11 @@ const reducer = (state, action) => {
         ...state,
         active_settings_tab: action.payload.tabName,
       }
+    case actions.SET_SYSTEM_FONTS:
+      return {
+        ...state,
+        systemFonts: [...action.payload],
+      }
     default:
       console.log('default action')
       return state

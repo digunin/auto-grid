@@ -6,7 +6,7 @@ import { lightMarkClasses, crossClasses } from '../utils'
 
 const Page = ({ side, left_data, right_data, page_number }) => {
   return (
-    <div className="page">
+    <div className="page page-grid-10-cards">
       {lightMarkClasses.map((subclass, index) => {
         return <Lightmark key={index} subclass={subclass} />
       })}

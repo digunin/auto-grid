@@ -12,8 +12,11 @@ const NavBar = () => {
         <NavLink activeClassName="active" to={routesNames.setting}>
           Настройка печати
         </NavLink>
-        <NavLink activeClassName="active" to={routesNames.print}>
-          Страница для печати
+        <NavLink activeClassName="active" to={routesNames.printGrid}>
+          Печать сетки из 10-ти кард
+        </NavLink>
+        <NavLink activeClassName="active" to={routesNames.printSublime}>
+          Печать на сублимационном принтере
         </NavLink>
       </div>
     </nav>

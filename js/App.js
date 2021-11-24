@@ -1,10 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from './components/navbar'
 import { routesNames } from './utils'
 import Home from './components/home'
 import Setting from './components/settings/setting'
-import Print from './components/print'
+import PrintGrid from './components/printGrid'
+import PrintSublime from './components/printSublime'
 import StyleTag from './components/styles'
 import Provider from './store/provider'
 
@@ -20,8 +21,11 @@ const App = () => {
         <Route path={routesNames.setting}>
           <Setting />
         </Route>
-        <Route path={routesNames.print}>
-          <Print />
+        <Route path={routesNames.printGrid}>
+          <PrintGrid />
+        </Route>
+        <Route path={routesNames.printSublime}>
+          <PrintSublime />
         </Route>
       </Router>
     </Provider>

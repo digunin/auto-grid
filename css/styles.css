@@ -104,6 +104,9 @@ nav .nav-links a.active {
   :root {
     padding-top: 0;
   }
+  .page-for-sublime .block {
+    border: none;
+  }
   @page {
     margin: 0;
     margin-top: 3.75mm;
@@ -184,12 +187,21 @@ nav .nav-links a.active {
 }
 
 .page {
-  width: var(--page-width);
-  height: var(--page-height);
-  margin: 0 auto;
   position: relative;
   page-break-after: always;
   page-break-inside: avoid;
+}
+
+.page.page-grid-10-cards {
+  width: var(--page-width);
+  height: var(--page-height);
+  margin: 0 auto;
+}
+
+.page.page-for-sublime {
+  width: 90mm;
+  height: 57mm;
+  margin: 0 auto;
 }
 
 .column {
@@ -215,6 +227,15 @@ nav .nav-links a.active {
 .block .selected {
   /* border: 5px solid red; */
   outline: auto;
+}
+
+.page-for-sublime .block {
+  border: 1px solid black;
+  border-radius: 3mm;
+}
+
+.page-for-sublime .block img {
+  display: none;
 }
 
 .block img {
