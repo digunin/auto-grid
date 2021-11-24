@@ -10,6 +10,7 @@ const Column = ({ subclass, data, side }) => {
             onclick={(data) => {
               return
             }}
+            subclass={'grid-block'}
             side={side}
             key={i}
             index={value}

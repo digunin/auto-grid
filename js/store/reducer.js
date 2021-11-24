@@ -33,6 +33,11 @@ const reducer = (state, action) => {
         ...state,
         systemFonts: [...action.payload],
       }
+    case actions.SET_PRINTING_MODE:
+      return {
+        ...state,
+        printingMode: action.payload,
+      }
     default:
       console.log('default action')
       return state

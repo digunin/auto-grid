@@ -9,6 +9,7 @@ const Setting = () => {
     active_settings_tab,
     actions: { setSystemFonts },
   } = useSettings()
+
   const tabNames = [
     ['front', 'Лицевая сторона'],
     ['back', 'Обратная сторона'],

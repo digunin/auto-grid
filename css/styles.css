@@ -15,7 +15,9 @@
   --secondary-color: #f1f1f1;
 
   --block-width: 90mm;
+  --block-sublime-width: 85.6mm;
   --block-height: 57mm;
+  --block-sublime-height: 53.98mm;
   --page-width: 203mm;
   --page-height: 288mm;
   --page-margin-top: 3mm;
@@ -104,7 +106,8 @@ nav .nav-links a.active {
   :root {
     padding-top: 0;
   }
-  .page-for-sublime .block {
+  .block.grid-block,
+  .block.sublime-block {
     border: none;
   }
   @page {
@@ -165,6 +168,7 @@ nav .nav-links a.active {
   transform-origin: center;
   margin: 0 auto;
   transform: scale(1.5);
+  overflow: hidden;
 }
 
 .picker-wrapper {
@@ -199,8 +203,8 @@ nav .nav-links a.active {
 }
 
 .page.page-for-sublime {
-  width: 90mm;
-  height: 57mm;
+  width: var(--block-sublime-width);
+  height: var(--block-sublime-height);
   margin: 0 auto;
 }
 
@@ -219,19 +223,25 @@ nav .nav-links a.active {
 }
 
 .block {
+  position: relative;
+}
+
+.grid-block {
   width: var(--block-width);
   height: var(--block-height);
-  position: relative;
+  border: 1px solid black;
+}
+
+.sublime-block {
+  width: var(--block-sublime-width);
+  height: var(--block-sublime-height);
+  border: 1px solid black;
+  border-radius: 3.18mm;
 }
 
 .block .selected {
   /* border: 5px solid red; */
   outline: auto;
-}
-
-.page-for-sublime .block {
-  border: 1px solid black;
-  border-radius: 3mm;
 }
 
 .page-for-sublime .block img {

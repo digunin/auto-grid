@@ -2,11 +2,12 @@ import React from 'react'
 import Block from '../block'
 import useSettings from '../useSettings'
 import BarcodeSettings from './barcodeSettings'
+import PrintingModePicker from './printingModePicker'
 import QRCodeSettings from './qrcodeSettings'
 import TxtSettings from './txtSettings'
 
 const TabContent = ({ side }) => {
-  let { actions, selected } = useSettings()
+  let { actions, selected, printingMode } = useSettings()
   return (
     <div className="tab-content">
       <div className="block-wrapper" onClick={() => actions.setSelected(null)}>
@@ -15,10 +16,16 @@ const TabContent = ({ side }) => {
           onclick={(id) => {
             actions.setSelected(id)
           }}
+          subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
           index={0}
           side={side}
         />
       </div>
+      <PrintingModePicker
+        onchange={(mode) => {
+          actions.setPrintingMode(mode)
+        }}
+      />
       <div className="all-picker-wrapper">
         {selected?.type === 'barcode' && <BarcodeSettings />}
         {selected?.type === 'txt' && <TxtSettings />}

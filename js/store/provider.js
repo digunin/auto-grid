@@ -54,7 +54,7 @@ const initialState = {
       left: '10',
       width: '45',
       height: '7',
-      align: 'left',
+      align: 'center',
       color: 'white',
       fontFamily: 'Arial',
       fontSize: '12',
@@ -65,6 +65,7 @@ const initialState = {
   cards_count: 10,
   active_settings_tab: 'front',
   systemFonts: [],
+  printingMode: 'grid',
 }
 
 const Provider = ({ children }) => {
@@ -96,6 +97,9 @@ const Provider = ({ children }) => {
       },
       setSystemFonts: (fontsArray) => {
         dispatch({ type: actions.SET_SYSTEM_FONTS, payload: fontsArray })
+      },
+      setPrintingMode: (mode) => {
+        dispatch({ type: actions.SET_PRINTING_MODE, payload: mode })
       },
     },
   }

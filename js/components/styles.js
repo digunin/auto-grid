@@ -14,6 +14,7 @@ const Styles = () => {
         left: ${entity.left}mm;
         width: ${entity.width}mm;
         height: ${entity.height}mm;
+        text-align: ${entity.align};
         transform-origin: center;
         transform: rotate(${entity.rotate}deg) !important;
       }`

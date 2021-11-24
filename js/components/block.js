@@ -4,10 +4,10 @@ import BarcodeBlock from './barcodeBlock'
 import QRCodeBlock from './QRCodeBlock'
 import useSettings from './useSettings'
 
-const Block = ({ index, side, onclick, selected_id = null }) => {
+const Block = ({ index, side, subclass, onclick, selected_id = null }) => {
   const { bgImage, txt, barcodes, qrcodes } = useSettings(side)
   return (
-    <div className={`block`}>
+    <div className={`block ${subclass ? subclass : ''}`}>
       <img src={bgImage} />
       <TxtBlock
         txt={txt}

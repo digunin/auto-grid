@@ -9,6 +9,7 @@ const SublimePage = ({ index, side }) => {
         onclick={() => {
           return
         }}
+        subclass={'sublime-block'}
         side={side}
         key={index}
         index={index}
