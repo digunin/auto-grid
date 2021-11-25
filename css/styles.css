@@ -15,9 +15,9 @@
   --secondary-color: #f1f1f1;
 
   --block-width: 90mm;
-  --block-sublime-width: 85.6mm;
+  --block-sublime-width: 86.5mm;
   --block-height: 57mm;
-  --block-sublime-height: 53.98mm;
+  --block-sublime-height: 53.9mm;
   --page-width: 203mm;
   --page-height: 288mm;
   --page-margin-top: 3mm;
@@ -106,14 +106,14 @@ nav .nav-links a.active {
   :root {
     padding-top: 0;
   }
-  .block.grid-block,
+  /* .block.grid-block,
   .block.sublime-block {
     border: none;
   }
   @page {
     margin: 0;
     margin-top: 3.75mm;
-  }
+  } */
 }
 
 .print-setting {
