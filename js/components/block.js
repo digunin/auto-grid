@@ -8,7 +8,7 @@ const Block = ({ index, side, subclass, onclick, selected_id = null }) => {
   const { bgImage, txt, barcodes, qrcodes } = useSettings(side)
   return (
     <div className={`block ${subclass ? subclass : ''}`}>
-      <img src={bgImage} />
+      <img className={'card-image'} src={bgImage} />
       <TxtBlock
         txt={txt}
         index={index}

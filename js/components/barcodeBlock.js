@@ -13,6 +13,16 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index }) => {
             key={`id${barcode.id}`}
             fallback={
               <div className={`barcode ${barcode.id}`}>
+                <button
+                  onClick={() => {
+                    actions.changeEntity({
+                      id: barcode.id,
+                      new_props: { format: 'code128' },
+                    })
+                  }}
+                >
+                  Сброс
+                </button>
                 <div
                   style={{
                     backgroundColor: 'white',
