@@ -4,7 +4,7 @@ import Cross from './cross'
 import Column from './column'
 import { lightMarkClasses, crossClasses } from '../utils'
 
-const Page = ({ side, left_data, right_data, page_number }) => {
+const GridPage = ({ side, left_data, right_data, page_number }) => {
   return (
     <div className="page page-grid-10-cards">
       {lightMarkClasses.map((subclass, index) => {
@@ -35,4 +35,4 @@ const Page = ({ side, left_data, right_data, page_number }) => {
   )
 }
 
-export default Page
+export default GridPage

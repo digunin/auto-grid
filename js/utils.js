@@ -15,8 +15,7 @@ export const crossClasses = [
 export const routesNames = {
   home: '/',
   setting: '/setting',
-  printGrid: '/print-grid',
-  printSublime: '/print-sublime',
+  print: '/print',
 }
 
 export const getArrayWithIndexes = (count, shuffle = false) => {
@@ -26,8 +25,9 @@ export const getArrayWithIndexes = (count, shuffle = false) => {
   for (let i = 0; i < count; i++) {
     baseArray.push(i)
   }
-  console.log(shuffle)
-  if (shuffle) baseArray = shuffleForGrid(baseArray)
+  if (!shuffle) return baseArray
+
+  baseArray = shuffleForGrid(baseArray)
   for (let i in baseArray) {
     tmp.push(baseArray[i])
     if (tmp.length === 10) {

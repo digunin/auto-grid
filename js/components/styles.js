@@ -2,7 +2,25 @@ import React from 'react'
 import useSettings from './useSettings'
 
 const Styles = () => {
-  const { entities } = useSettings()
+  const { entities, printingMode } = useSettings()
+  const mediaStyle = `
+  @media print {
+    nav {
+      display: none;
+    }
+    :root {
+      padding-top: 0;
+    }
+    .block.grid-block,
+    .block.sublime-block {
+      border: none;
+    }
+    @page {
+      margin: 0;
+      ${printingMode == 'grid' ? 'margin-top: 3.75mm' : ''}
+    }
+  }
+  `
 
   let style_str = entities.map((entity) => {
     if (entity.type == 'txt') {
@@ -40,7 +58,12 @@ const Styles = () => {
       }`
     }
   })
-  return <style>{style_str}</style>
+  return (
+    <style>
+      {style_str}
+      {mediaStyle}
+    </style>
+  )
 }
 
 export default Styles

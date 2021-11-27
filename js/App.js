@@ -4,8 +4,7 @@ import NavBar from './components/navbar'
 import { routesNames } from './utils'
 import Home from './components/home'
 import Setting from './components/settings/setting'
-import PrintGrid from './components/printGrid'
-import PrintSublime from './components/printSublime'
+import Print from './components/print'
 import StyleTag from './components/styles'
 import Provider from './store/provider'
 
@@ -21,11 +20,8 @@ const App = () => {
         <Route path={routesNames.setting}>
           <Setting />
         </Route>
-        <Route path={routesNames.printGrid}>
-          <PrintGrid />
-        </Route>
-        <Route path={routesNames.printSublime}>
-          <PrintSublime />
+        <Route path={routesNames.print}>
+          <Print />
         </Route>
       </Router>
     </Provider>

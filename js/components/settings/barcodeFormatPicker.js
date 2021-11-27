@@ -2,7 +2,6 @@ import React from 'react'
 import { barcodeFormats } from '../../utils'
 
 const BarcodeFormatlPicker = ({ onchange, selected }) => {
-  console.log(selected?.textPosition)
   return (
     <div className="picker-wrapper">
       <div
