@@ -21,6 +21,11 @@ const TabContent = ({ side }) => {
           side={side}
         />
       </div>
+      <NeedPrint
+        onchange={(newProp) => {
+          actions.changeSideNeedPrint(newProp)
+        }}
+      />
       <PrintingModePicker
         onchange={(mode) => {
           actions.setPrintingMode(mode)

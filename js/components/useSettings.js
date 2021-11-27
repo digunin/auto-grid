@@ -12,6 +12,7 @@ const useSettings = (side = null) => {
     backImage,
     systemFonts,
     printingMode,
+    needPrint,
   } = context
 
   let selected = context.entities.filter((entity) => {
@@ -45,6 +46,7 @@ const useSettings = (side = null) => {
     qrcodes,
     systemFonts,
     printingMode,
+    needPrint,
   }
 }
 

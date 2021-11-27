@@ -4,4 +4,5 @@ export const actions = {
   SET_SELECTED: 'set-selected',
   SET_SYSTEM_FONTS: 'set-system-fonts',
   SET_PRINTING_MODE: 'set-printing-mode',
+  CHANGE_SIDE_NEED_PRINT: 'change-side-need-print',
 }

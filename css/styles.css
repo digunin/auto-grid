@@ -156,6 +156,7 @@ nav .nav-links a.active {
 
 .picker-wrapper {
   padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
   border-bottom: 1px solid gray;
 }
 

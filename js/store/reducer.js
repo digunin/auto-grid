@@ -38,6 +38,14 @@ const reducer = (state, action) => {
         ...state,
         printingMode: action.payload,
       }
+    case actions.CHANGE_SIDE_NEED_PRINT:
+      return {
+        ...state,
+        needPrint: {
+          ...state.needPrint,
+          ...action.payload,
+        },
+      }
     default:
       console.log('default action')
       return state

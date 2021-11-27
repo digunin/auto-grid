@@ -13,7 +13,6 @@ const PrintingModePicker = ({ onchange }) => {
       }}
     >
       <label>
-        Сетка (10 карт)
         <input
           defaultChecked={printingMode === 'grid'}
           onChange={(e) => onchange(e.target.value)}
@@ -21,9 +20,9 @@ const PrintingModePicker = ({ onchange }) => {
           name="printingMode"
           value="grid"
         />
+        Сетка (10 карт)
       </label>
       <label>
-        Сублимация
         <input
           defaultChecked={printingMode === 'sublime'}
           onChange={(e) => onchange(e.target.value)}
@@ -31,6 +30,7 @@ const PrintingModePicker = ({ onchange }) => {
           name="printingMode"
           value="sublime"
         />
+        Сублимация
       </label>
     </div>
   )

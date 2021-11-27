@@ -62,10 +62,14 @@ const initialState = {
     //   data: mock_data,
     // },
   ],
-  cards_count: 50,
+  cards_count: 10,
   active_settings_tab: 'front',
   systemFonts: [],
   printingMode: 'grid',
+  needPrint: {
+    front: true,
+    back: true,
+  },
 }
 
 const Provider = ({ children }) => {
@@ -100,6 +104,9 @@ const Provider = ({ children }) => {
       },
       setPrintingMode: (mode) => {
         dispatch({ type: actions.SET_PRINTING_MODE, payload: mode })
+      },
+      changeSideNeedPrint: (payload) => {
+        dispatch({ type: actions.CHANGE_SIDE_NEED_PRINT, payload })
       },
     },
   }

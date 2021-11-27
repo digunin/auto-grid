@@ -35,7 +35,6 @@ const BarcodeFormatlPicker = ({ onchange, selected }) => {
               checked={!selected.displayValue}
               onChange={(e) => {
                 let checked = e.target.checked
-                console.log(checked)
                 onchange({
                   displayValue: !checked,
                   flat: checked,
@@ -53,7 +52,6 @@ const BarcodeFormatlPicker = ({ onchange, selected }) => {
               disabled={!selected.displayValue}
               onChange={(e) => {
                 let checked = e.target.checked
-                console.log(checked)
                 onchange({ textPosition: checked ? 'top' : 'bottom' })
               }}
             />
