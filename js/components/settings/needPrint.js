@@ -1,7 +1,7 @@
 import React from 'react'
 import useSettings from '../useSettings'
 
-const NeedPrint = ({ side, onchange }) => {
+const NeedPrint = ({ onchange }) => {
   const { needPrint } = useSettings()
   return (
     <div
