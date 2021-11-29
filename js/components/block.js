@@ -3,12 +3,13 @@ import TxtBlock from './txtBlock'
 import BarcodeBlock from './barcodeBlock'
 import QRCodeBlock from './QRCodeBlock'
 import useSettings from './useSettings'
+import ImageComponent from './imageComponent'
 
 const Block = ({ index, side, subclass, onclick, selected_id = null }) => {
   const { bgImage, txt, barcodes, qrcodes } = useSettings(side)
   return (
     <div className={`block ${subclass ? subclass : ''}`}>
-      <img className={'card-image'} src={bgImage} />
+      {bgImage && <ImageComponent file={bgImage} />}
       <TxtBlock
         txt={txt}
         index={index}

@@ -7,8 +7,8 @@ import { actions } from './actions'
 import { mock_data } from '../utils'
 
 const initialState = {
-  frontImage: frontjpg,
-  backImage: backjpg,
+  frontImage: { content: frontjpg },
+  backImage: { content: backjpg },
   entities: [
     // {
     //   id: 'ean13',
@@ -107,6 +107,14 @@ const Provider = ({ children }) => {
       },
       changeSideNeedPrint: (payload) => {
         dispatch({ type: actions.CHANGE_SIDE_NEED_PRINT, payload })
+      },
+      setImageFile: (file) => {
+        dispatch({
+          type: actions.SET_IMAGE_FILE,
+          payload: {
+            file,
+          },
+        })
       },
     },
   }

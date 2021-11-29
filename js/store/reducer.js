@@ -46,6 +46,15 @@ const reducer = (state, action) => {
           ...action.payload,
         },
       }
+    case actions.SET_IMAGE_FILE:
+      let tmp =
+        state.active_settings_tab == 'front'
+          ? { frontImage: action.payload.file }
+          : { backImage: action.payload.file }
+      return {
+        ...state,
+        ...tmp,
+      }
     default:
       console.log('default action')
       return state

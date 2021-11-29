@@ -2,6 +2,7 @@ import React from 'react'
 import Block from '../block'
 import useSettings from '../useSettings'
 import BarcodeSettings from './barcodeSettings'
+import ImagePicker from './pickers/imagePicker'
 import NeedPrint from './pickers/needPrint'
 import PrintingModePicker from './pickers/printingModePicker'
 import QRCodeSettings from './qrcodeSettings'
@@ -22,6 +23,7 @@ const TabContent = ({ side }) => {
           side={side}
         />
       </div>
+      <ImagePicker side={side} />
       <NeedPrint
         onchange={(newProp) => {
           actions.changeSideNeedPrint(newProp)
