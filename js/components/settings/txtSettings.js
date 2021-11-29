@@ -1,10 +1,10 @@
 import React from 'react'
 import useSettings from '../useSettings'
-import PositionPicker from './positionPicker'
-import SizePicker from './sizePicker'
-import ColorPicker from './colorPicker'
-import RotatePicker from './rotatePicker'
-import FontPicker from './fontPicker'
+import PositionPicker from './pickers/positionPicker'
+import SizePicker from './pickers/sizePicker'
+import ColorPicker from './pickers/colorPicker'
+import RotatePicker from './pickers/rotatePicker'
+import FontPicker from './pickers/fontPicker'
 
 const TxtSettings = () => {
   let { actions, selected } = useSettings()

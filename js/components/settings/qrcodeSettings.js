@@ -1,9 +1,9 @@
 import React from 'react'
-import SizePicker from './sizePicker'
-import PositionPicker from './positionPicker'
+import SizePicker from './pickers/sizePicker'
+import PositionPicker from './pickers/positionPicker'
 import useSettings from '../useSettings'
-import RotatePicker from './rotatePicker'
-import QRCodeLevelPicker from './qrcodeLevelPicker'
+import RotatePicker from './pickers/rotatePicker'
+import QRCodeLevelPicker from './pickers/qrcodeLevelPicker'
 
 const QRCodeSettings = () => {
   let { actions, selected } = useSettings()

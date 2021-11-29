@@ -1,5 +1,5 @@
 import React from 'react'
-import { barcodeFormats } from '../../utils'
+import { barcodeFormats } from '../../../utils'
 
 const BarcodeFormatlPicker = ({ onchange, selected }) => {
   return (

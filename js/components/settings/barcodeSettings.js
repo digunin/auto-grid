@@ -1,9 +1,9 @@
 import React from 'react'
-import SizePicker from './sizePicker'
-import PositionPicker from './positionPicker'
+import SizePicker from './pickers/sizePicker'
+import PositionPicker from './pickers/positionPicker'
 import useSettings from '../useSettings'
-import RotatePicker from './rotatePicker'
-import BarcodeFormatlPicker from './barcodeFormatPicker'
+import RotatePicker from './pickers/rotatePicker'
+import BarcodeFormatlPicker from './pickers/barcodeFormatPicker'
 
 const BarcodeSettings = () => {
   let { actions, selected } = useSettings()

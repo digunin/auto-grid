@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { possibleFonts, Detector } from '../../utils'
-import useSettings from '../useSettings'
+import { possibleFonts, Detector } from '../../../utils'
+import useSettings from '../../useSettings'
 
 const FontPicker = ({ onchange, selected }) => {
   let {

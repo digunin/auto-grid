@@ -1,5 +1,5 @@
 import React from 'react'
-import ComboSlider from './comboSlider'
+import ComboSlider from '../comboSlider'
 
 const PositionPicker = ({ onchange, selected }) => {
   return (

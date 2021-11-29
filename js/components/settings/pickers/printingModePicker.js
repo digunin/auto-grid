@@ -1,5 +1,5 @@
 import React from 'react'
-import useSettings from '../useSettings'
+import useSettings from '../../useSettings'
 
 const PrintingModePicker = ({ onchange }) => {
   let { printingMode } = useSettings()

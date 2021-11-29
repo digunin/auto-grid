@@ -1,5 +1,5 @@
 import React from 'react'
-import useSettings from '../useSettings'
+import useSettings from '../../useSettings'
 
 const NeedPrint = ({ onchange }) => {
   const { needPrint } = useSettings()
