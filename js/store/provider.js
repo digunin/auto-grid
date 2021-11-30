@@ -20,7 +20,7 @@ const initialState = {
       left: '21.8',
       width: '43.6',
       height: '14.2',
-      fontSize: '24',
+      fontSize: '35',
       textPosition: 'bottom',
       displayValue: true,
       flat: false,

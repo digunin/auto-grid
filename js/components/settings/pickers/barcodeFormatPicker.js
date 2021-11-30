@@ -1,5 +1,5 @@
 import React from 'react'
-import { barcodeFormats } from '../../../utils'
+import { barcode_font_size, barcodeFormats } from '../../../utils'
 
 const BarcodeFormatlPicker = ({ onchange, selected }) => {
   return (
@@ -8,26 +8,47 @@ const BarcodeFormatlPicker = ({ onchange, selected }) => {
         style={{
           display: 'grid',
           gap: '1em',
-          gridTemplateColumns: '1fr 2fr 2fr',
+          gridTemplateColumns: '3fr 3fr 2fr',
+          alignItems: 'center',
         }}
       >
-        <label>
-          формат
+        <div>
+          <label>
+            формат
+            <br />
+            <select
+              name="select-format"
+              defaultValue={selected.format}
+              onChange={(e) => onchange({ format: e.target.value })}
+            >
+              {barcodeFormats.map(([format, formatName]) => {
+                return (
+                  <option key={format} value={format}>
+                    {formatName}
+                  </option>
+                )
+              })}
+            </select>
+          </label>
           <br />
-          <select
-            name="select"
-            defaultValue={selected.format}
-            onChange={(e) => onchange({ format: e.target.value })}
-          >
-            {barcodeFormats.map(([format, formatName]) => {
-              return (
-                <option key={format} value={format}>
-                  {formatName}
-                </option>
-              )
-            })}
-          </select>
-        </label>
+          <label>
+            Размер шрифта
+            <br />
+            <select
+              name="select-font-size"
+              defaultValue={selected.fontSize}
+              onChange={(e) => onchange({ fontSize: e.target.value })}
+            >
+              {barcode_font_size.map((size) => {
+                return (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                )
+              })}
+            </select>
+          </label>
+        </div>
         <div>
           <label>
             <input
