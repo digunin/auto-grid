@@ -13,10 +13,13 @@ const BarcodeSettings = () => {
   }
   return (
     <>
-      <PositionPicker selected={selected} onchange={changeHandler} />
-      <SizePicker selected={selected} onchange={changeHandler} />
-      <RotatePicker selected={selected} onchange={changeHandler} />
-      <BarcodeFormatlPicker selected={selected} onchange={changeHandler} />
+      <div className="pickers-left-group">
+        <PositionPicker selected={selected} onchange={changeHandler} />
+        <SizePicker selected={selected} onchange={changeHandler} />
+        <RotatePicker selected={selected} onchange={changeHandler} />
+        <BarcodeFormatlPicker selected={selected} onchange={changeHandler} />
+      </div>
+
       <DataPicker
         selected={selected}
         onchange={(data) => actions.setData(data)}

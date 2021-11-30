@@ -13,14 +13,16 @@ const QRCodeSettings = () => {
   }
   return (
     <>
-      <PositionPicker selected={selected} onchange={changeHandler} />
-      <SizePicker
-        onlyWidth={true}
-        selected={selected}
-        onchange={changeHandler}
-      />
-      <RotatePicker selected={selected} onchange={changeHandler} />
-      <QRCodeLevelPicker selected={selected} onchange={changeHandler} />
+      <div className="pickers-left-group">
+        <PositionPicker selected={selected} onchange={changeHandler} />
+        <SizePicker
+          onlyWidth={true}
+          selected={selected}
+          onchange={changeHandler}
+        />
+        <RotatePicker selected={selected} onchange={changeHandler} />
+        <QRCodeLevelPicker selected={selected} onchange={changeHandler} />
+      </div>
       <DataPicker
         selected={selected}
         onchange={(data) => actions.setData(data)}
