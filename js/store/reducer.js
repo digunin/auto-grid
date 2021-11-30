@@ -55,6 +55,20 @@ const reducer = (state, action) => {
         ...state,
         ...tmp,
       }
+    case actions.SET_DATA:
+      return {
+        ...state,
+        cards_count: action.payload.length,
+        entities: state.entities.map((entity) => {
+          if (entity.side == state.active_settings_tab && entity.selected) {
+            return {
+              ...entity,
+              data: [...action.payload],
+            }
+          }
+          return entity
+        }),
+      }
     default:
       console.log('default action')
       return state

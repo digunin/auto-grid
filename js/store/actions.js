@@ -6,4 +6,5 @@ export const actions = {
   SET_PRINTING_MODE: 'set-printing-mode',
   CHANGE_SIDE_NEED_PRINT: 'change-side-need-print',
   SET_IMAGE_FILE: 'set-image-file',
+  SET_DATA: 'set-data',
 }

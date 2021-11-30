@@ -5,6 +5,7 @@ import SizePicker from './pickers/sizePicker'
 import ColorPicker from './pickers/colorPicker'
 import RotatePicker from './pickers/rotatePicker'
 import FontPicker from './pickers/fontPicker'
+import DataPicker from './pickers/dataPicker'
 
 const TxtSettings = () => {
   let { actions, selected } = useSettings()
@@ -18,6 +19,10 @@ const TxtSettings = () => {
       <ColorPicker selected={selected} onchange={changeHandler} />
       <RotatePicker selected={selected} onchange={changeHandler} />
       <FontPicker selected={selected} onchange={changeHandler} />
+      <DataPicker
+        selected={selected}
+        onchange={(data) => actions.setData(data)}
+      />
     </>
   )
 }
