@@ -101,7 +101,7 @@ nav .nav-links a.active {
 
 .print-setting {
   width: 100%;
-  max-width: 850px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -135,11 +135,18 @@ nav .nav-links a.active {
   color: white;
 }
 
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+.tab-content {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.tab-content button {
+  padding: 0.3em;
+  margin: 5px;
+  min-width: 3em;
+  background-color: white;
+  border-radius: 6px;
 }
 
 .block-wrapper {
@@ -160,7 +167,7 @@ nav .nav-links a.active {
   border-bottom: 1px solid gray;
 }
 
-.all-picker-wrapper {
+.dynamic-pickers-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;

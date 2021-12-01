@@ -13,6 +13,10 @@ const RotatePicker = ({ onchange, selected }) => {
           onchange({ rotate: x })
         }}
       />
+      <button onClick={() => onchange({ rotate: 0 })}> 0 </button>
+      <button onClick={() => onchange({ rotate: 90 })}> 90</button>
+      <button onClick={() => onchange({ rotate: 180 })}>180</button>
+      <button onClick={() => onchange({ rotate: 270 })}>270</button>
     </div>
   )
 }
