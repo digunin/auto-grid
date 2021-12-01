@@ -1,4 +1,6 @@
 import { actions } from './actions'
+import { v4 } from 'uuid'
+import { defaultState } from './defaultState'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -11,7 +13,22 @@ const reducer = (state, action) => {
           return entity
         }),
       }
-      break
+    case actions.ADD_ENTITY:
+      return {
+        ...state,
+        entities: state.entities.concat({
+          ...defaultState[action.payload],
+          id: `${action.payload}-${v4()}`,
+          side: state.active_settings_tab,
+        }),
+      }
+    case actions.DELETE_ENTITY:
+      return {
+        ...state,
+        entities: state.entities.filter(
+          (entity) => entity.id !== action.payload
+        ),
+      }
     case actions.SET_SELECTED:
       return {
         ...state,

@@ -1,6 +1,7 @@
 import React from 'react'
 import Block from '../block'
 import useSettings from '../useSettings'
+import AddEntities from './addEntities'
 import BarcodeSettings from './barcodeSettings'
 import ImagePicker from './pickers/imagePicker'
 import NeedPrint from './pickers/needPrint'
@@ -23,6 +24,7 @@ const TabContent = ({ side }) => {
           side={side}
         />
       </div>
+      <AddEntities />
       <ImagePicker side={side} />
       <NeedPrint
         onchange={(newProp) => {
@@ -39,6 +41,18 @@ const TabContent = ({ side }) => {
         {selected?.type === 'txt' && <TxtSettings />}
         {selected?.type === 'qrcode' && <QRCodeSettings />}
       </div>
+      {selected && (
+        <button
+          style={{
+            color: 'red',
+            backgroundColor: 'white',
+            border: '1px solid red',
+          }}
+          onClick={() => actions.deleteEntity(selected.id)}
+        >
+          Удалить выбранный элемент
+        </button>
+      )}
     </div>
   )
 }

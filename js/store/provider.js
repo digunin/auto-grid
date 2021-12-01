@@ -87,6 +87,18 @@ const Provider = ({ children }) => {
           },
         })
       },
+      addEntity: (type) => {
+        dispatch({
+          type: actions.ADD_ENTITY,
+          payload: type,
+        })
+      },
+      deleteEntity: (id) => {
+        dispatch({
+          type: actions.DELETE_ENTITY,
+          payload: id,
+        })
+      },
       setSelected: (id) => {
         dispatch({
           type: actions.SET_SELECTED,
