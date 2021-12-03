@@ -33,7 +33,9 @@ const useSettings = (side = null) => {
       return entity.side == side && entity.type == 'qrcode'
     })
   }
-
+  let copy = { ...context }
+  delete copy.actions
+  copy = JSON.stringify(copy)
   return {
     actions,
     entities,
@@ -47,6 +49,7 @@ const useSettings = (side = null) => {
     systemFonts,
     printingMode,
     needPrint,
+    stateStringify: copy,
   }
 }
 

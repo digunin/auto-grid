@@ -1,5 +1,4 @@
 import React from 'react'
-import reducer from '../../store/reducer'
 import useSettings from '../useSettings'
 
 const AddEntities = () => {

@@ -134,6 +134,12 @@ const Provider = ({ children }) => {
           payload: arr,
         })
       },
+      setNewState: (state) => {
+        dispatch({
+          type: actions.SET_STATE,
+          payload: state,
+        })
+      },
     },
   }
   return <Context.Provider value={value}>{children}</Context.Provider>

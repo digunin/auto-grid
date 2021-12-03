@@ -9,4 +9,5 @@ export const actions = {
   CHANGE_SIDE_NEED_PRINT: 'change-side-need-print',
   SET_IMAGE_FILE: 'set-image-file',
   SET_DATA: 'set-data',
+  SET_STATE: 'set-state',
 }

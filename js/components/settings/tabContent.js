@@ -7,6 +7,7 @@ import ImagePicker from './pickers/imagePicker'
 import NeedPrint from './pickers/needPrint'
 import PrintingModePicker from './pickers/printingModePicker'
 import QRCodeSettings from './qrcodeSettings'
+import SettingsSaveLoad from './settingsSaveLoad'
 import TxtSettings from './txtSettings'
 
 const TabContent = ({ side }) => {
@@ -28,6 +29,7 @@ const TabContent = ({ side }) => {
             side={side}
           />
         </div>
+        <SettingsSaveLoad />
         <AddEntities />
         <ImagePicker side={side} />
         <NeedPrint

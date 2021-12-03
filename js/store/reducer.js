@@ -86,6 +86,8 @@ const reducer = (state, action) => {
           return entity
         }),
       }
+    case actions.SET_STATE:
+      return { ...action.payload }
     default:
       console.log('default action')
       return state
