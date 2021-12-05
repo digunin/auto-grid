@@ -149,6 +149,20 @@ nav .nav-links a.active {
   border-radius: 6px;
 }
 
+.picker-wrapper .as-button {
+  padding: 0.3em;
+  margin: 5px;
+  min-width: 3em;
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-family: Arial;
+  font-size: 0.85rem;
+  cursor: default;
+}
+
 .block-wrapper {
   padding: 3cm;
   margin: 0 auto;

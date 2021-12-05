@@ -30,7 +30,12 @@ const ImagePicker = ({ side }) => {
     <div className="picker-wrapper">
       <button onClick={() => openFileSelector()}>Выберите изображение</button>
       <button
-        style={{ marginRight: '1em', marginLeft: '1em' }}
+        style={{
+          marginRight: '1em',
+          marginLeft: '1em',
+          color: 'red',
+          border: '1px solid red',
+        }}
         onClick={() => setImageFile(null)}
       >
         Удалить изображение
