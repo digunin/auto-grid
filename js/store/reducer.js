@@ -19,7 +19,7 @@ const reducer = (state, action) => {
         entities: state.entities.concat({
           ...defaultState[action.payload],
           id: `${action.payload}-${v4()}`,
-          side: state.active_settings_tab,
+          side: state.active_settings_side,
         }),
       }
     case actions.DELETE_ENTITY:
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         entities: state.entities.map((entity) => {
-          if (entity.side == state.active_settings_tab) {
+          if (entity.side == state.active_settings_side) {
             let selected = action.payload.id == entity.id ? true : false
             return { ...entity, selected }
           }
@@ -44,6 +44,10 @@ const reducer = (state, action) => {
       return {
         ...state,
         active_settings_tab: action.payload.tabName,
+        active_settings_side:
+          action.payload.tabName == 'data-source'
+            ? state.active_settings_side
+            : action.payload.tabName,
       }
     case actions.SET_SYSTEM_FONTS:
       return {
@@ -65,7 +69,7 @@ const reducer = (state, action) => {
       }
     case actions.SET_IMAGE_FILE:
       let tmp =
-        state.active_settings_tab == 'front'
+        state.active_settings_side == 'front'
           ? { frontImage: action.payload.file }
           : { backImage: action.payload.file }
       return {
@@ -77,7 +81,7 @@ const reducer = (state, action) => {
         ...state,
         cards_count: action.payload.length,
         entities: state.entities.map((entity) => {
-          if (entity.side == state.active_settings_tab && entity.selected) {
+          if (entity.side == state.active_settings_side && entity.selected) {
             return {
               ...entity,
               data: [...action.payload],
@@ -87,7 +91,7 @@ const reducer = (state, action) => {
         }),
       }
     case actions.SET_STATE:
-      return { ...action.payload }
+      return { ...state, ...action.payload }
     default:
       console.log('default action')
       return state

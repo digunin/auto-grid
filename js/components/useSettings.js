@@ -7,6 +7,7 @@ const useSettings = (side = null) => {
     actions,
     cards_count,
     active_settings_tab,
+    active_settings_side,
     entities,
     frontImage,
     backImage,
@@ -16,7 +17,7 @@ const useSettings = (side = null) => {
   } = context
 
   let selected = context.entities.filter((entity) => {
-    return entity.side == active_settings_tab && entity.selected
+    return entity.side == active_settings_side && entity.selected
   })
   selected = selected[0]
 
@@ -41,6 +42,7 @@ const useSettings = (side = null) => {
     entities,
     cards_count,
     active_settings_tab,
+    active_settings_side,
     selected,
     bgImage,
     barcodes,

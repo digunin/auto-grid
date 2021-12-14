@@ -13,7 +13,7 @@ const NavBar = () => {
           Настройка печати
         </NavLink>
         <NavLink activeClassName="active" to={routesNames.print}>
-          Печать
+          Страница для печати
         </NavLink>
       </div>
     </nav>

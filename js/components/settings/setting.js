@@ -13,6 +13,7 @@ const Setting = () => {
   const tabNames = [
     ['front', 'Лицевая сторона'],
     ['back', 'Обратная сторона'],
+    ['data-source', 'Источник данных'],
   ]
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Setting = () => {
           )
         })}
       </div>
-      <TabContent side={active_settings_tab} />
+      <TabContent />
     </div>
   )
 }

@@ -64,6 +64,7 @@ const initialState = {
   ],
   cards_count: 10,
   active_settings_tab: 'front',
+  active_settings_side: 'front',
   systemFonts: [],
   printingMode: 'grid',
   needPrint: {
