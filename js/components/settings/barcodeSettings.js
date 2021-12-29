@@ -4,7 +4,7 @@ import PositionPicker from './pickers/positionPicker'
 import useSettings from '../useSettings'
 import RotatePicker from './pickers/rotatePicker'
 import BarcodeFormatlPicker from './pickers/barcodeFormatPicker'
-import DataPicker from './pickers/dataPicker'
+import DataSelector from './pickers/dataSelector'
 
 const BarcodeSettings = () => {
   let { actions, selected } = useSettings()
@@ -20,7 +20,7 @@ const BarcodeSettings = () => {
         <BarcodeFormatlPicker selected={selected} onchange={changeHandler} />
       </div>
 
-      <DataPicker
+      <DataSelector
         selected={selected}
         onchange={(data) => actions.setData(data)}
       />

@@ -5,7 +5,7 @@ import SizePicker from './pickers/sizePicker'
 import ColorPicker from './pickers/colorPicker'
 import RotatePicker from './pickers/rotatePicker'
 import FontPicker from './pickers/fontPicker'
-import DataPicker from './pickers/dataPicker'
+import DataSelector from './pickers/dataSelector'
 
 const TxtSettings = () => {
   let { actions, selected } = useSettings()
@@ -21,7 +21,7 @@ const TxtSettings = () => {
         <RotatePicker selected={selected} onchange={changeHandler} />
         <FontPicker selected={selected} onchange={changeHandler} />
       </div>
-      <DataPicker
+      <DataSelector
         selected={selected}
         onchange={(data) => actions.setData(data)}
       />

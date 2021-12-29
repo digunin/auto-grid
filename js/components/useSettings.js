@@ -14,6 +14,7 @@ const useSettings = (side = null) => {
     systemFonts,
     printingMode,
     needPrint,
+    data_source,
   } = context
 
   let selected = context.entities.filter((entity) => {
@@ -52,6 +53,7 @@ const useSettings = (side = null) => {
     printingMode,
     needPrint,
     stateStringify: copy,
+    data_source,
   }
 }
 

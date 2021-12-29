@@ -26,6 +26,7 @@ const initialState = {
       flat: false,
       barWidth: 2.5,
       rotate: 0,
+      data_sorce_id: 'source_1',
       data: mock_data,
     },
     // {
@@ -70,6 +71,9 @@ const initialState = {
   needPrint: {
     front: true,
     back: true,
+  },
+  data_source: {
+    source_1: mock_data,
   },
 }
 
