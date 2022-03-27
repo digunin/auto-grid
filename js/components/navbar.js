@@ -9,9 +9,9 @@ const NavBar = () => {
         <NavLink activeClassName="active" exact to={routesNames.home}>
           Домой
         </NavLink>
-        <NavLink activeClassName="active" to={routesNames.setting}>
+        {/* <NavLink activeClassName="active" to={routesNames.setting}>
           Настройка печати
-        </NavLink>
+        </NavLink> */}
         <NavLink activeClassName="active" to={routesNames.print}>
           Страница для печати
         </NavLink>

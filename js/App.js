@@ -15,11 +15,11 @@ const App = () => {
         <StyleTag />
         <NavBar />
         <Route exact path={routesNames.home}>
-          <Home />
-        </Route>
-        <Route path={routesNames.setting}>
           <Setting />
         </Route>
+        {/* <Route path={routesNames.setting}>
+          <Setting />
+        </Route> */}
         <Route path={routesNames.print}>
           <Print />
         </Route>
