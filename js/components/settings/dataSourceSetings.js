@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DataSourceList from './pickers/data-source/dataSourceList'
 import DataPicker from './pickers/data-source/dataPicker'
 import useSettings from '../useSettings'
@@ -9,7 +9,7 @@ const DataSourceSettings = () => {
   return (
     <>
       <DataSourceList names={source_names} />
-      <DataPicker mode="gen" />
+      <DataPicker source_names={source_names} mode="man" />
     </>
   )
 }

@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import NamePicker from './namePicker'
 
-const DataPicker = ({ mode, name = '' }) => {
+const DataPicker = ({ mode, source_names }) => {
+  const name = useRef({ name: '', isValid: true })
+
+  const onInputName = (new_name) => {
+    name.current.name = new_name
+    name.current.isValid = !source_names.includes(new_name)
+  }
+
   return (
     <div>
-      {mode == 'gen' && 'Сгенерировать последовательность'}
-      {mode == 'man' && 'Ручной ввод'}
-      {mode == 'edit' && `Редактировать: ${name}`}
+      <NamePicker onchange={onInputName} existingNames={source_names} />
     </div>
   )
 }

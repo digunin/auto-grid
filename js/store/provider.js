@@ -73,7 +73,10 @@ const initialState = {
     back: true,
   },
   data_source: {
-    source_1: mock_data,
+    source_1: {
+      data: mock_data,
+      creatingMode: 'man',
+    },
   },
 }
 
