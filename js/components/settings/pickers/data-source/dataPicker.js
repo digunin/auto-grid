@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import DataGenerator from './dataGenerator'
 import NamePicker from './namePicker'
 
 const DataPicker = ({ mode, source_names }) => {
@@ -12,6 +13,7 @@ const DataPicker = ({ mode, source_names }) => {
   return (
     <div>
       <NamePicker onchange={onInputName} existingNames={source_names} />
+      <DataGenerator />
     </div>
   )
 }

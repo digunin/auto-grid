@@ -4,8 +4,10 @@ import DataPicker from './pickers/data-source/dataPicker'
 import useSettings from '../useSettings'
 
 const DataSourceSettings = () => {
-  let { data_source } = useSettings()
-  let source_names = Object.keys(data_source)
+  let {
+    data_source: { editing_source_name, data },
+  } = useSettings()
+  let source_names = Object.keys(data)
   return (
     <>
       <DataSourceList names={source_names} />
