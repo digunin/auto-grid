@@ -8,6 +8,8 @@ export const actions = {
   SET_PRINTING_MODE: 'set-printing-mode',
   CHANGE_SIDE_NEED_PRINT: 'change-side-need-print',
   SET_IMAGE_FILE: 'set-image-file',
+  ADD_DATA_SOURCE: 'set-data-source',
+  EDIT_DATA_SOURCE: 'edit-data-source',
   SET_DATA: 'set-data',
   SET_STATE: 'set-state',
 }

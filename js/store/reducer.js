@@ -90,6 +90,25 @@ const reducer = (state, action) => {
           return entity
         }),
       }
+    case actions.ADD_DATA_SOURCE:
+      return {
+        ...state,
+        data_source: {
+          ...state.data_source,
+          data: {
+            ...state.data_source.data,
+            ...action.payload,
+          },
+        },
+      }
+    case actions.EDIT_DATA_SOURCE:
+      return {
+        ...state,
+        data_source: {
+          ...state.data_source,
+          editing_source_name: action.payload,
+        },
+      }
     case actions.SET_STATE:
       return { ...state, ...action.payload }
     default:

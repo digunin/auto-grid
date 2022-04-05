@@ -73,10 +73,8 @@ const initialState = {
     back: true,
   },
   data_source: {
-    source_1: {
-      data: mock_data,
-      creatingMode: 'man',
-    },
+    editing_source_name: '',
+    data: { source_1: mock_data },
   },
 }
 
@@ -134,6 +132,20 @@ const Provider = ({ children }) => {
           payload: {
             file,
           },
+        })
+      },
+      addDataSource: (name, arr) => {
+        let new_source = {}
+        new_source[name] = arr
+        dispatch({
+          type: actions.ADD_DATA_SOURCE,
+          payload: { ...new_source },
+        })
+      },
+      editDataSource: (name) => {
+        dispatch({
+          type: actions.EDIT_DATA_SOURCE,
+          payload: name,
         })
       },
       setData: (arr) => {
