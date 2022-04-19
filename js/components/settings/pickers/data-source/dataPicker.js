@@ -13,7 +13,7 @@ const DataPicker = ({ mode, source_names }) => {
   return (
     <div>
       <NamePicker onchange={onInputName} existingNames={source_names} />
-      <DataGenerator />
+      <DataGenerator onchange={console.log} />
     </div>
   )
 }

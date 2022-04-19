@@ -2,13 +2,45 @@ import React, { useState, useRef } from 'react'
 
 const DataGenerator = ({ onchange }) => {
   const [hide, setHide] = useState(true)
-  let startPart = useRef({ prefix: '', variable: 0, suffix: '' })
+  let startPart = useRef({ prefix: '', variable: 0, suffix: '', amount: 10 })
   if (hide) {
     return <button onClick={() => setHide(false)}>Сгенерировать</button>
   }
+
+  const generate = (head, integer, tail, amount) => {
+    let result = []
+    for (let i = 0; i < amount; i++) {
+      result.push(
+        `${head}${String(Number(integer) + i).padStart(
+          integer.length,
+          '0'
+        )}${tail}`
+      )
+    }
+    return result
+  }
+
+  const checkInt = (str) => {
+    return Number.isInteger(Number(str))
+  }
+
   const onSave = () => {
-    // onchange([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-    console.log(startPart)
+    if (
+      !checkInt(startPart.current.variable) ||
+      !checkInt(startPart.current.amount)
+    ) {
+      console.log('NOT Integer')
+      return
+    }
+    onchange(
+      generate(
+        startPart.current.prefix,
+        startPart.current.variable,
+        startPart.current.suffix,
+        startPart.current.amount
+      )
+    )
+    // console.log(startPart)
     setHide(true)
   }
   return (
@@ -34,7 +66,12 @@ const DataGenerator = ({ onchange }) => {
       />
       <br />
       <br />
-      <input type="number" placeholder="количество карт" />
+      <input
+        type="text"
+        placeholder="количество карт"
+        defaultValue={startPart.current.amount}
+        onChange={(e) => (startPart.current.amount = e.target.value)}
+      />
       <br />
       <br />
       <button onClick={onSave}>Применить</button>
