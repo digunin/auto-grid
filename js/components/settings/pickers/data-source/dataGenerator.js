@@ -44,7 +44,9 @@ const DataGenerator = ({ onchange }) => {
     setHide(true)
   }
   return (
-    <div style={{ border: '1px solid black' }}>
+    <div
+      style={{ border: '1px solid black', margin: '1em 0', padding: '0.5em' }}
+    >
       <br />
       <input
         type="text"
