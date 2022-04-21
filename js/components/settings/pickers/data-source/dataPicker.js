@@ -3,7 +3,7 @@ import DataGenerator from './dataGenerator'
 import ManualDataInputPicker from './manualDataInputPicker'
 import NamePicker from './namePicker'
 
-const DataPicker = ({ mode, source_names, addDataSource }) => {
+const DataPicker = ({ mode, source_names, setDataSource }) => {
   const name = useRef({ name: '', isValid: true })
   const data = useRef()
   const [generatedData, setGeneratedData] = useState(false)
@@ -20,7 +20,7 @@ const DataPicker = ({ mode, source_names, addDataSource }) => {
   const onSubmit = () => {
     if (!name.current.isValid) return
     if (name.current.name.length == 0) return
-    addDataSource(name.current.name, data.current.trim().split('\n'))
+    setDataSource(name.current.name, data.current.trim().split('\n'))
   }
 
   return (

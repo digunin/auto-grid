@@ -6,14 +6,16 @@ import useSettings from '../useSettings'
 const DataSourceSettings = () => {
   let {
     data_source: { editing_source_name, data },
-    actions: { addDataSource },
+    actions: { setDataSource },
   } = useSettings()
+
   let source_names = Object.keys(data)
+
   return (
     <>
       <DataSourceList names={source_names} />
       <DataPicker
-        addDataSource={addDataSource}
+        setDataSource={setDataSource}
         source_names={source_names}
         mode="man"
       />

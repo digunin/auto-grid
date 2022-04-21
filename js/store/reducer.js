@@ -90,7 +90,7 @@ const reducer = (state, action) => {
           return entity
         }),
       }
-    case actions.ADD_DATA_SOURCE:
+    case actions.SET_DATA_SOURCE:
       return {
         ...state,
         data_source: {

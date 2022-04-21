@@ -134,11 +134,11 @@ const Provider = ({ children }) => {
           },
         })
       },
-      addDataSource: (name, arr) => {
+      setDataSource: (name, arr) => {
         let new_source = {}
         new_source[name] = arr
         dispatch({
-          type: actions.ADD_DATA_SOURCE,
+          type: actions.SET_DATA_SOURCE,
           payload: { ...new_source },
         })
       },
