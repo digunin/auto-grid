@@ -1,19 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DataSourceList from './pickers/data-source/dataSourceList'
 import DataPicker from './pickers/data-source/dataPicker'
 import useSettings from '../useSettings'
 
 const DataSourceSettings = () => {
+  const [showDataPicker, setShow] = useState(false)
   let {
     data_source: { editing_source_name, data },
     actions: { setDataSource, editDataSource },
   } = useSettings()
 
+  useEffect(() => {
+    return () => editDataSource('')
+  }, [])
+
   let source_names = Object.keys(data)
 
   let onSourceListClick = (name = null) => {
-    console.log(name)
+    setShow(true)
     editDataSource(name ? name : '')
+  }
+
+  let onDataPickerSubmit = (name, data) => {
+    // console.log('submit: ', name, data)
+    setDataSource(name, data)
+    editDataSource('')
+    setShow(false)
   }
 
   return (
@@ -23,11 +35,18 @@ const DataSourceSettings = () => {
         onclick={onSourceListClick}
         names={source_names}
       />
-      <DataPicker
-        setDataSource={setDataSource}
-        source_names={source_names}
-        mode="man"
-      />
+      {showDataPicker && (
+        <DataPicker
+          editingData={
+            editing_source_name.length == 0
+              ? []
+              : [...data[editing_source_name]]
+          }
+          source_names={source_names}
+          editing_source_name={editing_source_name}
+          onsubmit={onDataPickerSubmit}
+        />
+      )}
     </>
   )
 }
