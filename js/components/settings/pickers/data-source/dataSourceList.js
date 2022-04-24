@@ -1,11 +1,15 @@
 import React from 'react'
+import useDataSource from './useDataSource'
 
-const DataSourceList = ({ existingNames, editing_source_name, onclick }) => {
+const DataSourceList = ({ onclick }) => {
+  const { existingNames, editing_source_name } = useDataSource()
+
+  const activeColor = 'var(--active-color)'
+
   return (
     <div>
       {existingNames.map((name, number) => {
-        let bgcolor =
-          name === editing_source_name ? 'var(--active-color)' : 'inherit'
+        let bgcolor = name === editing_source_name ? activeColor : 'inherit'
         return (
           <div
             style={{

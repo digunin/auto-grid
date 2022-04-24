@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react'
 
 const ManualDataInputPicker = ({ onchange, defaultData }) => {
   const textArea = useRef()
+
   useEffect(() => {
-    if (defaultData) {
-      let str = defaultData.join('\n')
-      textArea.current.value = str
-      onchange(str)
-    }
+    let str = defaultData.join('\n')
+    textArea.current.value = str
+    onchange(str)
   }, [defaultData])
+
   return (
     <div>
       <textarea

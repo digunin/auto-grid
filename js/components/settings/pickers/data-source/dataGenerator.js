@@ -1,8 +1,15 @@
 import React, { useState, useRef } from 'react'
 
-const DataGenerator = ({ onchange }) => {
+const DataGenerator = ({ onchange, amount = 10 }) => {
   const [hide, setHide] = useState(true)
-  let startPart = useRef({ prefix: '', variable: 0, suffix: '', amount: 10 })
+
+  let startPart = useRef({
+    prefix: '',
+    variable: '0000',
+    suffix: '',
+    amount: amount,
+  })
+
   if (hide) {
     return <button onClick={() => setHide(false)}>Сгенерировать</button>
   }

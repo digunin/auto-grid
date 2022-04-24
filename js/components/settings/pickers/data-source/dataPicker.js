@@ -2,24 +2,25 @@ import React, { useEffect, useRef, useState } from 'react'
 import DataGenerator from './dataGenerator'
 import ManualDataInputPicker from './manualDataInputPicker'
 import NamePicker from './namePicker'
+import useDataSource from './useDataSource'
 
-const DataPicker = ({
-  editing_source_name,
-  existingNames,
-  onsubmit,
-  editingData = [],
-}) => {
-  const newName = useRef({ name: '', isValid: false })
-  const data = useRef()
-  const [generatedData, setGeneratedData] = useState(false)
-  const [needToSave, setNeedToSave] = useState(false)
+const DataPicker = ({ onsubmit }) => {
+  const {
+    editing_source_name,
+    existingNames,
+    editingData,
+    createMode,
+    editMode,
+  } = useDataSource()
 
   useEffect(() => {
     setGeneratedData(false)
   }, [editing_source_name])
 
-  let createMode = editing_source_name === '' ? true : false
-  let editMode = !createMode
+  const newName = useRef({ name: '', isValid: false })
+  const newData = useRef()
+  const [generatedData, setGeneratedData] = useState(false)
+  const [needToSave, setNeedToSave] = useState(false)
 
   const onInputName = (new_name) => {
     newName.current.name = new_name
@@ -27,7 +28,7 @@ const DataPicker = ({
   }
 
   const onManualInput = (str) => {
-    data.current = str
+    newData.current = str
     str.trim() === editingData.join('\n')
       ? setNeedToSave(false)
       : setNeedToSave(true)
@@ -38,7 +39,7 @@ const DataPicker = ({
     if (createMode && newName.current.name.length == 0) return
     onsubmit(
       createMode ? newName.current.name : editing_source_name,
-      data.current.trim().split('\n')
+      newData.current.trim().split('\n')
     )
   }
 
