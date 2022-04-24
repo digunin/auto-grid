@@ -109,6 +109,19 @@ const reducer = (state, action) => {
           editing_source_name: action.payload,
         },
       }
+    case actions.DELETE_DATA_SOURCE:
+      let newData = {}
+      for (let source_name of Object.keys(state.data_source.data)) {
+        if (source_name == action.payload) continue
+        newData[source_name] = [...state.data_source.data[source_name]]
+      }
+      return {
+        ...state,
+        data_source: {
+          editing_source_name: state.data_source.editing_source_name,
+          data: { ...newData },
+        },
+      }
     case actions.SET_STATE:
       return { ...state, ...action.payload }
     default:

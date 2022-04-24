@@ -4,7 +4,8 @@ import DataPicker from './pickers/data-source/dataPicker'
 import useDataSource from './pickers/data-source/useDataSource'
 
 const DataSourceSettings = () => {
-  let { setDataSource, editDataSource } = useDataSource()
+  let { setDataSource, editDataSource, deleteDataSource, editing_source_name } =
+    useDataSource()
   const [showDataPicker, setShow] = useState(false)
 
   useEffect(() => {
@@ -22,9 +23,17 @@ const DataSourceSettings = () => {
     setShow(false)
   }
 
+  let onDelete = (name) => {
+    if (name == editing_source_name) {
+      editDataSource('')
+      setShow(false)
+    }
+    deleteDataSource(name)
+  }
+
   return (
     <>
-      <DataSourceList onclick={onSourceListClick} />
+      <DataSourceList onclick={onSourceListClick} ondelete={onDelete} />
       {showDataPicker && <DataPicker onsubmit={onDataPickerSubmit} />}
     </>
   )

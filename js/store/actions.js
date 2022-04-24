@@ -10,6 +10,7 @@ export const actions = {
   SET_IMAGE_FILE: 'set-image-file',
   SET_DATA_SOURCE: 'set-data-source',
   EDIT_DATA_SOURCE: 'edit-data-source',
+  DELETE_DATA_SOURCE: 'delete-data-source',
   SET_DATA: 'set-data',
   SET_STATE: 'set-state',
 }

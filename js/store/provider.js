@@ -148,6 +148,12 @@ const Provider = ({ children }) => {
           payload: name,
         })
       },
+      deleteDataSource: (name) => {
+        dispatch({
+          type: actions.DELETE_DATA_SOURCE,
+          payload: name,
+        })
+      },
       setData: (arr) => {
         dispatch({
           type: actions.SET_DATA,

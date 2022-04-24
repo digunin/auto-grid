@@ -11,6 +11,7 @@ const useDataSource = () => {
     editMode: data_source.editing_source_name !== '',
     setDataSource: actions.setDataSource,
     editDataSource: actions.editDataSource,
+    deleteDataSource: actions.deleteDataSource,
     editingData:
       data_source.editing_source_name === ''
         ? []
