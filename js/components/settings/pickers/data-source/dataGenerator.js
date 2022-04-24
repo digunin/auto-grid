@@ -40,7 +40,6 @@ const DataGenerator = ({ onchange }) => {
         startPart.current.amount
       )
     )
-    // console.log(startPart)
     setHide(true)
   }
   return (

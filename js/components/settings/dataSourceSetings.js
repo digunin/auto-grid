@@ -14,7 +14,7 @@ const DataSourceSettings = () => {
     return () => editDataSource('')
   }, [])
 
-  let source_names = Object.keys(data)
+  let existingNames = Object.keys(data)
 
   let onSourceListClick = (name = null) => {
     setShow(true)
@@ -22,7 +22,6 @@ const DataSourceSettings = () => {
   }
 
   let onDataPickerSubmit = (name, data) => {
-    // console.log('submit: ', name, data)
     setDataSource(name, data)
     editDataSource('')
     setShow(false)
@@ -33,7 +32,7 @@ const DataSourceSettings = () => {
       <DataSourceList
         editing_source_name={editing_source_name}
         onclick={onSourceListClick}
-        names={source_names}
+        existingNames={existingNames}
       />
       {showDataPicker && (
         <DataPicker
@@ -42,7 +41,7 @@ const DataSourceSettings = () => {
               ? []
               : [...data[editing_source_name]]
           }
-          source_names={source_names}
+          existingNames={existingNames}
           editing_source_name={editing_source_name}
           onsubmit={onDataPickerSubmit}
         />

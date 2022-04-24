@@ -5,23 +5,25 @@ import NamePicker from './namePicker'
 
 const DataPicker = ({
   editing_source_name,
-  source_names,
+  existingNames,
   onsubmit,
   editingData = [],
 }) => {
-  const name = useRef({ name: '', isValid: false })
+  const newName = useRef({ name: '', isValid: false })
   const data = useRef()
   const [generatedData, setGeneratedData] = useState(false)
   const [needToSave, setNeedToSave] = useState(false)
+
   useEffect(() => {
     setGeneratedData(false)
   }, [editing_source_name])
+
   let createMode = editing_source_name === '' ? true : false
   let editMode = !createMode
 
   const onInputName = (new_name) => {
-    name.current.name = new_name
-    name.current.isValid = !source_names.includes(new_name)
+    newName.current.name = new_name
+    newName.current.isValid = !existingNames.includes(new_name)
   }
 
   const onManualInput = (str) => {
@@ -32,11 +34,10 @@ const DataPicker = ({
   }
 
   const onSubmit = () => {
-    if (createMode && !name.current.isValid) return
-    if (createMode && name.current.name.length == 0) return
-    console.log(data.current)
+    if (createMode && !newName.current.isValid) return
+    if (createMode && newName.current.name.length == 0) return
     onsubmit(
-      createMode ? name.current.name : editing_source_name,
+      createMode ? newName.current.name : editing_source_name,
       data.current.trim().split('\n')
     )
   }
@@ -44,7 +45,7 @@ const DataPicker = ({
   return (
     <div>
       {createMode && (
-        <NamePicker onchange={onInputName} existingNames={source_names} />
+        <NamePicker onchange={onInputName} existingNames={existingNames} />
       )}
       {editMode && (
         <div>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const DataSourceList = ({ names, editing_source_name, onclick }) => {
+const DataSourceList = ({ existingNames, editing_source_name, onclick }) => {
   return (
     <div>
-      {names.map((name, number) => {
+      {existingNames.map((name, number) => {
         let bgcolor =
           name === editing_source_name ? 'var(--active-color)' : 'inherit'
         return (
