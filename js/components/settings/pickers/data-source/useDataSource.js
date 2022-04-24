@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Context from '../../../../store/settingContext'
 
-const useDataSource = () => {
+const useDataSource = (name = '') => {
   const { actions, data_source } = useContext(Context)
 
   return {
@@ -16,6 +16,7 @@ const useDataSource = () => {
       data_source.editing_source_name === ''
         ? []
         : [...data_source.data[data_source.editing_source_name]],
+    selectedData: name === '' ? [] : [...data_source.data[name]],
   }
 }
 
