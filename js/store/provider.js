@@ -85,8 +85,7 @@ const Provider = ({ children }) => {
   const value = {
     ...state,
     actions: {
-      changeEntity: ({ id, new_props }) => {
-        console.log(new_props)
+      changeEntity: (id, new_props) => {
         dispatch({
           type: actions.CHANGE_ENTITY,
           payload: {
