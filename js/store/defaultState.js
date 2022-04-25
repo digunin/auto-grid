@@ -11,6 +11,7 @@ export const defaultState = {
     fontFamily: 'Arial',
     fontSize: '12',
     rotate: 0,
+    data_sorce_id: '',
     data: ['Текстовое поле'],
   },
   qrcode: {
@@ -26,6 +27,7 @@ export const defaultState = {
     darkColor: '#000',
     lightColor: '#FFF',
     rotate: 270,
+    data_sorce_id: '',
     data: ['QR-code'],
   },
   barcode: {
@@ -42,6 +44,7 @@ export const defaultState = {
     flat: false,
     barWidth: 2.5,
     rotate: 0,
+    data_sorce_id: '',
     data: ['00000001'],
   },
 }

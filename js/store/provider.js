@@ -14,7 +14,7 @@ const initialState = {
       id: 'ean13',
       side: 'back',
       type: 'barcode',
-      format: 'ean13',
+      format: 'code128',
       selected: false,
       top: '36.6',
       left: '40.5',
@@ -26,7 +26,7 @@ const initialState = {
       flat: false,
       barWidth: 2.5,
       rotate: 0,
-      data_sorce_id: 'source_1',
+      data_source_id: 'source_1',
       data: mock_data,
     },
     // {
