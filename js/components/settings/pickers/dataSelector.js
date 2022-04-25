@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useDataSource from './data-source/useDataSource'
 
 const DataSelector = ({ onchange, selected }) => {
-  const [selectedSource, setSelectedSource] = useState('')
+  const [selectedSource, setSelectedSource] = useState(selected.data_source_id)
   const [selectedValues, setSelectedValues] = useState([])
   const { existingNames, selectedData } = useDataSource(selectedSource)
   useEffect(() => {
@@ -11,6 +11,7 @@ const DataSelector = ({ onchange, selected }) => {
   return (
     <div>
       <select
+        defaultValue={selected.data_source_id}
         name="data-source-names"
         onChange={(e) => {
           setSelectedSource(e.target.value)
