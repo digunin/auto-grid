@@ -62,6 +62,13 @@ export const barcodeFormats = [
   ['code39', 'CODE39'],
 ]
 
+// Нельзя менять порядок элементов в массиве
+export const dataSelectorModeInfo = [
+  ['print-all', 'Печатать всё'],
+  ['print-range', 'Указать диапазон'],
+  ['print-selected', 'Печатать выбранные'],
+]
+
 export const Detector = function () {
   // a font will be compared against all the three default fonts.
   // and if it doesn't match all 3 then that font is not available.

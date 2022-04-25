@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { dataSelectorModeInfo } from '../../../utils'
 import useDataSource from './data-source/useDataSource'
+import DataSelectorMode from './dataSelectorMode'
 
 const DataSelector = ({ onchange, selected }) => {
   const [selectedSource, setSelectedSource] = useState(selected.data_source_id)
@@ -24,11 +26,16 @@ const DataSelector = ({ onchange, selected }) => {
           </option>
         ))}
       </select>
+      <DataSelectorMode
+        selected={selected}
+        onchange={(value) => console.log(value)}
+      />
       <select
         style={{ width: '100%', fontFamily: 'monospace' }}
         size="20"
         name="data-source-values"
-        multiple
+        multiple={selected.data_selector_mode === dataSelectorModeInfo[2][0]}
+        disabled={selected.data_selector_mode === dataSelectorModeInfo[0][0]}
         onChange={(e) => {
           let arr = Array.from(e.target.selectedOptions, (opt) => opt.value)
           setSelectedValues(arr)

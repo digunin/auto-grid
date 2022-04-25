@@ -4,7 +4,7 @@ import backjpg from '../../images/back.jpg'
 import Context from './settingContext'
 import reducer from './reducer'
 import { actions } from './actions'
-import { mock_data } from '../utils'
+import { mock_data, dataSelectorModeInfo } from '../utils'
 
 const initialState = {
   frontImage: { content: frontjpg },
@@ -27,6 +27,7 @@ const initialState = {
       barWidth: 2.5,
       rotate: 0,
       data_source_id: 'source_1',
+      data_selector_mode: dataSelectorModeInfo[0][0],
       data: mock_data,
     },
     // {
@@ -85,6 +86,7 @@ const Provider = ({ children }) => {
     ...state,
     actions: {
       changeEntity: ({ id, new_props }) => {
+        console.log(new_props)
         dispatch({
           type: actions.CHANGE_ENTITY,
           payload: {

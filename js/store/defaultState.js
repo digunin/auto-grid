@@ -1,3 +1,5 @@
+import { dataSelectorModeInfo } from '../utils'
+
 export const defaultState = {
   txt: {
     type: 'txt',
@@ -12,6 +14,7 @@ export const defaultState = {
     fontSize: '12',
     rotate: 0,
     data_sorce_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
     data: ['Текстовое поле'],
   },
   qrcode: {
@@ -28,6 +31,7 @@ export const defaultState = {
     lightColor: '#FFF',
     rotate: 270,
     data_sorce_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
     data: ['QR-code'],
   },
   barcode: {
@@ -45,6 +49,7 @@ export const defaultState = {
     barWidth: 2.5,
     rotate: 0,
     data_sorce_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
     data: ['00000001'],
   },
 }
