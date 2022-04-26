@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { dataSelectorModeInfo } from '../../../utils'
+import useSettings from '../../useSettings'
 import useDataSource from './data-source/useDataSource'
 import DataSelectorMode from './dataSelectorMode'
 
@@ -7,9 +8,14 @@ const DataSelector = ({ onchange, selected }) => {
   const [selectedSource, setSelectedSource] = useState(selected.data_source_id)
   const [selectedValues, setSelectedValues] = useState([])
   const { existingNames, selectedData } = useDataSource(selectedSource)
+  const {
+    actions: { changeEntity },
+  } = useSettings()
+
   useEffect(() => {
     onSelectorModeChange(selected.data_selector_mode)
-  }, [])
+  }, [selected.data_source_id, selected.data_selector_mode])
+
   useEffect(() => {
     onchange(selectedValues)
   }, [selectedValues])
@@ -42,6 +48,7 @@ const DataSelector = ({ onchange, selected }) => {
         defaultValue={selected.data_source_id}
         name="data-source-names"
         onChange={(e) => {
+          changeEntity(selected.id, { data_source_id: e.target.value })
           setSelectedSource(e.target.value)
         }}
       >
