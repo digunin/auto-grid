@@ -31,6 +31,7 @@ const DataSelector = ({ onchange, selected }) => {
         onchange={(value) => console.log(value)}
       />
       <select
+        className="data-source-select"
         style={{ width: '100%', fontFamily: 'monospace' }}
         size="20"
         name="data-source-values"

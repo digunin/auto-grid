@@ -398,3 +398,7 @@ nav .nav-links a.active {
   );
   left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
 }
+
+.data-source-select option:nth-child(2n){
+  background-color: rgb(240,240,240);
+}
