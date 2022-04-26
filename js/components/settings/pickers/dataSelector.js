@@ -8,8 +8,34 @@ const DataSelector = ({ onchange, selected }) => {
   const [selectedValues, setSelectedValues] = useState([])
   const { existingNames, selectedData } = useDataSource(selectedSource)
   useEffect(() => {
-    onchange(selectedData)
-  }, [selectedSource])
+    onSelectorModeChange(selected.data_selector_mode)
+  }, [])
+  useEffect(() => {
+    onchange(selectedValues)
+  }, [selectedValues])
+
+  const onSelectorModeChange = (mode, start = 0, end = 10) => {
+    switch (mode) {
+      // print-all
+      case dataSelectorModeInfo[0][0]:
+        setSelectedValues(selectedData)
+        break
+      // print-range
+      case dataSelectorModeInfo[1][0]:
+        setSelectedValues(
+          selectedData.slice(
+            Math.max(start, 0),
+            Math.min(end, selectedData.length)
+          )
+        )
+        break
+      // print-selected
+      case dataSelectorModeInfo[2][0]:
+        setSelectedValues([])
+        break
+    }
+  }
+
   return (
     <div>
       <select
@@ -26,10 +52,7 @@ const DataSelector = ({ onchange, selected }) => {
           </option>
         ))}
       </select>
-      <DataSelectorMode
-        selected={selected}
-        onchange={(value) => console.log(value)}
-      />
+      <DataSelectorMode selected={selected} onchange={onSelectorModeChange} />
       <select
         className="data-source-select"
         style={{ width: '100%', fontFamily: 'monospace' }}
