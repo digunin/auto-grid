@@ -9,7 +9,7 @@ import DataSelector from './pickers/dataSelector'
 const QRCodeSettings = () => {
   let { actions, selected } = useSettings()
   const changeHandler = (new_props) => {
-    actions.changeEntity({ id: selected.id, new_props })
+    actions.changeEntity(selected.id, new_props)
   }
   return (
     <>

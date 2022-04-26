@@ -15,10 +15,7 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index }) => {
               <div className={`barcode ${barcode.id}`}>
                 <button
                   onClick={() => {
-                    actions.changeEntity({
-                      id: barcode.id,
-                      new_props: { format: 'code128' },
-                    })
+                    actions.changeEntity(barcode.id, { format: 'code128' })
                   }}
                 >
                   Сброс
@@ -35,10 +32,7 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index }) => {
                 </div>
                 <button
                   onClick={() => {
-                    actions.changeEntity({
-                      id: barcode.id,
-                      new_props: { format: 'code128' },
-                    })
+                    actions.changeEntity(barcode.id, { format: 'code128' })
                   }}
                 >
                   Сброс
