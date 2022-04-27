@@ -13,10 +13,6 @@ const DataPicker = ({ onsubmit }) => {
     editMode,
   } = useDataSource()
 
-  useEffect(() => {
-    setGeneratedData(false)
-  }, [editing_source_name])
-
   const newName = useRef({ name: '', isValid: false })
   const newData = useRef()
   const [generatedData, setGeneratedData] = useState(false)
@@ -28,6 +24,7 @@ const DataPicker = ({ onsubmit }) => {
   }
 
   const onManualInput = (str) => {
+    console.log(str)
     newData.current = str
     str.trim() === editingData.join('\n')
       ? setNeedToSave(false)
@@ -37,6 +34,7 @@ const DataPicker = ({ onsubmit }) => {
   const onSubmit = () => {
     if (createMode && !newName.current.isValid) return
     if (createMode && newName.current.name.length == 0) return
+    if (newData.current === '') return
     onsubmit(
       createMode ? newName.current.name : editing_source_name,
       newData.current.trim().split('\n')
@@ -56,7 +54,8 @@ const DataPicker = ({ onsubmit }) => {
       <DataGenerator onchange={setGeneratedData} />
       <ManualDataInputPicker
         onchange={onManualInput}
-        defaultData={generatedData ? generatedData : editingData}
+        generatedData={generatedData}
+        editingData={editingData}
       />
       {editMode && (
         <button onClick={onSubmit} disabled={!needToSave}>
