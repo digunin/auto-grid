@@ -115,8 +115,18 @@ const reducer = (state, action) => {
         if (source_name == action.payload) continue
         newData[source_name] = [...state.data_source.data[source_name]]
       }
+      let newEntities = state.entities.map((entity) => {
+        return {
+          ...entity,
+          data_source_id:
+            entity.data_source_id === action.payload
+              ? ''
+              : entity.data_source_id,
+        }
+      })
       return {
         ...state,
+        entities: [...newEntities],
         data_source: {
           editing_source_name: state.data_source.editing_source_name,
           data: { ...newData },

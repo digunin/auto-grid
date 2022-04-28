@@ -24,7 +24,6 @@ const DataPicker = ({ onsubmit }) => {
   }
 
   const onManualInput = (str) => {
-    console.log(str)
     newData.current = str
     str.trim() === editingData.join('\n')
       ? setNeedToSave(false)
