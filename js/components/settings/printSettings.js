@@ -26,6 +26,7 @@ const PrintSettings = () => {
             }}
             subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
             index={0}
+            inSetting={true}
             side={active_settings_side}
           />
         </div>

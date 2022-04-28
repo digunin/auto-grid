@@ -15,7 +15,7 @@ export const defaultState = {
     rotate: 0,
     data_sorce_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
-    data: ['Текстовое поле'],
+    data: [],
   },
   qrcode: {
     type: 'qrcode',
@@ -32,7 +32,7 @@ export const defaultState = {
     rotate: 270,
     data_sorce_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
-    data: ['QR-code'],
+    data: [],
   },
   barcode: {
     type: 'barcode',
@@ -50,6 +50,6 @@ export const defaultState = {
     rotate: 0,
     data_sorce_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
-    data: ['00000001'],
+    data: [],
   },
 }

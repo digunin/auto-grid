@@ -28,7 +28,7 @@ const initialState = {
       rotate: 0,
       data_source_id: 'source_1',
       data_selector_mode: dataSelectorModeInfo[0][0],
-      data: mock_data,
+      data: [],
     },
     // {
     //   id: 'qr',

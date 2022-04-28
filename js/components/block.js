@@ -5,7 +5,14 @@ import QRCodeBlock from './QRCodeBlock'
 import useSettings from './useSettings'
 import ImageComponent from './imageComponent'
 
-const Block = ({ index, side, subclass, onclick, selected_id = null }) => {
+const Block = ({
+  index,
+  side,
+  subclass,
+  onclick,
+  selected_id = null,
+  inSetting = false,
+}) => {
   const { bgImage, txt, barcodes, qrcodes } = useSettings(side)
   return (
     <div className={`block ${subclass ? subclass : ''}`}>
@@ -15,18 +22,21 @@ const Block = ({ index, side, subclass, onclick, selected_id = null }) => {
         index={index}
         onclick={onclick}
         selected_id={selected_id}
+        inSetting={inSetting}
       />
       <QRCodeBlock
         qrcodes={qrcodes}
         index={index}
         onclick={onclick}
         selected_id={selected_id}
+        inSetting={inSetting}
       />
       <BarcodeBlock
         index={index}
         onclick={onclick}
         selected_id={selected_id}
         barcodes={barcodes}
+        inSetting={inSetting}
       />
     </div>
   )
