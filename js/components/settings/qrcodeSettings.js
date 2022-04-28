@@ -24,8 +24,7 @@ const QRCodeSettings = () => {
         <QRCodeLevelPicker selected={selected} onchange={changeHandler} />
       </div>
       <DataSelector
-        selected={selected}
-        onchange={(data) => actions.setData(data)}
+        onchange={(data) => actions.changeEntity(selected.id, { data: data })}
       />
     </>
   )

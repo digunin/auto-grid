@@ -21,8 +21,7 @@ const BarcodeSettings = () => {
       </div>
 
       <DataSelector
-        selected={selected}
-        onchange={(data) => actions.setData(data)}
+        onchange={(data) => actions.changeEntity(selected.id, { data: data })}
       />
     </>
   )
