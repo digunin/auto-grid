@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { dataSelectorModeInfo } from '../../../utils'
 import useSettings from '../../useSettings'
+import DataSourceNamePicker from './data-source/sourceNamePicker'
 import useDataSource from './data-source/useDataSource'
 import DataSelectorMode from './dataSelectorMode'
 
 const DataSelector = ({ onchange }) => {
-  const {
-    selected,
-    actions: { changeEntity },
-  } = useSettings()
-  const { existingNames, selectedData } = useDataSource(selected.data_source_id)
+  const { selected } = useSettings()
+  const { selectedData } = useDataSource(selected.data_source_id)
 
   useEffect(() => {
     onSelectorModeChange(selected.data_selector_mode)
@@ -39,20 +37,7 @@ const DataSelector = ({ onchange }) => {
 
   return (
     <div>
-      <select
-        value={selected.data_source_id}
-        name="data-source-names"
-        onChange={(e) => {
-          changeEntity(selected.id, { data_source_id: e.target.value })
-        }}
-      >
-        <option value="">Выберите источник данных</option>
-        {existingNames.map((name) => (
-          <option key={`ds_${name}`} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
+      <DataSourceNamePicker />
       <DataSelectorMode selected={selected} onchange={onSelectorModeChange} />
       <select
         className="data-source-select"
