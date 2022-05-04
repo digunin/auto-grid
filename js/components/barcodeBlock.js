@@ -9,7 +9,6 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
     <>
       {barcodes.map((barcode) => {
         let printBarcode = barcode.data[index] !== undefined || inSetting
-        console.log(printBarcode)
         return (
           printBarcode && (
             <ErrorBoundary

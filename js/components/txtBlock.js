@@ -5,7 +5,6 @@ const TxtBlock = ({ txt, selected_id, onclick, index, inSetting }) => {
     <>
       {txt.map((text) => {
         let printText = text.data[index] !== undefined || inSetting
-        console.log(printText)
         return (
           printText && (
             <div
