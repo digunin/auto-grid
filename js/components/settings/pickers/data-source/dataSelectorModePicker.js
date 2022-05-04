@@ -1,15 +1,15 @@
 import React from 'react'
-import useSettings from '../../useSettings'
-import { dataSelectorModeInfo as modeInfo } from './../../../utils'
+import useSettings from '../../../useSettings'
+import { dataSelectorModeInfo as modeInfo } from '../../../../utils'
 
-const DataSelectorMode = ({ onchange, selected }) => {
+const DataSelectorMode = () => {
   const {
+    selected,
     actions: { changeEntity },
   } = useSettings()
 
   const onRadioClick = (value) => {
     changeEntity(selected.id, { data_selector_mode: value })
-    onchange(value)
   }
 
   return (

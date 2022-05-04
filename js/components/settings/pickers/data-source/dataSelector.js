@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
-import { dataSelectorModeInfo } from '../../../utils'
-import useSettings from '../../useSettings'
-import DataSourceNamePicker from './data-source/sourceNamePicker'
-import SelectedDataPicker from './data-source/selectedDataPicker'
-import useDataSource from './data-source/useDataSource'
-import DataSelectorMode from './dataSelectorMode'
+import { dataSelectorModeInfo } from '../../../../utils'
+import useSettings from '../../../useSettings'
+import DataSourceNamePicker from './sourceNamePicker'
+import SelectedDataPicker from './selectedDataPicker'
+import useDataSource from './useDataSource'
+import DataSelectorMode from './dataSelectorModePicker'
 
-const DataSelector = ({ onchange }) => {
-  const { selected } = useSettings()
+const DataSelector = () => {
+  const {
+    selected,
+    actions: { changeEntity },
+  } = useSettings()
+
   const { selectedData } = useDataSource(selected.data_source_id)
 
   useEffect(() => {
@@ -18,20 +22,20 @@ const DataSelector = ({ onchange }) => {
     switch (mode) {
       // print-all
       case dataSelectorModeInfo[0][0]:
-        onchange(selectedData)
+        changeEntity(selected.id, { data: selectedData })
         break
       // print-range
       case dataSelectorModeInfo[1][0]:
-        onchange(
-          selectedData.slice(
+        changeEntity(selected.id, {
+          data: selectedData.slice(
             Math.max(start, 0),
             Math.min(end, selectedData.length)
-          )
-        )
+          ),
+        })
         break
       // print-selected
       case dataSelectorModeInfo[2][0]:
-        onchange([])
+        changeEntity(selected.id, { data: [] })
         break
     }
   }

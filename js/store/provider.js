@@ -26,7 +26,7 @@ const initialState = {
       flat: false,
       barWidth: 2.5,
       rotate: 0,
-      data_source_id: 'source_1',
+      data_source_id: '',
       data_selector_mode: dataSelectorModeInfo[0][0],
       data: [],
     },

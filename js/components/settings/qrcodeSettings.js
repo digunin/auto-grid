@@ -4,7 +4,7 @@ import PositionPicker from './pickers/positionPicker'
 import useSettings from '../useSettings'
 import RotatePicker from './pickers/rotatePicker'
 import QRCodeLevelPicker from './pickers/qrcodeLevelPicker'
-import DataSelector from './pickers/dataSelector'
+import DataSelector from './pickers/data-source/dataSelector'
 
 const QRCodeSettings = () => {
   let { actions, selected } = useSettings()
@@ -23,9 +23,7 @@ const QRCodeSettings = () => {
         <RotatePicker selected={selected} onchange={changeHandler} />
         <QRCodeLevelPicker selected={selected} onchange={changeHandler} />
       </div>
-      <DataSelector
-        onchange={(data) => actions.changeEntity(selected.id, { data: data })}
-      />
+      <DataSelector />
     </>
   )
 }
