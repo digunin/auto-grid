@@ -1,6 +1,7 @@
 import React from 'react'
 import useSettings from '../../../useSettings'
 import { dataSelectorModeInfo as modeInfo } from '../../../../utils'
+import DiapasonPicker from './diapasonPicker'
 
 const DataSelectorMode = () => {
   const {

@@ -5,6 +5,7 @@ import DataSourceNamePicker from './sourceNamePicker'
 import SelectedDataPicker from './selectedDataPicker'
 import useDataSource from './useDataSource'
 import DataSelectorMode from './dataSelectorModePicker'
+import DiapasonPicker from './diapasonPicker'
 
 const DataSelector = () => {
   const {
@@ -44,6 +45,9 @@ const DataSelector = () => {
     <div>
       <DataSourceNamePicker />
       <DataSelectorMode selected={selected} onchange={onSelectorModeChange} />
+      {selected.data_selector_mode === dataSelectorModeInfo[1][0] && (
+        <DiapasonPicker />
+      )}
       <SelectedDataPicker />
       <div>{`Выбрано элементов: ${selected.data.length}`}</div>
     </div>
