@@ -19,7 +19,7 @@ const DataSelector = () => {
     onSelectorModeChange(selected.data_selector_mode)
   }, [selected.id, selected.data_source_id, selected.data_selector_mode])
 
-  const onSelectorModeChange = (mode, start = 0, end = 10) => {
+  const onSelectorModeChange = (mode, start = 0, end = 9) => {
     switch (mode) {
       // print-all
       case dataSelectorModeInfo[0][0]:
@@ -30,7 +30,7 @@ const DataSelector = () => {
         changeEntity(selected.id, {
           data: selectedData.slice(
             Math.max(start, 0),
-            Math.min(end, selectedData.length)
+            Math.min(end + 1, selectedData.length)
           ),
         })
         break
@@ -41,12 +41,20 @@ const DataSelector = () => {
     }
   }
 
+  const onDiapasonChange = (from, to) => {
+    if (from >= to) {
+      console.log('from > to')
+      from = 1
+    }
+    onSelectorModeChange(dataSelectorModeInfo[1][0], from - 1, to - 1)
+  }
+
   return (
     <div>
       <DataSourceNamePicker />
       <DataSelectorMode selected={selected} onchange={onSelectorModeChange} />
       {selected.data_selector_mode === dataSelectorModeInfo[1][0] && (
-        <DiapasonPicker />
+        <DiapasonPicker onchange={onDiapasonChange} />
       )}
       <SelectedDataPicker />
       <div>{`Выбрано элементов: ${selected.data.length}`}</div>
