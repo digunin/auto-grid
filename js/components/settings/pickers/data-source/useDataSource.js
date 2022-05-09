@@ -6,7 +6,7 @@ const useDataSource = (name = '') => {
 
   return {
     editing_source_name: data_source.editing_source_name,
-    existingNames: Object.keys(data_source.data),
+    existingNames: Object.keys(data_source.sources),
     createMode: data_source.editing_source_name === '',
     editMode: data_source.editing_source_name !== '',
     setDataSource: actions.setDataSource,
@@ -15,8 +15,8 @@ const useDataSource = (name = '') => {
     editingData:
       data_source.editing_source_name === ''
         ? []
-        : [...data_source.data[data_source.editing_source_name]],
-    selectedData: name === '' ? [] : [...data_source.data[name]],
+        : [...data_source.sources[data_source.editing_source_name].data],
+    selectedData: name === '' ? [] : [...data_source.sources[name].data],
   }
 }
 

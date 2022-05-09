@@ -1,4 +1,4 @@
-import { dataSelectorModeInfo } from '../utils'
+import { dataSelectorModeInfo, mock_data } from '../utils'
 
 export const defaultState = {
   txt: {
@@ -13,7 +13,7 @@ export const defaultState = {
     fontFamily: 'Arial',
     fontSize: '12',
     rotate: 0,
-    data_sorce_id: '',
+    data_source_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
     data: [],
   },
@@ -30,7 +30,7 @@ export const defaultState = {
     darkColor: '#000',
     lightColor: '#FFF',
     rotate: 270,
-    data_sorce_id: '',
+    data_source_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
     data: [],
   },
@@ -48,8 +48,17 @@ export const defaultState = {
     flat: false,
     barWidth: 2.5,
     rotate: 0,
-    data_sorce_id: '',
+    data_source_id: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
     data: [],
+  },
+  dataSource: {
+    data: mock_data,
+    data_selector_mode: dataSelectorModeInfo[0][0],
+    selected_values: [],
+    diapason: {
+      from: 1,
+      to: 10,
+    },
   },
 }

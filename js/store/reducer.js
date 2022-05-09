@@ -91,13 +91,20 @@ const reducer = (state, action) => {
         }),
       }
     case actions.SET_DATA_SOURCE:
+      let new_source = {}
+      new_source[action.payload.name] =
+        {
+          ...state.data_source.sources[action.payload.name],
+        } || {}
+      new_source[action.payload.name].data = [...action.payload.arr]
+      console.log(new_source)
       return {
         ...state,
         data_source: {
           ...state.data_source,
-          data: {
-            ...state.data_source.data,
-            ...action.payload,
+          sources: {
+            ...state.data_source.sources,
+            ...new_source,
           },
         },
       }
@@ -110,11 +117,8 @@ const reducer = (state, action) => {
         },
       }
     case actions.DELETE_DATA_SOURCE:
-      let newData = {}
-      for (let source_name of Object.keys(state.data_source.data)) {
-        if (source_name == action.payload) continue
-        newData[source_name] = [...state.data_source.data[source_name]]
-      }
+      let newSources = { ...state.data_source.sources }
+      delete newSources[action.payload]
       let newEntities = state.entities.map((entity) => {
         return {
           ...entity,
@@ -129,7 +133,7 @@ const reducer = (state, action) => {
         entities: [...newEntities],
         data_source: {
           editing_source_name: state.data_source.editing_source_name,
-          data: { ...newData },
+          sources: { ...newSources },
         },
       }
     case actions.SET_STATE:

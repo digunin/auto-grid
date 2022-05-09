@@ -75,7 +75,7 @@ const initialState = {
   },
   data_source: {
     editing_source_name: '',
-    data: { source_1: mock_data },
+    sources: { source_1: { data: mock_data, something: null } },
   },
 }
 
@@ -136,11 +136,9 @@ const Provider = ({ children }) => {
         })
       },
       setDataSource: (name, arr) => {
-        let new_source = {}
-        new_source[name] = arr
         dispatch({
           type: actions.SET_DATA_SOURCE,
-          payload: { ...new_source },
+          payload: { name, arr },
         })
       },
       editDataSource: (name) => {
