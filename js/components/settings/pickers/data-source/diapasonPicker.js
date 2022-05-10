@@ -1,36 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
+import useDiapasonPicker from './useDiapasonPicker'
 
 const DiapasonPicker = ({ onchange, max, from = 1, to = max }) => {
-  const [diapason, setDiapason] = useState({ from, to })
-  const timeOut = useRef(null)
-
-  const submit = (from, to) => {
-    if (timeOut.current) {
-      clearTimeout(timeOut.current)
-    }
-    from = Number(from)
-    to = Number(to)
-    if (from < 1) from = 1
-    if (to > max) to = max
-    timeOut.current = setTimeout(() => {
-      onchange(from, to)
-      timeOut.current = null
-    }, 500)
-  }
-
-  const onFromChange = (value) => {
-    if (Number.isInteger(Number(value))) {
-      setDiapason({ ...diapason, from: value })
-      submit(value, diapason.to)
-    }
-  }
-
-  const onToChange = (value) => {
-    if (Number.isInteger(Number(value))) {
-      setDiapason({ ...diapason, to: value })
-      submit(diapason.from, value)
-    }
-  }
+  const { diapason, onFromChange, onToChange } = useDiapasonPicker(
+    onchange,
+    max,
+    from,
+    to
+  )
 
   return (
     <div>
