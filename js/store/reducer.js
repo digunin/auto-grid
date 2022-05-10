@@ -76,19 +76,12 @@ const reducer = (state, action) => {
         ...state,
         ...tmp,
       }
-    case actions.SET_DATA:
+    case actions.SET_CARDS_COUNT:
       return {
         ...state,
-        cards_count: action.payload.length,
-        entities: state.entities.map((entity) => {
-          if (entity.side == state.active_settings_side && entity.selected) {
-            return {
-              ...entity,
-              data: [...action.payload],
-            }
-          }
-          return entity
-        }),
+        cards_count: state.entities.reduce((max, entity) => {
+          return max > entity.data.length ? max : entity.data.length
+        }, 0),
       }
     case actions.SET_DATA_SOURCE:
       let new_source = {}

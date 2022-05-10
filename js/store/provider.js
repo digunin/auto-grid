@@ -157,10 +157,9 @@ const Provider = ({ children }) => {
           payload: name,
         })
       },
-      setData: (arr) => {
+      setCardsCount: () => {
         dispatch({
-          type: actions.SET_DATA,
-          payload: arr,
+          type: actions.SET_CARDS_COUNT,
         })
       },
       setNewState: (state) => {

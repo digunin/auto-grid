@@ -10,7 +10,7 @@ import DiapasonPicker from './diapasonPicker'
 const DataSelector = () => {
   const {
     selected,
-    actions: { changeEntity, setDataSource },
+    actions: { changeEntity, setDataSource, setCardsCount },
   } = useSettings()
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
@@ -26,20 +26,21 @@ const DataSelector = () => {
   ])
 
   const onSelectorModeChange = (mode) => {
-    let start = selectedDataSource.diapason?.from || 0
-    let end =
-      selectedDataSource.diapason?.to || selectedDataSource.data.length - 1
+    let start = selectedDataSource.diapason?.from - 1 || 0
+    let end = selectedDataSource.diapason?.to || selectedDataSource.data.length
     end = end < 0 ? 0 : end
     switch (mode) {
       // print-all
       case dataSelectorModeInfo[0][0]:
         changeEntity(selected.id, { data: selectedDataSource.data })
+        setCardsCount()
         break
       // print-range
       case dataSelectorModeInfo[1][0]:
         changeEntity(selected.id, {
-          data: selectedDataSource.data.slice(start, end + 1),
+          data: selectedDataSource.data.slice(start, end),
         })
+        setCardsCount()
         break
       // print-selected
       case dataSelectorModeInfo[2][0]:
@@ -48,10 +49,10 @@ const DataSelector = () => {
           selectedDataSource.selected_indexes?.map(
             (i) => selectedDataSource.data[i]
           ) || []
-        console.log(tmp)
         changeEntity(selected.id, {
           data: tmp,
         })
+        setCardsCount()
         break
     }
   }
@@ -60,7 +61,6 @@ const DataSelector = () => {
     if (from > to) {
       ;[from, to] = [to, from]
     }
-    // onSelectorModeChange(dataSelectorModeInfo[1][0], from - 1, to - 1)
     setDataSource(selected.data_source_id, { diapason: { from, to } })
   }
 
