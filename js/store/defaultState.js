@@ -55,10 +55,7 @@ export const defaultState = {
   dataSource: {
     data: mock_data,
     data_selector_mode: dataSelectorModeInfo[0][0],
-    selected_values: [],
-    diapason: {
-      from: 1,
-      to: 10,
-    },
+    selected_indexes: [],
+    diapason: {},
   },
 }

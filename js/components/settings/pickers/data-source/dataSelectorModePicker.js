@@ -1,16 +1,19 @@
 import React from 'react'
 import useSettings from '../../../useSettings'
 import { dataSelectorModeInfo as modeInfo } from '../../../../utils'
-import DiapasonPicker from './diapasonPicker'
+import useDataSource from './useDataSource'
 
-const DataSelectorMode = () => {
+const DataSelectorModePicker = () => {
   const {
     selected,
-    actions: { changeEntity },
+    actions: { setDataSource },
   } = useSettings()
 
+  const { selectedDataSource } = useDataSource(selected.data_source_id)
+
   const onRadioClick = (value) => {
-    changeEntity(selected.id, { data_selector_mode: value })
+    if (selected.data_source_id === '') return
+    setDataSource(selected.data_source_id, { data_selector_mode: value })
   }
 
   return (
@@ -25,7 +28,7 @@ const DataSelectorMode = () => {
               type="radio"
               name="data-selector-mode"
               value={info[0]}
-              checked={selected.data_selector_mode === info[0]}
+              checked={selectedDataSource.data_selector_mode === info[0]}
             />
             {info[1]}
           </label>
@@ -35,4 +38,4 @@ const DataSelectorMode = () => {
   )
 }
 
-export default DataSelectorMode
+export default DataSelectorModePicker

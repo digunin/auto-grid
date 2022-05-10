@@ -93,11 +93,12 @@ const reducer = (state, action) => {
     case actions.SET_DATA_SOURCE:
       let new_source = {}
       new_source[action.payload.name] =
-        {
-          ...state.data_source.sources[action.payload.name],
-        } || {}
-      new_source[action.payload.name].data = [...action.payload.arr]
-      console.log(new_source)
+        state.data_source.sources[action.payload.name] ||
+        defaultState.dataSource
+      new_source[action.payload.name] = {
+        ...new_source[action.payload.name],
+        ...action.payload.obj,
+      }
       return {
         ...state,
         data_source: {
@@ -126,6 +127,7 @@ const reducer = (state, action) => {
             entity.data_source_id === action.payload
               ? ''
               : entity.data_source_id,
+          data: entity.data_source_id === action.payload ? [] : entity.data,
         }
       })
       return {

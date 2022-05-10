@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-const DiapasonPicker = ({ onchange, from = 1, to = 10, disabled = false }) => {
+const DiapasonPicker = ({ onchange, max, from = 1, to = max }) => {
   const [diapason, setDiapason] = useState({ from, to })
   const timeOut = useRef(null)
 
@@ -8,8 +8,12 @@ const DiapasonPicker = ({ onchange, from = 1, to = 10, disabled = false }) => {
     if (timeOut.current) {
       clearTimeout(timeOut.current)
     }
+    from = Number(from)
+    to = Number(to)
+    if (from < 1) from = 1
+    if (to > max) to = max
     timeOut.current = setTimeout(() => {
-      onchange(Number(from), Number(to))
+      onchange(from, to)
       timeOut.current = null
     }, 500)
   }
@@ -34,15 +38,10 @@ const DiapasonPicker = ({ onchange, from = 1, to = 10, disabled = false }) => {
       <input
         onChange={(e) => onFromChange(e.target.value)}
         value={diapason.from}
-        disabled={disabled}
       />
       <br />
       <span>{`По${'\t'}`}</span>
-      <input
-        onChange={(e) => onToChange(e.target.value)}
-        value={diapason.to}
-        disabled={disabled}
-      />
+      <input onChange={(e) => onToChange(e.target.value)} value={diapason.to} />
     </div>
   )
 }

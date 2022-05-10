@@ -16,7 +16,8 @@ const useDataSource = (name = '') => {
       data_source.editing_source_name === ''
         ? []
         : [...data_source.sources[data_source.editing_source_name].data],
-    selectedData: name === '' ? [] : [...data_source.sources[name].data],
+    selectedDataSource:
+      name === '' ? { data: [] } : { ...data_source.sources[name] },
   }
 }
 

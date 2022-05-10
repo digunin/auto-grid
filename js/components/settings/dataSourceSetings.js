@@ -18,7 +18,7 @@ const DataSourceSettings = () => {
   }
 
   let onDataPickerSubmit = (name, data) => {
-    setDataSource(name, data)
+    setDataSource(name, { data })
     editDataSource('')
     setShow(false)
   }

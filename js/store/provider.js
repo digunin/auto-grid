@@ -27,7 +27,6 @@ const initialState = {
       barWidth: 2.5,
       rotate: 0,
       data_source_id: '',
-      data_selector_mode: dataSelectorModeInfo[0][0],
       data: [],
     },
     // {
@@ -75,7 +74,12 @@ const initialState = {
   },
   data_source: {
     editing_source_name: '',
-    sources: { source_1: { data: mock_data, something: null } },
+    sources: {
+      source_1: {
+        data: mock_data,
+        data_selector_mode: dataSelectorModeInfo[0][0],
+      },
+    },
   },
 }
 
@@ -135,10 +139,10 @@ const Provider = ({ children }) => {
           },
         })
       },
-      setDataSource: (name, arr) => {
+      setDataSource: (name, obj) => {
         dispatch({
           type: actions.SET_DATA_SOURCE,
-          payload: { name, arr },
+          payload: { name, obj },
         })
       },
       editDataSource: (name) => {
