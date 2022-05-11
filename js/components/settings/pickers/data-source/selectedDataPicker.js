@@ -10,6 +10,7 @@ const SelectedDataPicker = () => {
   } = useSettings()
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
+
   const isMultiple =
     selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0]
   const disabled =
@@ -21,7 +22,7 @@ const SelectedDataPicker = () => {
       style={{ width: '100%', fontFamily: 'monospace' }}
       size="20"
       name="data-source-values"
-      defaultValue={isMultiple ? selectedDataSource.selected_indexes : null}
+      value={isMultiple ? selectedDataSource.selected_indexes : ''}
       multiple={isMultiple}
       disabled={disabled}
       onChange={(e) => {
