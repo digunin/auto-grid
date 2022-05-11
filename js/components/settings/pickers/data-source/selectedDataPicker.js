@@ -1,6 +1,7 @@
 import React from 'react'
 import useSettings from '../../../useSettings'
-import { dataSelectorModeInfo } from '../../../../utils'
+import useSelectedDataPicker from './useSelectedDataPicker'
+
 import useDataSource from './useDataSource'
 
 const SelectedDataPicker = () => {
@@ -11,10 +12,11 @@ const SelectedDataPicker = () => {
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
 
-  const isMultiple =
-    selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0]
-  const disabled =
-    selectedDataSource.data_selector_mode !== dataSelectorModeInfo[2][0]
+  const { isMultiple, isDisabled, onclick } = useSelectedDataPicker(
+    selected,
+    selectedDataSource,
+    setDataSource
+  )
 
   return (
     <select
@@ -24,7 +26,8 @@ const SelectedDataPicker = () => {
       name="data-source-values"
       value={isMultiple ? selectedDataSource.selected_indexes : ''}
       multiple={isMultiple}
-      disabled={disabled}
+      disabled={isDisabled}
+      // onClick={onclick} onclick (from hook) conflicts with default behavior
       onChange={(e) => {
         let arr = Array.from(e.target.selectedOptions, (opt) => opt.value)
         setDataSource(selected.data_source_id, { selected_indexes: arr })

@@ -76,6 +76,16 @@ const DataSelector = () => {
           to={selectedDataSource.diapason?.to}
         />
       )}
+      {selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0] && (
+        <button
+          disabled={!selectedDataSource.selected_indexes?.length > 0}
+          onClick={() =>
+            setDataSource(selected.data_source_id, { selected_indexes: [] })
+          }
+        >
+          Сбросить выделенное
+        </button>
+      )}
       <SelectedDataPicker />
       <div>{`Выбрано элементов: ${selected.data.length}`}</div>
     </div>
