@@ -98,6 +98,12 @@ const Provider = ({ children }) => {
           },
         })
       },
+      setEntitiesData: (id, data) => {
+        dispatch({
+          type: actions.SET_ENTITIES_DATA,
+          payload: { id, data },
+        })
+      },
       addEntity: (type) => {
         dispatch({
           type: actions.ADD_ENTITY,

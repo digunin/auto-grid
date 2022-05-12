@@ -13,6 +13,15 @@ const reducer = (state, action) => {
           return entity
         }),
       }
+    case actions.SET_ENTITIES_DATA:
+      return {
+        ...state,
+        entities: state.entities.map((entity) => {
+          return entity.data_source_id === action.payload.id
+            ? { ...entity, data: action.payload.data }
+            : entity
+        }),
+      }
     case actions.ADD_ENTITY:
       return {
         ...state,

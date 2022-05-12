@@ -1,5 +1,6 @@
 export const actions = {
   CHANGE_ENTITY: 'change-entity',
+  SET_ENTITIES_DATA: 'set-entities-data',
   ADD_ENTITY: 'add-entity',
   DELETE_ENTITY: 'delete-entity',
   SET_ACTIVE_SETTINGS_TAB: 'set-active-settings-tab',

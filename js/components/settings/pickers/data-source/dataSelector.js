@@ -10,7 +10,7 @@ import DiapasonPicker from './diapasonPicker'
 const DataSelector = () => {
   const {
     selected,
-    actions: { changeEntity, setDataSource, setCardsCount },
+    actions: { setEntitiesData, setDataSource, setCardsCount },
   } = useSettings()
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
@@ -32,26 +32,24 @@ const DataSelector = () => {
     switch (mode) {
       // print-all
       case dataSelectorModeInfo[0][0]:
-        changeEntity(selected.id, { data: selectedDataSource.data })
+        setEntitiesData(selected.data_source_id, selectedDataSource.data)
         setCardsCount()
         break
       // print-range
       case dataSelectorModeInfo[1][0]:
-        changeEntity(selected.id, {
-          data: selectedDataSource.data.slice(start, end),
-        })
+        setEntitiesData(
+          selected.data_source_id,
+          selectedDataSource.data.slice(start, end)
+        )
         setCardsCount()
         break
       // print-selected
       case dataSelectorModeInfo[2][0]:
-        // changeEntity(selected.id, { data: [] })
         let tmp =
           selectedDataSource.selected_indexes?.map(
             (i) => selectedDataSource.data[i]
           ) || []
-        changeEntity(selected.id, {
-          data: tmp,
-        })
+        setEntitiesData(selected.data_source_id, tmp)
         setCardsCount()
         break
     }
