@@ -2,6 +2,7 @@ import React from 'react'
 import Block from '../block'
 import useSettings from '../useSettings'
 import AddEntities from './addEntities'
+import AllEntities from './allEntities'
 import BarcodeSettings from './barcodeSettings'
 import ImagePicker from './pickers/imagePicker'
 import NeedPrint from './pickers/needPrint'
@@ -30,6 +31,7 @@ const PrintSettings = () => {
             side={active_settings_side}
           />
         </div>
+        <AllEntities />
         <SettingsSaveLoad />
         <AddEntities />
         <ImagePicker side={active_settings_side} />
