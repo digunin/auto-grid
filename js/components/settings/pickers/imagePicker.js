@@ -34,7 +34,7 @@ const ImagePicker = ({ side }) => {
           marginRight: '1em',
           marginLeft: '1em',
           color: 'red',
-          border: '1px solid red',
+          boxShadow: '0 0 5px red',
         }}
         onClick={() => setImageFile(null)}
       >

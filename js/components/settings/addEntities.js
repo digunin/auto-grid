@@ -22,7 +22,7 @@ const AddEntities = () => {
           style={{
             color: 'red',
             backgroundColor: 'white',
-            border: '1px solid red',
+            boxShadow: '0 0 5px red',
             marginLeft: '1em',
           }}
           onClick={() => deleteEntity(selected.id)}
