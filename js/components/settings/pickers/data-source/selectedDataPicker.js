@@ -36,7 +36,7 @@ const SelectedDataPicker = () => {
       {selectedDataSource.data?.map((value, i) => {
         let prefix = `${i + 1}`
         return (
-          <option key={value} value={i}>{`${prefix.padEnd(
+          <option key={`${i}-${value}`} value={i}>{`${prefix.padEnd(
             10,
             '\u00A0'
           )}${value}`}</option>

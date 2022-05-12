@@ -62,6 +62,17 @@ const DataSelector = () => {
     setDataSource(selected.data_source_id, { diapason: { from, to } })
   }
 
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(selected.data.join('\n'))
+      .then(() => {
+        console.log('Скопировано')
+      })
+      .catch((err) => {
+        console.log('Something went wrong', err)
+      })
+  }
+
   return (
     <div>
       <DataSourceNamePicker />
@@ -75,14 +86,22 @@ const DataSelector = () => {
         />
       )}
       {selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0] && (
-        <button
-          disabled={!selectedDataSource.selected_indexes?.length > 0}
-          onClick={() =>
-            setDataSource(selected.data_source_id, { selected_indexes: [] })
-          }
-        >
-          Сбросить выделенное
-        </button>
+        <>
+          <button
+            disabled={!selectedDataSource.selected_indexes?.length > 0}
+            onClick={() =>
+              setDataSource(selected.data_source_id, { selected_indexes: [] })
+            }
+          >
+            Сбросить
+          </button>
+          <button
+            disabled={!selectedDataSource.selected_indexes?.length > 0}
+            onClick={copyToClipboard}
+          >
+            Скопировать
+          </button>
+        </>
       )}
       <SelectedDataPicker />
       <div>{`Выбрано элементов: ${selected.data.length}`}</div>
