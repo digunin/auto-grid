@@ -15,14 +15,13 @@ const DataGenerator = ({ onchange, amount = 10 }) => {
   }
 
   const generate = (head, integer, tail, amount) => {
+    let converter =
+      integer === ''
+        ? () => ''
+        : (i) => String(Number(integer) + i).padStart(integer.length, '0')
     let result = []
     for (let i = 0; i < amount; i++) {
-      result.push(
-        `${head}${String(Number(integer) + i).padStart(
-          integer.length,
-          '0'
-        )}${tail}`
-      )
+      result.push(`${head}${converter(i)}${tail}`)
     }
     return result
   }
