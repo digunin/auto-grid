@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function useSelect(selectedValues, onchange, multiple, disabled) {
   const [lastValue, setLastValue] = useState(false)
+
+  function compareNum(a, b) {
+    return a - b
+  }
 
   function toggleValue(value) {
     let index = selectedValues.indexOf(value)
     if (index === -1) {
       selectedValues.push(value)
+      selectedValues.sort(compareNum)
       onchange([...selectedValues])
     } else {
       selectedValues.splice(index, 1)
+      selectedValues.sort(compareNum)
       onchange([...selectedValues])
     }
   }
-
-  // useEffect(() => {
-  //   setLastValue(false)
-  // }, [JSON.stringify(selectedValues)])
 
   function onclick(value, shiftKey) {
     if (disabled) {
@@ -46,7 +48,9 @@ function useSelect(selectedValues, onchange, multiple, disabled) {
         }
       }
       setLastValue(false)
-      onchange([...selectedValues, ...acc])
+      selectedValues = [...selectedValues, ...acc]
+      selectedValues.sort(compareNum)
+      onchange(selectedValues)
     } else {
       setLastValue(value)
       toggleValue(value)

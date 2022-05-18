@@ -1,9 +1,8 @@
-import { memo } from 'react'
+import React, { memo } from 'react'
 
 function Option({ value, text, className }) {
-  console.log('render')
   return (
-    <div className={className} data-testid="single-option" value={value}>
+    <div className={className} value={value}>
       {text}
     </div>
   )

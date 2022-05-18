@@ -10,13 +10,12 @@
   padding-top: var(--navHeight);
 
   --navHeight: 3rem;
-
   --active-color: rgb(70, 136, 236);
   --secondary-color: #f1f1f1;
-  --light-grey-color: rgb(230,230,230);
-  --disabled-color:rgb(200,200,200);
+  --light-grey-color: rgb(240,240,240);
+  --disabled-color: rgb(165,165,165);
   --option-height: 1.15rem;
-  --option-pad: 0.2rem;
+  --option-pad: 0.1rem;
 
   --block-width: 90mm;
   --block-sublime-width: 85.4mm;
@@ -403,10 +402,6 @@ nav .nav-links a.active {
   left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
 }
 
-.data-source-select option:nth-child(2n){
-  background-color: rgb(240,240,240);
-}
-
 .option-element{
   display: flex;
   align-items: center;
@@ -428,7 +423,8 @@ nav .nav-links a.active {
 }
 
 .select-input{
-  width:200px;
+  width: 100%;
+  font-family: 'monospace';
   box-shadow: 0 0 1px 0 black;
 }
 
