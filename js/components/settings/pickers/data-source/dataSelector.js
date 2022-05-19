@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { dataSelectorModeInfo } from '../../../../utils'
 import useSettings from '../../../useSettings'
 import DataSourceNamePicker from './sourceNamePicker'
@@ -14,6 +14,8 @@ const DataSelector = () => {
   } = useSettings()
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
+
+  const diapasonFocusedInput = useRef('from')
 
   useEffect(() => {
     onSelectorModeChange(selectedDataSource.data_selector_mode)
@@ -62,6 +64,18 @@ const DataSelector = () => {
     setDataSource(selected.data_source_id, { diapason: { from, to } })
   }
 
+  const onSingleSelection = (arr) => {
+    let index = arr[0] + 1
+    let from = selectedDataSource.diapason?.from || 1
+    let to = selectedDataSource.diapason?.to || selectedDataSource.data.length
+    if (diapasonFocusedInput.current === 'from') {
+      from = index
+    } else {
+      to = index
+    }
+    setDataSource(selected.data_source_id, { diapason: { from, to } })
+  }
+
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(selected.data.join('\n'))
@@ -79,6 +93,9 @@ const DataSelector = () => {
       <DataSelectorModePicker />
       {selectedDataSource.data_selector_mode === dataSelectorModeInfo[1][0] && (
         <DiapasonPicker
+          onfocus={(focused) => {
+            diapasonFocusedInput.current = focused
+          }}
           onchange={onDiapasonChange}
           max={selectedDataSource.data.length}
           from={selectedDataSource.diapason?.from}
@@ -103,7 +120,7 @@ const DataSelector = () => {
           </button>
         </>
       )}
-      <SelectedDataPicker />
+      <SelectedDataPicker onSingleSelection={onSingleSelection} />
       <div>{`Выбрано элементов: ${selected.data.length}`}</div>
     </div>
   )

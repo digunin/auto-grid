@@ -1,8 +1,12 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const useDiapasonPicker = (onchange, max, from, to) => {
   const [diapason, setDiapason] = useState({ from, to })
   const timeOut = useRef(null)
+
+  useEffect(() => {
+    setDiapason({ from, to })
+  }, [from, to])
 
   const submit = (from, to) => {
     if (timeOut.current) {

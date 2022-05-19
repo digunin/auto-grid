@@ -1,10 +1,15 @@
 import { dataSelectorModeInfo } from '../../../../utils'
 
-const useSelectedDataPicker = (selected, selectedDataSource, setDataSource) => {
+const useSelectedDataPicker = (
+  selected,
+  selectedDataSource,
+  setDataSource,
+  onSingleSelection
+) => {
   const isMultiple =
     selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0]
   const isDisabled =
-    selectedDataSource.data_selector_mode !== dataSelectorModeInfo[2][0]
+    selectedDataSource.data_selector_mode === dataSelectorModeInfo[0][0]
 
   const onclick = (event) => {
     event.preventDefault()
@@ -23,7 +28,14 @@ const useSelectedDataPicker = (selected, selectedDataSource, setDataSource) => {
     })
     setDataSource(selected.data_source_id, { selected_indexes: arr })
   }
-  return { isMultiple, isDisabled, onclick }
+
+  let onchange = (arr) => {
+    isMultiple
+      ? setDataSource(selected.data_source_id, { selected_indexes: arr })
+      : onSingleSelection(arr)
+  }
+
+  return { isMultiple, isDisabled, onclick, onchange }
 }
 
 export default useSelectedDataPicker
