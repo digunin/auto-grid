@@ -12,18 +12,22 @@ const useDiapasonPicker = (onchange, max, from, to) => {
     if (timeOut.current) {
       clearTimeout(timeOut.current)
     }
-    from = Number(from)
-    to = Number(to)
-    if (from < 1) from = 1
-    if (to > max) to = max
     timeOut.current = setTimeout(() => {
       onchange(from, to)
       timeOut.current = null
     }, 500)
   }
 
+  const normalizeValue = (value) => {
+    value = Number(value)
+    value = value < 1 ? 1 : value
+    value = value > max ? max : value
+    return value
+  }
+
   const onFromChange = (value) => {
     if (Number.isInteger(Number(value))) {
+      value = normalizeValue(value)
       setDiapason({ ...diapason, from: value })
       submit(value, diapason.to)
     }
@@ -31,6 +35,7 @@ const useDiapasonPicker = (onchange, max, from, to) => {
 
   const onToChange = (value) => {
     if (Number.isInteger(Number(value))) {
+      value = normalizeValue(value)
       setDiapason({ ...diapason, to: value })
       submit(diapason.from, value)
     }
