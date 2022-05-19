@@ -11,7 +11,6 @@ const useSelectedDataPicker = (selected, selectedDataSource, setDataSource) => {
     let arr = selectedDataSource.selected_indexes || []
     let value = event.target.value
     let i = arr.indexOf(value)
-    console.log(value)
     if (i === -1) {
       if (value !== '') {
         arr.push(value)

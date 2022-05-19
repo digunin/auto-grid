@@ -5,7 +5,10 @@ import useSettings from './useSettings'
 
 const PrintGrid = () => {
   const { cards_count, needPrint } = useSettings()
-  let array_with_indexes = getArrayWithIndexes(cards_count, true)
+  let array_with_indexes = getArrayWithIndexes(
+    cards_count === 0 ? 10 : cards_count,
+    true
+  )
   return (
     <>
       {array_with_indexes.map((data, i) => {

@@ -5,7 +5,7 @@ import useDataSource from './useDataSource'
 const DataSourceNamePicker = () => {
   const {
     selected,
-    actions: { changeEntity },
+    actions: { changeEntity, setCardsCount, setEntitiesData },
   } = useSettings()
 
   const { existingNames } = useDataSource()
@@ -14,9 +14,12 @@ const DataSourceNamePicker = () => {
     <select
       value={selected.data_source_id}
       name="data-source-names"
-      onChange={(e) =>
-        changeEntity(selected.id, { data_source_id: e.target.value })
-      }
+      onChange={(e) => {
+        let name = e.target.value
+        let data = name === '' ? [] : selected.data
+        changeEntity(selected.id, { data_source_id: e.target.value, data })
+        setCardsCount()
+      }}
     >
       <option value="">Выберите источник данных</option>
       {existingNames.map((name) => (

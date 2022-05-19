@@ -63,7 +63,7 @@ const initialState = {
     //   data: mock_data,
     // },
   ],
-  cards_count: 10,
+  cards_count: 0,
   active_settings_tab: 'front',
   active_settings_side: 'front',
   systemFonts: [],
