@@ -1,3 +1,5 @@
+import { dataSelectorModeInfo, mock_data } from '../utils'
+
 export const defaultState = {
   txt: {
     type: 'txt',
@@ -11,7 +13,9 @@ export const defaultState = {
     fontFamily: 'Arial',
     fontSize: '12',
     rotate: 0,
-    data: ['Текстовое поле'],
+    data_source_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
+    data: [],
   },
   qrcode: {
     type: 'qrcode',
@@ -26,7 +30,9 @@ export const defaultState = {
     darkColor: '#000',
     lightColor: '#FFF',
     rotate: 270,
-    data: ['QR-code'],
+    data_source_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
+    data: [],
   },
   barcode: {
     type: 'barcode',
@@ -42,6 +48,14 @@ export const defaultState = {
     flat: false,
     barWidth: 2.5,
     rotate: 0,
-    data: ['00000001'],
+    data_source_id: '',
+    data_selector_mode: dataSelectorModeInfo[0][0],
+    data: [],
+  },
+  dataSource: {
+    data: mock_data,
+    data_selector_mode: dataSelectorModeInfo[0][0],
+    selected_indexes: [],
+    diapason: {},
   },
 }

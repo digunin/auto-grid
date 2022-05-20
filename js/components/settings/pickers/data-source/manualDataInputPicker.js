@@ -1,21 +1,31 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const ManualDataInputPicker = ({ onchange, defaultData }) => {
-  const textArea = useRef()
+const ManualDataInputPicker = ({ onchange, editingData, generatedData }) => {
+  const [inputText, setInputText] = useState(editingData.join('\n'))
 
   useEffect(() => {
-    let str = defaultData.join('\n')
-    textArea.current.value = str
+    changeHandler(editingData.join('\n'))
+  }, [JSON.stringify(editingData)])
+
+  useEffect(() => {
+    if (generatedData) {
+      changeHandler(generatedData.join('\n'))
+    }
+  }, [JSON.stringify(generatedData)])
+
+  const changeHandler = (str) => {
     onchange(str)
-  }, [defaultData])
+    setInputText(str)
+  }
 
   return (
     <div>
       <textarea
-        ref={textArea}
         rows={20}
         cols={40}
-        onChange={(e) => onchange(e.target.value)}
+        value={inputText}
+        placeholder="Источник данных не может быть пустым"
+        onChange={(e) => changeHandler(e.target.value)}
       ></textarea>
     </div>
   )

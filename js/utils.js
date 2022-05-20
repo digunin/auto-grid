@@ -62,6 +62,13 @@ export const barcodeFormats = [
   ['code39', 'CODE39'],
 ]
 
+// Нельзя менять порядок элементов в массиве
+export const dataSelectorModeInfo = [
+  ['print-all', 'Печатать всё'],
+  ['print-range', 'Указать диапазон'],
+  ['print-selected', 'Печатать выбранные'],
+]
+
 export const Detector = function () {
   // a font will be compared against all the three default fonts.
   // and if it doesn't match all 3 then that font is not available.
@@ -537,3 +544,31 @@ export const barcode_font_size = [
   5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
   100,
 ]
+
+export function toggleValue(arr, value) {
+  let index = arr.indexOf(value)
+  if (index === -1) {
+    arr = insertSubarray(arr, [value])
+  } else {
+    arr.splice(index, 1)
+  }
+  return arr
+}
+
+export function insertSubarray(arr, sub) {
+  let [left, right] = [0, 0]
+  let [start, end] = [sub[0], sub[sub.length - 1]]
+  if (arr.length > 0) {
+    for (let i = 0; i < arr.length; i++) {
+      if (start > arr[i]) {
+        left = i + 1
+      }
+      if (end >= arr[i]) {
+        right = i + 1
+      }
+    }
+  }
+
+  arr.splice(left, right - left, ...sub)
+  return arr
+}

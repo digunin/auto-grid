@@ -10,9 +10,12 @@
   padding-top: var(--navHeight);
 
   --navHeight: 3rem;
-
   --active-color: rgb(70, 136, 236);
   --secondary-color: #f1f1f1;
+  --light-grey-color: rgb(240,240,240);
+  --disabled-color: rgb(165,165,165);
+  --option-height: 1.15rem;
+  --option-pad: 0.1rem;
 
   --block-width: 90mm;
   --block-sublime-width: 85.4mm;
@@ -397,4 +400,38 @@ nav .nav-links a.active {
     var(--magnetic-stripe-marker-from-top) + var(--magnetic-stripe-width)
   );
   left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
+}
+
+.option-element{
+  display: flex;
+  align-items: center;
+  height: var(--option-height);
+  padding: var(--option-pad);
+  padding-left: calc(var(--option-pad)*2);
+  font-family: monospace;
+  font-size: 0.8rem;
+  user-select: none
+}
+
+.option-element:nth-child(2n){
+  background-color: var(--light-grey-color);
+}
+
+.option-element.option-selected{
+  background-color: var(--active-color);
+  color:white
+}
+
+.select-input{
+  width: 100%;
+  font-family: 'monospace';
+  box-shadow: 0 0 1px 0 black;
+}
+
+.select-disabled{
+  color:var(--disabled-color)
+}
+
+.select-disabled .option-selected{
+  background-color: var(--disabled-color)
 }

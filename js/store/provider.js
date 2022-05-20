@@ -4,7 +4,7 @@ import backjpg from '../../images/back.jpg'
 import Context from './settingContext'
 import reducer from './reducer'
 import { actions } from './actions'
-import { mock_data } from '../utils'
+import { mock_data, dataSelectorModeInfo } from '../utils'
 
 const initialState = {
   frontImage: { content: frontjpg },
@@ -14,7 +14,7 @@ const initialState = {
       id: 'ean13',
       side: 'back',
       type: 'barcode',
-      format: 'ean13',
+      format: 'code128',
       selected: false,
       top: '36.6',
       left: '40.5',
@@ -26,8 +26,8 @@ const initialState = {
       flat: false,
       barWidth: 2.5,
       rotate: 0,
-      data_sorce_id: 'source_1',
-      data: mock_data,
+      data_source_id: '',
+      data: [],
     },
     // {
     //   id: 'qr',
@@ -63,7 +63,7 @@ const initialState = {
     //   data: mock_data,
     // },
   ],
-  cards_count: 10,
+  cards_count: 0,
   active_settings_tab: 'front',
   active_settings_side: 'front',
   systemFonts: [],
@@ -74,7 +74,12 @@ const initialState = {
   },
   data_source: {
     editing_source_name: '',
-    data: { source_1: mock_data },
+    sources: {
+      source_1: {
+        data: mock_data,
+        data_selector_mode: dataSelectorModeInfo[0][0],
+      },
+    },
   },
 }
 
@@ -84,13 +89,19 @@ const Provider = ({ children }) => {
   const value = {
     ...state,
     actions: {
-      changeEntity: ({ id, new_props }) => {
+      changeEntity: (id, new_props) => {
         dispatch({
           type: actions.CHANGE_ENTITY,
           payload: {
             id,
             new_props,
           },
+        })
+      },
+      setEntitiesData: (id, data) => {
+        dispatch({
+          type: actions.SET_ENTITIES_DATA,
+          payload: { id, data },
         })
       },
       addEntity: (type) => {
@@ -134,12 +145,10 @@ const Provider = ({ children }) => {
           },
         })
       },
-      setDataSource: (name, arr) => {
-        let new_source = {}
-        new_source[name] = arr
+      setDataSource: (name, obj) => {
         dispatch({
           type: actions.SET_DATA_SOURCE,
-          payload: { ...new_source },
+          payload: { name, obj },
         })
       },
       editDataSource: (name) => {
@@ -154,10 +163,9 @@ const Provider = ({ children }) => {
           payload: name,
         })
       },
-      setData: (arr) => {
+      setCardsCount: () => {
         dispatch({
-          type: actions.SET_DATA,
-          payload: arr,
+          type: actions.SET_CARDS_COUNT,
         })
       },
       setNewState: (state) => {

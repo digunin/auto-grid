@@ -13,6 +13,15 @@ const reducer = (state, action) => {
           return entity
         }),
       }
+    case actions.SET_ENTITIES_DATA:
+      return {
+        ...state,
+        entities: state.entities.map((entity) => {
+          return entity.data_source_id === action.payload.id
+            ? { ...entity, data: action.payload.data }
+            : entity
+        }),
+      }
     case actions.ADD_ENTITY:
       return {
         ...state,
@@ -76,28 +85,29 @@ const reducer = (state, action) => {
         ...state,
         ...tmp,
       }
-    case actions.SET_DATA:
+    case actions.SET_CARDS_COUNT:
       return {
         ...state,
-        cards_count: action.payload.length,
-        entities: state.entities.map((entity) => {
-          if (entity.side == state.active_settings_side && entity.selected) {
-            return {
-              ...entity,
-              data: [...action.payload],
-            }
-          }
-          return entity
-        }),
+        cards_count: state.entities.reduce((max, entity) => {
+          return max > entity.data.length ? max : entity.data.length
+        }, 0),
       }
     case actions.SET_DATA_SOURCE:
+      let new_source = {}
+      new_source[action.payload.name] =
+        state.data_source.sources[action.payload.name] ||
+        defaultState.dataSource
+      new_source[action.payload.name] = {
+        ...new_source[action.payload.name],
+        ...action.payload.obj,
+      }
       return {
         ...state,
         data_source: {
           ...state.data_source,
-          data: {
-            ...state.data_source.data,
-            ...action.payload,
+          sources: {
+            ...state.data_source.sources,
+            ...new_source,
           },
         },
       }
@@ -110,16 +120,24 @@ const reducer = (state, action) => {
         },
       }
     case actions.DELETE_DATA_SOURCE:
-      let newData = {}
-      for (let source_name of Object.keys(state.data_source.data)) {
-        if (source_name == action.payload) continue
-        newData[source_name] = [...state.data_source.data[source_name]]
-      }
+      let newSources = { ...state.data_source.sources }
+      delete newSources[action.payload]
+      let newEntities = state.entities.map((entity) => {
+        return {
+          ...entity,
+          data_source_id:
+            entity.data_source_id === action.payload
+              ? ''
+              : entity.data_source_id,
+          data: entity.data_source_id === action.payload ? [] : entity.data,
+        }
+      })
       return {
         ...state,
+        entities: [...newEntities],
         data_source: {
           editing_source_name: state.data_source.editing_source_name,
-          data: { ...newData },
+          sources: { ...newSources },
         },
       }
     case actions.SET_STATE:

@@ -1,10 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import DataGenerator from './dataGenerator'
 import ManualDataInputPicker from './manualDataInputPicker'
 import NamePicker from './namePicker'
 import useDataSource from './useDataSource'
+import useDataPicker from './useDataPicker'
 
 const DataPicker = ({ onsubmit }) => {
+  const [generatedData, setGeneratedData] = useState(false)
+  const [needToSave, setNeedToSave] = useState(false)
+
   const {
     editing_source_name,
     existingNames,
@@ -13,35 +17,14 @@ const DataPicker = ({ onsubmit }) => {
     editMode,
   } = useDataSource()
 
-  useEffect(() => {
-    setGeneratedData(false)
-  }, [editing_source_name])
-
-  const newName = useRef({ name: '', isValid: false })
-  const newData = useRef()
-  const [generatedData, setGeneratedData] = useState(false)
-  const [needToSave, setNeedToSave] = useState(false)
-
-  const onInputName = (new_name) => {
-    newName.current.name = new_name
-    newName.current.isValid = !existingNames.includes(new_name)
-  }
-
-  const onManualInput = (str) => {
-    newData.current = str
-    str.trim() === editingData.join('\n')
-      ? setNeedToSave(false)
-      : setNeedToSave(true)
-  }
-
-  const onSubmit = () => {
-    if (createMode && !newName.current.isValid) return
-    if (createMode && newName.current.name.length == 0) return
-    onsubmit(
-      createMode ? newName.current.name : editing_source_name,
-      newData.current.trim().split('\n')
-    )
-  }
+  let { onInputName, onManualInput, onSubmit } = useDataPicker(
+    editing_source_name,
+    existingNames,
+    editingData,
+    createMode,
+    onsubmit,
+    setNeedToSave
+  )
 
   return (
     <div>
@@ -56,7 +39,8 @@ const DataPicker = ({ onsubmit }) => {
       <DataGenerator onchange={setGeneratedData} />
       <ManualDataInputPicker
         onchange={onManualInput}
-        defaultData={generatedData ? generatedData : editingData}
+        generatedData={generatedData}
+        editingData={editingData}
       />
       {editMode && (
         <button onClick={onSubmit} disabled={!needToSave}>
