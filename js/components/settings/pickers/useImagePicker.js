@@ -16,7 +16,7 @@ const useImagePicker = (side) => {
     multiple: false,
     limitFilesConfig: { max: 2 },
     // minFileSize: 1,
-    maxFileSize: 1.7, // in megabytes
+    maxFileSize: 1.89, // in megabytes
   })
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const useImagePicker = (side) => {
     for (let error of errors) {
       if ('fileSizeToolarge' in error) {
         errorMessage =
-          'Слишком большой файл. Максимальный размер примерно 1.7 Мб. Рекомендуемый размер - как можно меньше'
+          'Слишком большой файл. Максимальный размер примерно 1.9 Мб. Рекомендуемый размер - как можно меньше'
         break
       }
       errorMessage = 'Не удалось открыть файл'

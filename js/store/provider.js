@@ -4,7 +4,12 @@ import backjpg from '../../images/back.jpg'
 import Context from './settingContext'
 import reducer from './reducer'
 import { actions } from './actions'
-import { mock_data, dataSelectorModeInfo } from '../utils'
+import {
+  mock_data,
+  dataSelectorModeInfo,
+  dataURLtoBlob,
+  maxDataURL_length,
+} from '../utils'
 
 const initialState = {
   frontImage: { content: frontjpg },
@@ -139,6 +144,10 @@ const Provider = ({ children }) => {
         dispatch({ type: actions.CHANGE_SIDE_NEED_PRINT, payload })
       },
       setImageFile: (file) => {
+        if (file) {
+          file.content = URL.createObjectURL(dataURLtoBlob(file.content))
+        }
+        localStorage.setItem(state.active_settings_side, file?.content || '')
         dispatch({
           type: actions.SET_IMAGE_FILE,
           payload: {
@@ -170,6 +179,30 @@ const Provider = ({ children }) => {
         })
       },
       setNewState: (state) => {
+        if (state.frontImage) {
+          if (
+            state.frontImage.content.startsWith('data:image') &&
+            state.frontImage.content.length < maxDataURL_length
+          ) {
+            localStorage.setItem('front', state.frontImage.content)
+            state.frontImage.content = URL.createObjectURL(
+              dataURLtoBlob(state.frontImage.content)
+            )
+          }
+        }
+
+        if (state.backImage) {
+          if (
+            state.backImage.content.startsWith('data:image') &&
+            state.backImage.content.length < maxDataURL_length
+          ) {
+            localStorage.setItem('back', state.backImage.content)
+            state.backImage.content = URL.createObjectURL(
+              dataURLtoBlob(state.backImage.content)
+            )
+          }
+        }
+
         dispatch({
           type: actions.SET_STATE,
           payload: state,
