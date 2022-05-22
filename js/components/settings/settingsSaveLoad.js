@@ -7,7 +7,7 @@ const SettingsSaveLoad = () => {
   const {
     actions: { setNewState },
     stateStringify,
-  } = useSettings()
+  } = useSettings(null, true)
   const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
     readAs: 'Text', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
     accept: '.json',

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Context from '../store/settingContext'
 
-const useSettings = (side = null) => {
+const useSettings = (side = null, save = false) => {
   const context = useContext(Context)
   let {
     actions,
@@ -35,8 +35,25 @@ const useSettings = (side = null) => {
       return entity.side == side && entity.type == 'qrcode'
     })
   }
-  let copy = { ...context }
-  delete copy.actions
+  let copy = {}
+  if (save) {
+    copy = {
+      ...context,
+      frontImage: context.frontImage ? { ...context.frontImage } : null,
+      backImage: context.backImage ? { ...context.backImage } : null,
+    }
+    if (copy.frontImage) {
+      if (!copy.frontImage.content.startsWith('data:image')) {
+        copy.frontImage.content = localStorage.getItem('front')
+      }
+    }
+    if (copy.backImage) {
+      if (!copy.backImage.content.startsWith('data:image')) {
+        copy.backImage.content = localStorage.getItem('back')
+      }
+    }
+    delete copy.actions
+  }
   copy = JSON.stringify(copy)
   return {
     actions,
