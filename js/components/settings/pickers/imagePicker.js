@@ -1,30 +1,9 @@
-import React, { useEffect } from 'react'
-import { useFilePicker } from 'use-file-picker'
-import useSettings from '../../useSettings'
+import React from 'react'
+import useImagePicker from './useImagePicker'
 
 const ImagePicker = ({ side }) => {
-  const {
-    bgImage,
-    actions: { setImageFile },
-  } = useSettings(side)
-  const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
-    readAs: 'DataURL',
-    accept: 'image/*',
-    multiple: false,
-    limitFilesConfig: { max: 2 },
-    // minFileSize: 1,
-    maxFileSize: 50, // in megabytes
-  })
-
-  useEffect(() => {
-    if (filesContent.length != 0) {
-      setImageFile(filesContent[0])
-    }
-  }, [filesContent])
-
-  if (errors.length) {
-    return <div style={{ color: 'red' }}>Error...</div>
-  }
+  let { openFileSelector, bgImage, setImageFile, errorMessage } =
+    useImagePicker(side)
 
   return (
     <div className="picker-wrapper">
@@ -36,12 +15,19 @@ const ImagePicker = ({ side }) => {
           color: 'red',
           boxShadow: '0 0 5px red',
         }}
-        onClick={() => setImageFile(null)}
+        onClick={() => {
+          setImageFile(null)
+        }}
       >
         Удалить изображение
       </button>
       {bgImage && (
-        <span>{bgImage.name ? bgImage.name : 'Изображение по умолчанию'}</span>
+        <span>
+          {bgImage.name ? `${bgImage.name}` : 'Изображение по умолчанию'}
+        </span>
+      )}
+      {errorMessage !== '' && (
+        <div style={{ color: 'red' }}>{errorMessage}</div>
       )}
     </div>
   )
