@@ -1,18 +1,27 @@
-import { createReducer } from '@reduxjs/toolkit'
-import { someAction_1, someAction_2 } from '../actions'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { initialState, defaultObjects } from './initialState'
 
-const initialState = {
-  one: 1,
-  two: 2,
-}
+const { reducer, actions } = createSlice({
+  name: 'main',
+  initialState,
+  reducers: {
+    addEntity: (state, action) => {
+      let type = action.payload
+      let newEntity = {
+        ...defaultObjects[type],
+        id: `${type}-${nanoid()}`,
+      }
+      state.entities.push(newEntity)
+    },
 
-const reducer = createReducer(initialState, {
-  [someAction_1]: (state, action) => {
-    state.one = action.payload
-  },
-  [someAction_2]: (state, action) => {
-    state.two = action.payload
+    deleteEntity: (state, action) => {
+      state.entities = state.entities.filter(
+        (entity) => entity.id !== action.payload
+      )
+    },
   },
 })
+
+export const { addEntity, deleteEntity } = actions
 
 export default reducer

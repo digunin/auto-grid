@@ -16,7 +16,7 @@ const initialState = {
   backImage: { content: backjpg },
   entities: [
     {
-      id: 'штрихкод',
+      id: 'штрихкод-00000',
       side: 'back',
       type: 'barcode',
       format: 'code128',
@@ -52,7 +52,7 @@ const initialState = {
     //   data: mock_data,
     // },
     {
-      id: 'txt1',
+      id: 'txt-00000',
       side: 'front',
       type: 'txt',
       selected: false,
