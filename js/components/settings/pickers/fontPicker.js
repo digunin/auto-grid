@@ -7,26 +7,36 @@ const FontPicker = ({ onchange, selected }) => {
     actions: { setSystemFonts },
     systemFonts,
   } = useSettings()
+
   useEffect(() => {
     let detector = new Detector()
     let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
     setSystemFonts(fonts)
   }, [])
+
+  const alignOptions = [
+    ['left', 'По левому краю'],
+    ['center', 'По центру'],
+    ['right', 'По правому краю'],
+  ]
+
   return (
     <div className="picker-wrapper">
       <div
-      // style={{
-      //   display: 'grid',
-      //   gap: '1em',
-      //   gridTemplateColumns: '1fr 2fr 2fr',
-      // }}
+        style={{
+          display: 'flex',
+          flexFlow: 'flow',
+          gap: '5px',
+          alignItems: 'end',
+        }}
       >
         <label>
           Шрифт
           <br />
           <select
+            style={{ width: '150px' }}
             name="select"
-            defaultValue={selected.fontFamily}
+            value={selected.fontFamily}
             onChange={(e) => onchange({ fontFamily: e.target.value })}
           >
             {systemFonts.map((font_family) => {
@@ -37,6 +47,39 @@ const FontPicker = ({ onchange, selected }) => {
                   value={font_family}
                 >
                   {font_family}
+                </option>
+              )
+            })}
+          </select>
+        </label>
+        <label>
+          Размер шрифта
+          <br />
+          <input
+            value={selected.fontSize}
+            type="number"
+            name="spiner"
+            min="0"
+            max="50"
+            step="0.1"
+            onChange={(e) => {
+              onchange({ fontSize: e.target.value })
+            }}
+          />
+        </label>
+        <label>
+          Выравнивание
+          <br />
+          <select
+            style={{ width: '150px' }}
+            name="select"
+            value={selected.align}
+            onChange={(e) => onchange({ align: e.target.value })}
+          >
+            {alignOptions.map(([value, text]) => {
+              return (
+                <option key={value} value={value}>
+                  {text}
                 </option>
               )
             })}
