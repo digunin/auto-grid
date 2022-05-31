@@ -17,10 +17,7 @@ const AllEntities = () => {
           entity.selected && !disabled
             ? '0 0 5px 5px var(--active-color)'
             : 'inherit'
-        let name = [
-          entity.id.split('-')[0],
-          entity.id.split('-')[1].slice(0, 5),
-        ].join('-')
+        let name = entity.id.slice(0, 12)
         return (
           <button
             onClick={() => setSelected(entity.id)}
