@@ -1,3 +1,4 @@
-import entityReducer from './entityReducer'
+import datasetReducer from './datasetReducer'
+import commonReducer from './commonReducer'
 
-export default { entities: entityReducer }
+export default { dataSet: datasetReducer, common: commonReducer }

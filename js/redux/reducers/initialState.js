@@ -56,20 +56,16 @@ export const defaultObjects = {
     diapason: { from: 0, to: 0 },
     sources: {},
   },
-}
-
-export const initialState = {
-  frontImage: { content: null },
-  backImage: { content: null },
-  entities: [{ id: 'test-0' }],
-  cards_count: 0,
-  active_settings_tab: 'front',
-  active_settings_side: 'front',
-  systemFonts: [],
-  printingMode: 'grid',
-  needPrint: {
-    front: true,
-    back: true,
+  common: {
+    frontImage: { content: null },
+    backImage: { content: null },
+    active_settings_tab: 'front',
+    active_settings_side: 'front',
+    systemFonts: [],
+    printingMode: 'grid',
+    needPrint: {
+      front: true,
+      back: true,
+    },
   },
-  dataSource: { ...defaultObjects.dataSource },
 }
