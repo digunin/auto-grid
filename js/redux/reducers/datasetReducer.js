@@ -67,6 +67,27 @@ const { reducer, actions } = createSlice({
         return max > entity.data.length ? max : entity.data.length
       }, 0)
     },
+
+    setDataSource: {
+      reducer: (state, atcion) => {
+        const { name, props } = action.payload
+        let tmp = state.dataSource.sources[name] || {
+          ...defaultObjects.dataSource,
+        }
+        state.dataSource.sources[name] = { ...tmp, ...props }
+      },
+      prepare: (name, props) => {
+        return { payload: { name, props } }
+      },
+    },
+
+    editDataSource: (state, action) => {
+      state.dataSource.editing_source_name = action.payload
+    },
+
+    deleteDataSource: (state, action) => {
+      delete state.dataSource.sources[action.payload]
+    },
   },
 })
 
@@ -77,6 +98,9 @@ export const {
   setSelected,
   setEntitiesData,
   setCardsCount,
+  setDataSource,
+  editDataSource,
+  deleteDataSource,
 } = actions
 
 export default reducer

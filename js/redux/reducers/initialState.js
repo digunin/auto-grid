@@ -50,7 +50,7 @@ export const defaultObjects = {
     data: [],
   },
   dataSource: {
-    data: [],
+    editing_source_name: '',
     data_selector_mode: dataSelectorModeInfo[0][0],
     selected_indexes: [],
     diapason: { from: 0, to: 0 },

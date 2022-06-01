@@ -8,10 +8,10 @@ export const actions = {
   SET_SYSTEM_FONTS: 'set-system-fonts', // +
   SET_PRINTING_MODE: 'set-printing-mode', // +
   CHANGE_SIDE_NEED_PRINT: 'change-side-need-print', // +
-  SET_IMAGE_FILE: 'set-image-file',
-  SET_DATA_SOURCE: 'set-data-source',
-  EDIT_DATA_SOURCE: 'edit-data-source',
-  DELETE_DATA_SOURCE: 'delete-data-source',
+  SET_IMAGE_FILE: 'set-image-file', // +
+  SET_DATA_SOURCE: 'set-data-source', // +
+  EDIT_DATA_SOURCE: 'edit-data-source', // +
+  DELETE_DATA_SOURCE: 'delete-data-source', // +
   SET_CARDS_COUNT: 'set-cards-count', // +
-  SET_STATE: 'set-state',
+  SET_STATE: 'set-state', // +
 }

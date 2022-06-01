@@ -20,9 +20,46 @@ const { reducer, actions } = createSlice({
     changeSideNeedPrint: (state, action) => {
       state.needPrint = { ...state.needPrint, ...action.payload }
     },
-    // todos:
-    setImageFile: (state, action) => state,
-    setNewState: (state, action) => state,
+
+    setImageFile: (state, action) => {
+      let file = action.payload
+      if (file) {
+        file.content = URL.createObjectURL(dataURLtoBlob(file.content))
+      }
+      state.active_settings_side === 'front'
+        ? (state.frontImage = file)
+        : (state.backImage = file)
+      localStorage.setItem(state.active_settings_side, file?.content || '')
+    },
+
+    setNewState: (state, action) => {
+      let loadingState = action.payload
+      if (loadingState.frontImage) {
+        if (
+          loadingState.frontImage.content.startsWith('data:image') &&
+          loadingState.frontImage.content.length < maxDataURL_length
+        ) {
+          localStorage.setItem('front', loadingState.frontImage.content)
+          loadingState.frontImage.content = URL.createObjectURL(
+            dataURLtoBlob(loadingState.frontImage.content)
+          )
+        }
+      }
+
+      if (loadingState.backImage) {
+        if (
+          loadingState.backImage.content.startsWith('data:image') &&
+          loadingState.backImage.content.length < maxDataURL_length
+        ) {
+          localStorage.setItem('back', loadingState.backImage.content)
+          loadingState.backImage.content = URL.createObjectURL(
+            dataURLtoBlob(loadingState.backImage.content)
+          )
+        }
+      }
+
+      return { ...state, ...loadingState }
+    },
   },
 })
 
