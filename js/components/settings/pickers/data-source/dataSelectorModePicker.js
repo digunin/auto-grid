@@ -8,15 +8,13 @@ const DataSelectorModePicker = () => {
   const dispatch = useDispatch()
   const selected = useSelector(getSelectedEntitySelector)
 
-  const { setDataSource, selectedDataSource } = useDataSource(
+  const { setDataSourceProps, dataSourceProps } = useDataSource(
     selected.data_source_id
   )
 
   const onRadioClick = (value) => {
     if (selected.data_source_id === '') return
-    dispatch(
-      setDataSource(selected.data_source_id, { data_selector_mode: value })
-    )
+    dispatch(setDataSourceProps({ data_selector_mode: value }))
   }
 
   return (
@@ -31,7 +29,7 @@ const DataSelectorModePicker = () => {
               type="radio"
               name="data-selector-mode"
               value={info[0]}
-              checked={selectedDataSource.data_selector_mode === info[0]}
+              checked={dataSourceProps.data_selector_mode === info[0]}
             />
             {info[1]}
           </label>

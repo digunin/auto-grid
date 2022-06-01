@@ -12,7 +12,9 @@ import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelect
 const DataSelector = () => {
   const selected = useSelector(getSelectedEntitySelector)
 
-  const { selectedDataSource } = useDataSource(selected.data_source_id)
+  const { selectedDataSource, dataSourceProps } = useDataSource(
+    selected.data_source_id
+  )
 
   const {
     onSingleSelection,
@@ -20,33 +22,33 @@ const DataSelector = () => {
     copyToClipboard,
     diapasonFocusedInput,
     onReset,
-  } = useDataSelector(selected, selectedDataSource)
+  } = useDataSelector({ selected, selectedDataSource, dataSourceProps })
 
   return (
     <div>
       <DataSourceNamePicker />
       <DataSelectorModePicker />
-      {selectedDataSource.data_selector_mode === dataSelectorModeInfo[1][0] && (
+      {dataSourceProps.data_selector_mode === dataSelectorModeInfo[1][0] && (
         <DiapasonPicker
           onfocus={(focused) => {
             diapasonFocusedInput.current = focused
           }}
           onchange={onDiapasonChange}
           max={selectedDataSource.data.length}
-          from={selectedDataSource.diapason?.from}
-          to={selectedDataSource.diapason?.to}
+          from={dataSourceProps.diapason?.from}
+          to={dataSourceProps.diapason?.to}
         />
       )}
-      {selectedDataSource.data_selector_mode === dataSelectorModeInfo[2][0] && (
+      {dataSourceProps.data_selector_mode === dataSelectorModeInfo[2][0] && (
         <>
           <button
-            disabled={!selectedDataSource.selected_indexes?.length > 0}
+            disabled={!dataSourceProps.selected_indexes?.length > 0}
             onClick={onReset}
           >
             Сбросить
           </button>
           <button
-            disabled={!selectedDataSource.selected_indexes?.length > 0}
+            disabled={!dataSourceProps.selected_indexes?.length > 0}
             onClick={copyToClipboard}
           >
             Скопировать

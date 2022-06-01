@@ -51,7 +51,7 @@ export const defaultObjects = {
   },
   dataSource: {
     editing_source_name: '',
-    data_selector_mode: dataSelectorModeInfo[0][0],
+    data_selector_mode: '',
     selected_indexes: [],
     diapason: { from: 0, to: 0 },
     sources: {},

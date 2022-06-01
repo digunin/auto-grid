@@ -8,21 +8,19 @@ import { useSelector } from 'react-redux'
 const SelectedDataPicker = ({ onSingleSelection }) => {
   const selected = useSelector(getSelectedEntitySelector)
 
-  const { setDataSource, selectedDataSource } = useDataSource(
-    selected.data_source_id
-  )
+  const { setDataSourceProps, selectedDataSource, dataSourceProps } =
+    useDataSource(selected.data_source_id)
 
-  const { isMultiple, isDisabled, onchange } = useSelectedDataPicker(
-    selected,
-    selectedDataSource,
-    setDataSource,
-    onSingleSelection
-  )
+  const { isMultiple, isDisabled, onchange } = useSelectedDataPicker({
+    dataSourceProps,
+    setDataSourceProps,
+    onSingleSelection,
+  })
 
   return (
     <Select
       options={selectedDataSource.data || []}
-      selectedValues={isMultiple ? selectedDataSource.selected_indexes : []}
+      selectedValues={isMultiple ? dataSourceProps.selected_indexes : []}
       onchange={onchange}
       multiple={isMultiple}
       disabled={isDisabled}

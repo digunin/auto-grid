@@ -4,27 +4,27 @@ import { dataSelectorModeInfo } from '../../../../utils'
 import {
   setEntitiesData,
   setCardsCount,
-  setDataSource,
+  setDataSourceProps,
 } from '@/redux/reducers/datasetReducer'
 
-const useDataSelector = (selected, selectedDataSource) => {
+const useDataSelector = ({ selected, selectedDataSource, dataSourceProps }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    handleChildChange(selectedDataSource.data_selector_mode)
+    handleChildChange(dataSourceProps.data_selector_mode)
   }, [
     selected.id,
     selected.data_source_id,
-    selectedDataSource.data_selector_mode,
-    JSON.stringify(selectedDataSource.selected_indexes),
-    JSON.stringify(selectedDataSource.diapason),
+    dataSourceProps.data_selector_mode,
+    JSON.stringify(dataSourceProps.selected_indexes),
+    JSON.stringify(dataSourceProps.diapason),
   ])
 
   const diapasonFocusedInput = useRef('from')
 
   const handleChildChange = (mode) => {
-    let start = selectedDataSource.diapason?.from - 1 || 0
-    let end = selectedDataSource.diapason?.to || selectedDataSource.data.length
+    let start = dataSourceProps.diapason?.from - 1 || 0
+    let end = dataSourceProps.diapason?.to || selectedDataSource.data.length
     end = end < 0 ? 0 : end
     switch (mode) {
       // print-all
@@ -47,7 +47,7 @@ const useDataSelector = (selected, selectedDataSource) => {
       // print-selected
       case dataSelectorModeInfo[2][0]:
         let tmp =
-          selectedDataSource.selected_indexes?.map(
+          dataSourceProps.selected_indexes?.map(
             (i) => selectedDataSource.data[i]
           ) || []
         dispatch(setEntitiesData(selected.data_source_id, tmp))
@@ -60,14 +60,14 @@ const useDataSelector = (selected, selectedDataSource) => {
     if (from > to) {
       ;[from, to] = [to, from]
     }
-    dispatch(setDataSource(selected.data_source_id, { diapason: { from, to } }))
+    dispatch(setDataSourceProps({ diapason: { from, to } }))
   }
 
   const onSingleSelection = (arr) => {
     let index = arr[0] + 1
     let max = selectedDataSource.data.length
-    let from = selectedDataSource.diapason?.from || 1
-    let to = selectedDataSource.diapason?.to || max
+    let from = dataSourceProps.diapason?.from || 1
+    let to = dataSourceProps.diapason?.to || max
     if (diapasonFocusedInput.current === 'from') {
       from = index
     } else {
@@ -91,10 +91,7 @@ const useDataSelector = (selected, selectedDataSource) => {
     onDiapasonChange,
     copyToClipboard,
     diapasonFocusedInput,
-    onReset: () =>
-      dispatch(
-        setDataSource(selected.data_source_id, { selected_indexes: [] })
-      ),
+    onReset: () => dispatch(setDataSourceProps({ selected_indexes: [] })),
   }
 }
 

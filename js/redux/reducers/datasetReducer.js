@@ -77,15 +77,21 @@ const { reducer, actions } = createSlice({
 
     setDataSource: {
       reducer: (state, action) => {
-        const { name, props } = action.payload
-        let tmp = state.dataSource.sources[name] || {
-          ...defaultObjects.dataSource,
-        }
-        state.dataSource.sources[name] = { ...tmp, ...props }
+        const { name, data } = action.payload
+        let tmp = state.dataSource.sources[name] || {}
+        state.dataSource.sources[name] = { ...tmp, data }
       },
-      prepare: (name, props) => {
-        return { payload: { name, props } }
+      prepare: (name, data) => {
+        console.log(data)
+        return { payload: { name, data } }
       },
+    },
+
+    setDataSourceProps: (state, action) => {
+      const props = action.payload
+      Object.keys(props).forEach((key) => {
+        state.dataSource[key] = props[key]
+      })
     },
 
     editDataSource: (state, action) => {
@@ -106,6 +112,7 @@ export const {
   setEntitiesData,
   setCardsCount,
   setDataSource,
+  setDataSourceProps,
   editDataSource,
   deleteDataSource,
 } = actions

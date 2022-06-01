@@ -26,7 +26,7 @@ const DataSourceSettings = () => {
   }
 
   let onDataPickerSubmit = (name, data) => {
-    dispatch(setDataSource(name, { data }))
+    dispatch(setDataSource(name, data))
     dispatch(editDataSource(''))
     setShow(false)
   }

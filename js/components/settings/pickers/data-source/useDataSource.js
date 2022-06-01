@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import {
   setDataSource,
+  setDataSourceProps,
   editDataSource,
   deleteDataSource,
 } from '@/redux/reducers/datasetReducer'
@@ -14,6 +15,7 @@ const useDataSource = (name = '') => {
     createMode: dataSource?.editing_source_name === '',
     editMode: dataSource?.editing_source_name !== '',
     setDataSource,
+    setDataSourceProps,
     editDataSource,
     deleteDataSource,
     editingData:
@@ -24,6 +26,11 @@ const useDataSource = (name = '') => {
       name === '' || !dataSource?.sources
         ? { data: [] }
         : { ...dataSource.sources[name] },
+    dataSourceProps: {
+      diapason: dataSource.diapason,
+      selected_indexes: dataSource.selected_indexes,
+      data_selector_mode: dataSource.data_selector_mode,
+    },
   }
 }
 
