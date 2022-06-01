@@ -9,11 +9,18 @@ const { reducer, actions } = createSlice({
     cardsCount: 0,
   },
   reducers: {
-    addEntity: (state, action) => {
-      state.entities.push({
-        id: `${type}-${nanoid()}`,
-        ...defaultObjects[action.payload],
-      })
+    addEntity: {
+      reducer: (state, action) => {
+        const { type, side } = action.payload
+        state.entities.push({
+          ...defaultObjects[type],
+          id: `${type}-${nanoid()}`,
+          side,
+        })
+      },
+      prepare: (type, side) => {
+        return { payload: { type, side } }
+      },
     },
 
     deleteEntity: (state, action) => {
@@ -69,7 +76,7 @@ const { reducer, actions } = createSlice({
     },
 
     setDataSource: {
-      reducer: (state, atcion) => {
+      reducer: (state, action) => {
         const { name, props } = action.payload
         let tmp = state.dataSource.sources[name] || {
           ...defaultObjects.dataSource,

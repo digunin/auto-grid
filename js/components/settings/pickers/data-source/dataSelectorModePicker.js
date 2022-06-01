@@ -1,19 +1,22 @@
 import React from 'react'
-import useSettings from '../../../useSettings'
-import { dataSelectorModeInfo as modeInfo } from '../../../../utils'
+import { useDispatch, useSelector } from 'react-redux'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
+import { dataSelectorModeInfo as modeInfo } from '@/utils'
 import useDataSource from './useDataSource'
 
 const DataSelectorModePicker = () => {
-  const {
-    selected,
-    actions: { setDataSource },
-  } = useSettings()
+  const dispatch = useDispatch()
+  const selected = useSelector(getSelectedEntitySelector)
 
-  const { selectedDataSource } = useDataSource(selected.data_source_id)
+  const { setDataSource, selectedDataSource } = useDataSource(
+    selected.data_source_id
+  )
 
   const onRadioClick = (value) => {
     if (selected.data_source_id === '') return
-    setDataSource(selected.data_source_id, { data_selector_mode: value })
+    dispatch(
+      setDataSource(selected.data_source_id, { data_selector_mode: value })
+    )
   }
 
   return (

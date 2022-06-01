@@ -1,8 +1,10 @@
 import React from 'react'
-import useSettings from './useSettings'
+import { useSelector } from 'react-redux'
+import printingSelector from '../redux/selectors/printingSelector'
 
 const Styles = () => {
-  const { entities, printingMode } = useSettings()
+  const entities = useSelector((state) => state.dataSet.entities)
+  const { printingMode } = useSelector(printingSelector)
   const mediaStyle = `
   @media print {
     nav {

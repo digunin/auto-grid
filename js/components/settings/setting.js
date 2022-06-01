@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react'
-import useSettings from '../useSettings'
+import { useSelector, useDispatch } from 'react-redux'
 import TabContent from './tabContent'
 import { Detector, possibleFonts } from '../../utils'
+import {
+  setSystemFonts,
+  setActiveSettingsTab,
+} from '../../redux/reducers/commonReducer'
 
 const Setting = () => {
-  const {
-    actions,
-    active_settings_tab,
-    actions: { setSystemFonts },
-  } = useSettings()
+  const dispatch = useDispatch()
+
+  const active_settings_tab = useSelector(
+    (state) => state.common.active_settings_tab
+  )
 
   const tabNames = [
     ['front', 'Лицевая сторона'],
@@ -19,7 +23,7 @@ const Setting = () => {
   useEffect(() => {
     let detector = new Detector()
     let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
-    setSystemFonts(fonts)
+    dispatch(setSystemFonts(fonts))
   }, [])
 
   return (
@@ -31,7 +35,7 @@ const Setting = () => {
               className={`tablinks ${
                 tabName === active_settings_tab ? 'active' : ''
               }`}
-              onClick={() => actions.setActiveSettingsTab(tabName)}
+              onClick={() => dispatch(setActiveSettingsTab(tabName))}
               key={tabName}
             >
               {tabTitle}

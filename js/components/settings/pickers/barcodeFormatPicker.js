@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { barcode_font_size, barcodeFormats } from '../../../utils'
 
 const BarcodeFormatlPicker = ({ onchange, selected }) => {

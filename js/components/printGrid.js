@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import GridPage from './gridPage'
 import { getArrayWithIndexes } from '../utils'
-import useSettings from './useSettings'
+import printingSelector from '../redux/selectors/printingSelector'
 
 const PrintGrid = () => {
-  const { cards_count, needPrint } = useSettings()
+  const { cards_count, needPrint } = useSelector(printingSelector)
   let array_with_indexes = getArrayWithIndexes(
     cards_count === 0 ? 10 : cards_count,
     true

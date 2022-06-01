@@ -1,18 +1,9 @@
 import React, { useEffect } from 'react'
 import { possibleFonts, Detector } from '../../../utils'
-import useSettings from '../../useSettings'
-
+import { setSystemFonts } from '@/redux/reducers/commonReducer'
+import { useSelector } from 'react-redux'
 const FontPicker = ({ onchange, selected }) => {
-  let {
-    actions: { setSystemFonts },
-    systemFonts,
-  } = useSettings()
-
-  useEffect(() => {
-    let detector = new Detector()
-    let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
-    setSystemFonts(fonts)
-  }, [])
+  let systemFonts = useSelector((state) => state.common.systemFonts)
 
   const alignOptions = [
     ['left', 'По левому краю'],

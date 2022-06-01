@@ -1,10 +1,11 @@
 import React from 'react'
-import Barcode from './barcode'
 import { ErrorBoundary } from 'react-error-boundary'
-import useSettings from './useSettings'
+import Barcode from './barcode'
+import { changeEntity } from '../redux/reducers/datasetReducer'
+import { useDispatch } from 'react-redux'
 
 const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
-  const { actions } = useSettings()
+  const dispatch = useDispatch()
   return (
     <>
       {barcodes.map((barcode) => {
@@ -17,7 +18,7 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
                 <div className={`barcode ${barcode.id}`}>
                   <button
                     onClick={() => {
-                      actions.changeEntity(barcode.id, { format: 'code128' })
+                      dispatch(changeEntity(barcode.id, { format: 'code128' }))
                     }}
                   >
                     Сброс
@@ -34,7 +35,7 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
                   </div>
                   <button
                     onClick={() => {
-                      actions.changeEntity(barcode.id, { format: 'code128' })
+                      dispatch(changeEntity(barcode.id, { format: 'code128' }))
                     }}
                   >
                     Сброс

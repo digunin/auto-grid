@@ -1,15 +1,18 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SizePicker from './pickers/sizePicker'
 import PositionPicker from './pickers/positionPicker'
-import useSettings from '../useSettings'
 import RotatePicker from './pickers/rotatePicker'
 import QRCodeLevelPicker from './pickers/qrcodeLevelPicker'
 import DataSelector from './pickers/data-source/dataSelector'
+import { changeEntity } from '@/redux/reducers/datasetReducer'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 
 const QRCodeSettings = () => {
-  let { actions, selected } = useSettings()
+  const dispatch = useDispatch()
+  let selected = useSelector(getSelectedEntitySelector)
   const changeHandler = (new_props) => {
-    actions.changeEntity(selected.id, new_props)
+    dispatch(changeEntity(selected.id, new_props))
   }
   return (
     <>

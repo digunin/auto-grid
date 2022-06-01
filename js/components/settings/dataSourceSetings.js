@@ -1,39 +1,43 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import DataSourceList from './pickers/data-source/dataSourceList'
 import DataPicker from './pickers/data-source/dataPicker'
-import useDataSource from './pickers/data-source/useDataSource'
-import useSettings from '../useSettings'
+import { setCardsCount } from '@/redux/reducers/datasetReducer'
+import {
+  setDataSource,
+  editDataSource,
+  deleteDataSource,
+} from '@/redux/reducers/datasetReducer'
 
 const DataSourceSettings = () => {
-  let { setDataSource, editDataSource, deleteDataSource, editing_source_name } =
-    useDataSource()
-  let {
-    actions: { setCardsCount },
-  } = useSettings()
+  const dispatch = useDispatch()
+  let editing_source_name = useSelector(
+    (state) => state.dataSet.dataSource.editing_source_name
+  )
   const [showDataPicker, setShow] = useState(false)
 
   useEffect(() => {
-    return () => editDataSource('')
+    return () => dispatch(editDataSource(''))
   }, [])
 
   let onSourceListClick = (name = null) => {
     setShow(true)
-    editDataSource(name ? name : '')
+    dispatch(editDataSource(name ? name : ''))
   }
 
   let onDataPickerSubmit = (name, data) => {
-    setDataSource(name, { data })
-    editDataSource('')
+    dispatch(setDataSource(name, { data }))
+    dispatch(editDataSource(''))
     setShow(false)
   }
 
   let onDelete = (name) => {
     if (name == editing_source_name) {
-      editDataSource('')
+      dispatch(editDataSource(''))
       setShow(false)
     }
-    deleteDataSource(name)
-    setCardsCount()
+    dispatch(deleteDataSource(name))
+    dispatch(setCardsCount())
   }
 
   return (

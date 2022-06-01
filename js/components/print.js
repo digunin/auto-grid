@@ -1,10 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import PrintGrid from './printGrid'
 import PrintSublime from './printSublime'
-import useSettings from './useSettings'
 
 const Print = () => {
-  const { printingMode } = useSettings()
+  const printingMode = useSelector((state) => state.common.printingMode)
   return (
     <>
       {printingMode == 'grid' && <PrintGrid />}

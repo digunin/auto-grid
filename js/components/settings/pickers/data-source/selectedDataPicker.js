@@ -1,17 +1,16 @@
 import React from 'react'
-import useSettings from '../../../useSettings'
 import useSelectedDataPicker from './useSelectedDataPicker'
-
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 import useDataSource from './useDataSource'
 import Select from '../../../custom-select-element/Select'
+import { useSelector } from 'react-redux'
 
 const SelectedDataPicker = ({ onSingleSelection }) => {
-  const {
-    selected,
-    actions: { setDataSource },
-  } = useSettings()
+  const selected = useSelector(getSelectedEntitySelector)
 
-  const { selectedDataSource } = useDataSource(selected.data_source_id)
+  const { setDataSource, selectedDataSource } = useDataSource(
+    selected.data_source_id
+  )
 
   const { isMultiple, isDisabled, onchange } = useSelectedDataPicker(
     selected,

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import useSettings from '../useSettings'
 import { useFilePicker } from 'use-file-picker'
+import { setNewState } from '@/redux/reducers/commonReducer'
+import { useDispatch } from 'react-redux'
 
 const SettingsSaveLoad = () => {
+  const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
-  const {
-    actions: { setNewState },
-    stateStringify,
-  } = useSettings(null, true)
+  const stateStringify = 'placeholder'
+
   const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
     readAs: 'Text', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
     accept: '.json',
@@ -15,10 +15,11 @@ const SettingsSaveLoad = () => {
     limitFilesConfig: { max: 2 },
     maxFileSize: 50,
   })
+
   useEffect(() => {
     if (filesContent.length != 0) {
       try {
-        setNewState(JSON.parse(filesContent[0].content))
+        dispatch(setNewState(JSON.parse(filesContent[0].content)))
         setErrorMessage(null)
       } catch {
         setErrorMessage(`Не удалось открыть файл ${filesContent[0].name}`)

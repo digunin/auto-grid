@@ -1,6 +1,6 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Block from '../block'
-import useSettings from '../useSettings'
 import AddEntities from './addEntities'
 import AllEntities from './allEntities'
 import BarcodeSettings from './barcodeSettings'
@@ -10,20 +10,29 @@ import PrintingModePicker from './pickers/printingModePicker'
 import QRCodeSettings from './qrcodeSettings'
 import SettingsSaveLoad from './settingsSaveLoad'
 import TxtSettings from './txtSettings'
+import { setSelected } from '@/redux/reducers/datasetReducer'
+import {
+  changeSideNeedPrint,
+  setPrintingMode,
+} from '@/redux/reducers/commonReducer'
+import printingSelector from '@/redux/selectors/printingSelector'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 
 const PrintSettings = () => {
-  let { actions, selected, printingMode, active_settings_side } = useSettings()
+  const dispatch = useDispatch()
+  let { printingMode, active_settings_side } = useSelector(printingSelector)
+  const selected = useSelector(getSelectedEntitySelector)
   return (
     <>
       <div className="static-pickers-wrapper">
         <div
           className="block-wrapper"
-          onClick={() => actions.setSelected(null)}
+          onClick={() => dispatch(setSelected(null, active_settings_side))}
         >
           <Block
             selected_id={selected?.id}
             onclick={(id) => {
-              actions.setSelected(id)
+              dispatch(setSelected(id, active_settings_side))
             }}
             subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
             index={0}
@@ -37,12 +46,12 @@ const PrintSettings = () => {
         <ImagePicker side={active_settings_side} />
         <NeedPrint
           onchange={(newProp) => {
-            actions.changeSideNeedPrint(newProp)
+            dispatch(changeSideNeedPrint(newProp))
           }}
         />
         <PrintingModePicker
           onchange={(mode) => {
-            actions.setPrintingMode(mode)
+            dispatch(setPrintingMode(mode))
           }}
         />
       </div>

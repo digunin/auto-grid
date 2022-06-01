@@ -1,8 +1,9 @@
 import React from 'react'
-import useSettings from '../../useSettings'
+import { useSelector } from 'react-redux'
+import printingSelector from '@/redux/selectors/printingSelector'
 
 const PrintingModePicker = ({ onchange }) => {
-  let { printingMode } = useSettings()
+  let { printingMode } = useSelector(printingSelector)
   return (
     <div
       className="picker-wrapper"

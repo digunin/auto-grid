@@ -2,7 +2,7 @@ import React from 'react'
 import useImagePicker from './useImagePicker'
 
 const ImagePicker = ({ side }) => {
-  let { openFileSelector, bgImage, setImageFile, errorMessage } =
+  let { openFileSelector, bgImage, onDelete, errorMessage } =
     useImagePicker(side)
 
   return (
@@ -15,9 +15,7 @@ const ImagePicker = ({ side }) => {
           color: 'red',
           boxShadow: '0 0 5px red',
         }}
-        onClick={() => {
-          setImageFile(null)
-        }}
+        onClick={onDelete}
       >
         Удалить изображение
       </button>

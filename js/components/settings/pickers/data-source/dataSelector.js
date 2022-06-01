@@ -1,18 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { dataSelectorModeInfo } from '../../../../utils'
-import useSettings from '../../../useSettings'
 import DataSourceNamePicker from './sourceNamePicker'
 import SelectedDataPicker from './selectedDataPicker'
 import useDataSource from './useDataSource'
 import DataSelectorModePicker from './dataSelectorModePicker'
 import DiapasonPicker from './diapasonPicker'
 import useDataSelector from './useDataSelector'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 
 const DataSelector = () => {
-  const {
-    selected,
-    actions: { setEntitiesData, setDataSource, setCardsCount },
-  } = useSettings()
+  const selected = useSelector(getSelectedEntitySelector)
 
   const { selectedDataSource } = useDataSource(selected.data_source_id)
 
@@ -21,13 +19,8 @@ const DataSelector = () => {
     onDiapasonChange,
     copyToClipboard,
     diapasonFocusedInput,
-  } = useDataSelector(
-    setEntitiesData,
-    setDataSource,
-    setCardsCount,
-    selected,
-    selectedDataSource
-  )
+    onReset,
+  } = useDataSelector(selected, selectedDataSource)
 
   return (
     <div>
@@ -48,9 +41,7 @@ const DataSelector = () => {
         <>
           <button
             disabled={!selectedDataSource.selected_indexes?.length > 0}
-            onClick={() =>
-              setDataSource(selected.data_source_id, { selected_indexes: [] })
-            }
+            onClick={onReset}
           >
             Сбросить
           </button>

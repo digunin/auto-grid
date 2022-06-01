@@ -546,31 +546,32 @@ export const barcode_font_size = [
 ]
 
 export function toggleValue(arr, value) {
-  let index = arr.indexOf(value)
+  let tmp = [...arr]
+  let index = tmp.indexOf(value)
   if (index === -1) {
-    arr = insertSubarray(arr, [value])
+    tmp = insertSubarray(tmp, [value])
   } else {
-    arr.splice(index, 1)
+    tmp.splice(index, 1)
   }
-  return arr
+  return tmp
 }
 
 export function insertSubarray(arr, sub) {
+  let tmp = [...arr]
   let [left, right] = [0, 0]
   let [start, end] = [sub[0], sub[sub.length - 1]]
-  if (arr.length > 0) {
-    for (let i = 0; i < arr.length; i++) {
-      if (start > arr[i]) {
+  if (tmp.length > 0) {
+    for (let i = 0; i < tmp.length; i++) {
+      if (start > tmp[i]) {
         left = i + 1
       }
-      if (end >= arr[i]) {
+      if (end >= tmp[i]) {
         right = i + 1
       }
     }
   }
-
-  arr.splice(left, right - left, ...sub)
-  return arr
+  tmp.splice(left, right - left, ...sub)
+  return tmp
 }
 
 export function dataURLtoBlob(dataurl) {

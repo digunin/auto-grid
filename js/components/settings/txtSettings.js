@@ -1,16 +1,19 @@
 import React from 'react'
-import useSettings from '../useSettings'
+import { useDispatch, useSelector } from 'react-redux'
 import PositionPicker from './pickers/positionPicker'
 import SizePicker from './pickers/sizePicker'
 import ColorPicker from './pickers/colorPicker'
 import RotatePicker from './pickers/rotatePicker'
 import FontPicker from './pickers/fontPicker'
 import DataSelector from './pickers/data-source/dataSelector'
+import { changeEntity } from '@/redux/reducers/datasetReducer'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 
 const TxtSettings = () => {
-  let { actions, selected } = useSettings()
+  const dispatch = useDispatch()
+  let selected = useSelector(getSelectedEntitySelector)
   const changeHandler = (new_props) => {
-    actions.changeEntity(selected.id, new_props)
+    dispatch(changeEntity(selected.id, new_props))
   }
   return (
     <>

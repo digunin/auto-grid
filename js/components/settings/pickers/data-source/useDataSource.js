@@ -1,26 +1,29 @@
-import { useContext } from 'react'
-import Context from '../../../../store/settingContext'
+import { useSelector } from 'react-redux'
+import {
+  setDataSource,
+  editDataSource,
+  deleteDataSource,
+} from '@/redux/reducers/datasetReducer'
 
 const useDataSource = (name = '') => {
-  const { actions, data_source } = useContext(Context)
+  const dataSource = useSelector((state) => state.dataSet.dataSource)
 
   return {
-    editing_source_name: data_source?.editing_source_name || '',
-    existingNames: Object.keys(data_source?.sources || {}),
-    createMode: data_source?.editing_source_name === '',
-    editMode: data_source?.editing_source_name !== '',
-    setDataSource: actions.setDataSource,
-    editDataSource: actions.editDataSource,
-    deleteDataSource: actions.deleteDataSource,
+    editing_source_name: dataSource?.editing_source_name || '',
+    existingNames: Object.keys(dataSource?.sources || {}),
+    createMode: dataSource?.editing_source_name === '',
+    editMode: dataSource?.editing_source_name !== '',
+    setDataSource,
+    editDataSource,
+    deleteDataSource,
     editingData:
-      data_source?.editing_source_name === '' ||
-      !data_source?.editing_source_name
+      dataSource?.editing_source_name === '' || !dataSource?.editing_source_name
         ? []
-        : data_source.sources[data_source.editing_source_name].data || [],
+        : dataSource.sources[dataSource.editing_source_name].data || [],
     selectedDataSource:
-      name === '' || !data_source?.sources
+      name === '' || !dataSource?.sources
         ? { data: [] }
-        : { ...data_source.sources[name] },
+        : { ...dataSource.sources[name] },
   }
 }
 

@@ -1,12 +1,12 @@
 import React from 'react'
-import useSettings from '../../../useSettings'
+import { useSelector, useDispatch } from 'react-redux'
 import useDataSource from './useDataSource'
+import { changeEntity, setCardsCount } from '@/redux/reducers/datasetReducer'
+import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 
 const DataSourceNamePicker = () => {
-  const {
-    selected,
-    actions: { changeEntity, setCardsCount, setEntitiesData },
-  } = useSettings()
+  const dispatch = useDispatch()
+  const selected = useSelector(getSelectedEntitySelector)
 
   const { existingNames } = useDataSource()
 
@@ -17,8 +17,10 @@ const DataSourceNamePicker = () => {
       onChange={(e) => {
         let name = e.target.value
         let data = name === '' ? [] : selected.data
-        changeEntity(selected.id, { data_source_id: e.target.value, data })
-        setCardsCount()
+        dispatch(
+          changeEntity(selected.id, { data_source_id: e.target.value, data })
+        )
+        dispatch(setCardsCount())
       }}
     >
       <option value="">Выберите источник данных</option>

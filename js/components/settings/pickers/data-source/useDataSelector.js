@@ -1,13 +1,15 @@
 import { useRef, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { dataSelectorModeInfo } from '../../../../utils'
-
-const useDataSelector = (
+import {
   setEntitiesData,
-  setDataSource,
   setCardsCount,
-  selected,
-  selectedDataSource
-) => {
+  setDataSource,
+} from '@/redux/reducers/datasetReducer'
+
+const useDataSelector = (selected, selectedDataSource) => {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     handleChildChange(selectedDataSource.data_selector_mode)
   }, [
@@ -27,16 +29,20 @@ const useDataSelector = (
     switch (mode) {
       // print-all
       case dataSelectorModeInfo[0][0]:
-        setEntitiesData(selected.data_source_id, selectedDataSource.data)
-        setCardsCount()
+        dispatch(
+          setEntitiesData(selected.data_source_id, selectedDataSource.data)
+        )
+        dispatch(setCardsCount())
         break
       // print-range
       case dataSelectorModeInfo[1][0]:
-        setEntitiesData(
-          selected.data_source_id,
-          selectedDataSource.data.slice(start, end)
+        dispatch(
+          setEntitiesData(
+            selected.data_source_id,
+            selectedDataSource.data.slice(start, end)
+          )
         )
-        setCardsCount()
+        dispatch(setCardsCount())
         break
       // print-selected
       case dataSelectorModeInfo[2][0]:
@@ -44,8 +50,8 @@ const useDataSelector = (
           selectedDataSource.selected_indexes?.map(
             (i) => selectedDataSource.data[i]
           ) || []
-        setEntitiesData(selected.data_source_id, tmp)
-        setCardsCount()
+        dispatch(setEntitiesData(selected.data_source_id, tmp))
+        dispatch(setCardsCount())
         break
     }
   }
@@ -54,7 +60,7 @@ const useDataSelector = (
     if (from > to) {
       ;[from, to] = [to, from]
     }
-    setDataSource(selected.data_source_id, { diapason: { from, to } })
+    dispatch(setDataSource(selected.data_source_id, { diapason: { from, to } }))
   }
 
   const onSingleSelection = (arr) => {
@@ -85,6 +91,10 @@ const useDataSelector = (
     onDiapasonChange,
     copyToClipboard,
     diapasonFocusedInput,
+    onReset: () =>
+      dispatch(
+        setDataSource(selected.data_source_id, { selected_indexes: [] })
+      ),
   }
 }
 

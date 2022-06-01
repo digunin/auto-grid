@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { defaultObjects } from './initialState'
+import { dataURLtoBlob } from '../../utils'
 
 const { reducer, actions } = createSlice({
   name: 'common',
@@ -13,9 +14,13 @@ const { reducer, actions } = createSlice({
           : action.payload
     },
 
-    setSystemFonts: (state, action) => (state.systemFonts = action.payload),
+    setSystemFonts: (state, action) => {
+      state.systemFonts = action.payload
+    },
 
-    setPrintingMode: (state, action) => (state.printingMode = action.payload),
+    setPrintingMode: (state, action) => {
+      state.printingMode = action.payload
+    },
 
     changeSideNeedPrint: (state, action) => {
       state.needPrint = { ...state.needPrint, ...action.payload }
@@ -24,12 +29,12 @@ const { reducer, actions } = createSlice({
     setImageFile: (state, action) => {
       let file = action.payload
       if (file) {
+        localStorage.setItem(state.active_settings_side, file?.content || '')
         file.content = URL.createObjectURL(dataURLtoBlob(file.content))
       }
       state.active_settings_side === 'front'
         ? (state.frontImage = file)
         : (state.backImage = file)
-      localStorage.setItem(state.active_settings_side, file?.content || '')
     },
 
     setNewState: (state, action) => {

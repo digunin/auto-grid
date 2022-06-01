@@ -1,10 +1,12 @@
 import React from 'react'
-import useSettings from '../useSettings'
 import PrintSettings from './printSettings'
 import DataSourceSettings from './dataSourceSetings'
+import { useSelector } from 'react-redux'
 
 const TabContent = () => {
-  let { active_settings_tab } = useSettings()
+  let active_settings_tab = useSelector(
+    (state) => state.common.active_settings_tab
+  )
   return (
     <div className="tab-content">
       {active_settings_tab == 'data-source' && <DataSourceSettings />}
