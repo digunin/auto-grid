@@ -12,6 +12,8 @@ export const defaultObjects = {
     color: 'black',
     fontFamily: 'Arial',
     fontSize: '12',
+    textBorderWidth: 1,
+    textBorderColor: '#0074A7',
     rotate: 0,
     data_source_id: '',
     data: [],

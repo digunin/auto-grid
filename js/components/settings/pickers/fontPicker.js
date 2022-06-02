@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
-import { possibleFonts, Detector } from '../../../utils'
-import { setSystemFonts } from '@/redux/reducers/commonReducer'
+import React from 'react'
 import { useSelector } from 'react-redux'
+
 const FontPicker = ({ onchange, selected }) => {
   let systemFonts = useSelector((state) => state.common.systemFonts)
 

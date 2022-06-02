@@ -37,6 +37,14 @@ const Styles = () => {
         text-align: ${entity.align};
         transform-origin: center;
         transform: rotate(${entity.rotate}deg) !important;
+        text-shadow: ${entity.textBorderWidth}px 0 0 ${entity.textBorderColor},
+        ${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor},
+        0 ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+        -${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+        -${entity.textBorderWidth}px 0 0 ${entity.textBorderColor}, 
+        -${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+        0 -${entity.textBorderWidth}px 0 ${entity.textBorderColor},
+        ${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor};
       }`
     }
     if (entity.type == 'barcode') {

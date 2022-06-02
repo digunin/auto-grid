@@ -8,6 +8,7 @@ import FontPicker from './pickers/fontPicker'
 import DataSelector from './pickers/data-source/dataSelector'
 import { changeEntity } from '@/redux/reducers/datasetReducer'
 import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
+import TextBorderPicker from './pickers/textBorderPicker'
 
 const TxtSettings = () => {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const TxtSettings = () => {
         <ColorPicker selected={selected} onchange={changeHandler} />
         <RotatePicker selected={selected} onchange={changeHandler} />
         <FontPicker selected={selected} onchange={changeHandler} />
+        <TextBorderPicker selected={selected} onchange={changeHandler} />
       </div>
       <DataSelector />
     </>
