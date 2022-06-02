@@ -20,9 +20,22 @@ const ImagePicker = ({ side }) => {
         Удалить изображение
       </button>
       {bgImage && (
-        <span>
-          {bgImage.name ? `${bgImage.name}` : 'Изображение по умолчанию'}
-        </span>
+        <>
+          <span>
+            {bgImage.name ? `${bgImage.name}` : 'Изображение по умолчанию'}
+          </span>
+          {bgImage.size && (
+            <span
+              style={{
+                fontSize: '1.2em',
+                marginLeft: '2em',
+                color: bgImage.size_color,
+              }}
+            >
+              {`${bgImage.size} Кб`}
+            </span>
+          )}
+        </>
       )}
       {errorMessage !== '' && (
         <div style={{ color: 'red' }}>{errorMessage}</div>

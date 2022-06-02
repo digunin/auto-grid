@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFilePicker } from 'use-file-picker'
-import { setImageFile } from '@/redux/reducers/commonReducer'
 import separatedEntitiesSelector from '@/redux/selectors/separatedEntitiesSelector'
+import { putImage } from '@/redux/reducers/commonReducer'
 
 const useImagePicker = (side) => {
   const dispatch = useDispatch()
@@ -14,14 +14,11 @@ const useImagePicker = (side) => {
     readAs: 'DataURL',
     accept: 'image/*',
     multiple: false,
-    limitFilesConfig: { max: 2 },
-    // minFileSize: 1,
-    maxFileSize: 1.89, // in megabytes
   })
 
   useEffect(() => {
     if (filesContent.length != 0) {
-      dispatch(setImageFile(filesContent[0]))
+      dispatch(putImage(filesContent[0]))
     }
   }, [filesContent])
 
@@ -48,7 +45,7 @@ const useImagePicker = (side) => {
   return {
     openFileSelector,
     bgImage,
-    onDelete: () => dispatch(setImageFile(null)),
+    onDelete: () => dispatch(putImage(null)),
     errorMessage,
   }
 }

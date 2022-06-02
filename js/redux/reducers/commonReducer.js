@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { defaultObjects } from './initialState'
 import { dataURLtoBlob } from '../../utils'
 
@@ -26,15 +26,16 @@ const { reducer, actions } = createSlice({
       state.needPrint = { ...state.needPrint, ...action.payload }
     },
 
-    setImageFile: (state, action) => {
-      let file = action.payload
-      if (file) {
-        localStorage.setItem(state.active_settings_side, file?.content || '')
-        file.content = URL.createObjectURL(dataURLtoBlob(file.content))
-      }
-      state.active_settings_side === 'front'
-        ? (state.frontImage = file)
-        : (state.backImage = file)
+    setImageFile: {
+      reducer: (state, action) => {
+        let { file, data_url } = action.payload
+        state.active_settings_side === 'front'
+          ? ((state.frontImage = file), (state.imagesDataURL.front = data_url))
+          : ((state.backImage = file), (state.imagesDataURL.back = data_url))
+      },
+      prepare: (file, data_url) => {
+        return { payload: { file, data_url } }
+      },
     },
 
     setNewState: (state, action) => {
@@ -67,6 +68,8 @@ const { reducer, actions } = createSlice({
     },
   },
 })
+
+export const putImage = createAction('common/put_image')
 
 export const {
   setActiveSettingsTab,
