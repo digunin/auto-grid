@@ -69,6 +69,16 @@ export const dataSelectorModeInfo = [
   ['print-selected', 'Печатать выбранные'],
 ]
 
+export const selectDataFromSource = {
+  [dataSelectorModeInfo[0][0]]: (arr) => arr,
+  [dataSelectorModeInfo[1][0]]: (arr, from, to) => {
+    //todo
+  },
+  [dataSelectorModeInfo[2][0]]: (arr, indexes) => {
+    // todo
+  },
+}
+
 export const Detector = function () {
   // a font will be compared against all the three default fonts.
   // and if it doesn't match all 3 then that font is not available.

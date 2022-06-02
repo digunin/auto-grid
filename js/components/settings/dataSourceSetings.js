@@ -7,7 +7,6 @@ import {
   setDataSource,
   editDataSource,
   deleteDataSource,
-  setEntitiesData,
 } from '@/redux/reducers/datasetReducer'
 
 const DataSourceSettings = () => {
