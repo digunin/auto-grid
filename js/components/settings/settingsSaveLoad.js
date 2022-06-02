@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useFilePicker } from 'use-file-picker'
-import { setNewState } from '@/redux/reducers/commonReducer'
+import { loadState } from '@/redux/reducers/commonReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 const SettingsSaveLoad = () => {
@@ -19,7 +19,7 @@ const SettingsSaveLoad = () => {
   useEffect(() => {
     if (filesContent.length != 0) {
       try {
-        dispatch(setNewState(JSON.parse(filesContent[0].content)))
+        dispatch(loadState(JSON.parse(filesContent[0].content)))
         setErrorMessage(null)
       } catch {
         setErrorMessage(`Не удалось открыть файл ${filesContent[0].name}`)

@@ -39,37 +39,13 @@ const { reducer, actions } = createSlice({
     },
 
     setNewState: (state, action) => {
-      let loadingState = action.payload
-      if (loadingState.frontImage) {
-        if (
-          loadingState.frontImage.content.startsWith('data:image') &&
-          loadingState.frontImage.content.length < maxDataURL_length
-        ) {
-          localStorage.setItem('front', loadingState.frontImage.content)
-          loadingState.frontImage.content = URL.createObjectURL(
-            dataURLtoBlob(loadingState.frontImage.content)
-          )
-        }
-      }
-
-      if (loadingState.backImage) {
-        if (
-          loadingState.backImage.content.startsWith('data:image') &&
-          loadingState.backImage.content.length < maxDataURL_length
-        ) {
-          localStorage.setItem('back', loadingState.backImage.content)
-          loadingState.backImage.content = URL.createObjectURL(
-            dataURLtoBlob(loadingState.backImage.content)
-          )
-        }
-      }
-
-      return { ...state, ...loadingState }
+      return { ...action.payload }
     },
   },
 })
 
 export const putImage = createAction('common/put_image')
+export const loadState = createAction('load_state')
 
 export const {
   setActiveSettingsTab,

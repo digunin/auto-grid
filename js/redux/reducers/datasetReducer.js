@@ -107,6 +107,10 @@ const { reducer, actions } = createSlice({
         }
       })
     },
+
+    setNewState: (state, action) => {
+      return { ...action.payload }
+    },
   },
 })
 
@@ -121,6 +125,7 @@ export const {
   setDataSourceProps,
   editDataSource,
   deleteDataSource,
+  setNewState,
 } = actions
 
 export default reducer
