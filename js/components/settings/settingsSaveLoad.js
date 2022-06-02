@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useFilePicker } from 'use-file-picker'
 import { setNewState } from '@/redux/reducers/commonReducer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const SettingsSaveLoad = () => {
   const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
-  const stateStringify = 'placeholder'
+  const stateStringify = JSON.stringify(useSelector((state) => state))
 
   const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
     readAs: 'Text', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
@@ -38,7 +38,7 @@ const SettingsSaveLoad = () => {
         href={URL.createObjectURL(
           new Blob([stateStringify], { type: 'application/json' })
         )}
-        download="example.json"
+        download="PRINT.json"
       >
         Сохранить настройки
       </a>
