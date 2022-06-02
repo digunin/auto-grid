@@ -100,6 +100,12 @@ const { reducer, actions } = createSlice({
 
     deleteDataSource: (state, action) => {
       delete state.dataSource.sources[action.payload]
+      state.entities.forEach((entity) => {
+        if (entity.data_source_id === action.payload) {
+          entity.data_source_id = ''
+          entity.data = []
+        }
+      })
     },
   },
 })
