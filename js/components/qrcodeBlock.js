@@ -5,7 +5,9 @@ const QRCodeBlock = ({ qrcodes, selected_id, onclick, index, inSetting }) => {
   return (
     <>
       {qrcodes.map((qrcode) => {
-        let printQR = qrcode.data[index] !== undefined || inSetting
+        let printQR =
+          (qrcode.data[index] !== undefined && qrcode.data[index] !== '') ||
+          inSetting
         return (
           printQR && (
             <QR_Code
