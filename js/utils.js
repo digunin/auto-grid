@@ -71,11 +71,15 @@ export const dataSelectorModeInfo = [
 
 export const selectDataFromSource = {
   [dataSelectorModeInfo[0][0]]: (arr) => arr,
-  [dataSelectorModeInfo[1][0]]: (arr, from, to) => {
-    //todo
+  [dataSelectorModeInfo[1][0]]: (arr, { diapason: { from, to } }) => {
+    let out = []
+    for (let i = from - 1; i < to; i++) {
+      out.push([arr[i]])
+    }
+    return out || []
   },
-  [dataSelectorModeInfo[2][0]]: (arr, indexes) => {
-    // todo
+  [dataSelectorModeInfo[2][0]]: (arr, { selected_indexes }) => {
+    return selected_indexes.map((i) => arr[i])
   },
 }
 

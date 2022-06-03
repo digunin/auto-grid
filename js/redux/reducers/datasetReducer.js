@@ -82,7 +82,6 @@ const { reducer, actions } = createSlice({
         state.dataSource.sources[name] = { ...tmp, data }
       },
       prepare: (name, data) => {
-        console.log(data)
         return { payload: { name, data } }
       },
     },
