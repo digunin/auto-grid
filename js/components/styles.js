@@ -30,6 +30,9 @@ const Styles = () => {
         color: ${entity.color};
         font-size: ${entity.fontSize}pt;
         font-family: ${entity.fontFamily};
+        font-weight: ${entity.fontWeight};
+        font-style: ${entity.fontStyle};
+        text-decoration: ${entity.textDecoration};
         top: ${entity.top}mm;
         left: ${entity.left}mm;
         width: ${entity.width}mm;
