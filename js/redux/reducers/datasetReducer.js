@@ -80,6 +80,10 @@ const { reducer, actions } = createSlice({
         const { name, data } = action.payload
         let tmp = state.dataSource.sources[name] || {}
         state.dataSource.sources[name] = { ...tmp, data }
+        state.dataSource.diapason = {
+          from: state.dataSource.diapason.from || 1,
+          to: state.dataSource.diapason.to || data.length,
+        }
       },
       prepare: (name, data) => {
         return { payload: { name, data } }
@@ -99,6 +103,9 @@ const { reducer, actions } = createSlice({
 
     deleteDataSource: (state, action) => {
       delete state.dataSource.sources[action.payload]
+      if (Object.keys(state.dataSource.sources).length === 0) {
+        state.dataSource = defaultObjects.dataSource
+      }
       state.entities.forEach((entity) => {
         if (entity.data_source_id === action.payload) {
           entity.data_source_id = ''

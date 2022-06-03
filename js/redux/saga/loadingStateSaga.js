@@ -4,7 +4,6 @@ import { setNewState as setDataSetState } from '../reducers/datasetReducer'
 import { dataURLtoBlob } from '../../utils'
 
 function* loadingState(action) {
-  console.log(action.payload)
   let commonState = action.payload.common
   if (commonState.imagesDataURL?.front?.startsWith('data:image')) {
     commonState.frontImage.content = URL.createObjectURL(

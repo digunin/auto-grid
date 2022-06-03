@@ -1,6 +1,11 @@
 import { put, select } from 'redux-saga/effects'
 import { selectDataFromSource } from '../../utils'
-import { setCardsCount, setEntitiesData } from '../reducers/datasetReducer'
+import {
+  setCardsCount,
+  setEntitiesData,
+  setDataSourceProps,
+} from '../reducers/datasetReducer'
+import maxSourceLengthSelector from '../selectors/maxSourceLengthSelector'
 
 export function* updateDataSourceSaga(action) {
   let dataSource = yield select((state) => state.dataSet.dataSource)
@@ -10,25 +15,15 @@ export function* updateDataSourceSaga(action) {
     selected_indexes,
     diapason,
   })
-  yield put(setEntitiesData(name, new_data))
-  yield put(setCardsCount())
-}
-
-export function* updateDataSourcePropsSaga(action) {
-  let dataSource = yield select((state) => state.dataSet.dataSource)
-  let { data_selector_mode, selected_indexes, diapason } = dataSource
-  let sourceNames = Object.keys(dataSource.sources)
-  for (let i = 0; i < sourceNames.length; i++) {
-    let data = dataSource.sources[sourceNames[i]].data
+  let maxSourceLength = yield select(maxSourceLengthSelector)
+  if (diapason.to > maxSourceLength) {
     yield put(
-      setEntitiesData(
-        sourceNames[i],
-        selectDataFromSource[data_selector_mode](data, {
-          selected_indexes,
-          diapason,
-        })
-      )
+      setDataSourceProps({
+        diapason: { from: diapason.from || 1, to: maxSourceLength },
+      })
     )
+  } else {
+    yield put(setEntitiesData(name, new_data))
+    yield put(setCardsCount())
   }
-  yield put(setCardsCount())
 }

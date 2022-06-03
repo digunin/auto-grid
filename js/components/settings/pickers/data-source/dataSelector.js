@@ -8,9 +8,11 @@ import DataSelectorModePicker from './dataSelectorModePicker'
 import DiapasonPicker from './diapasonPicker'
 import useDataSelector from './useDataSelector'
 import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
+import maxSourceLengthSelector from '@/redux/selectors/maxSourceLengthSelector'
 
 const DataSelector = () => {
   const selected = useSelector(getSelectedEntitySelector)
+  const maxSourceLength = useSelector(maxSourceLengthSelector)
 
   const { selectedDataSource, dataSourceProps } = useDataSource(
     selected.data_source_id
@@ -34,7 +36,7 @@ const DataSelector = () => {
             diapasonFocusedInput.current = focused
           }}
           onchange={onDiapasonChange}
-          max={selectedDataSource.data.length}
+          max={maxSourceLength}
           from={dataSourceProps.diapason?.from}
           to={dataSourceProps.diapason?.to}
         />

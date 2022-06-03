@@ -7,14 +7,16 @@ function* changeEntityDataSourceIDSaga(action) {
   if ('data_source_id' in new_props) {
     let { dataSource } = yield select((state) => state.dataSet)
     let { data_selector_mode, sources, selected_indexes, diapason } = dataSource
-    let arr = sources[new_props.data_source_id].data
     let data =
       new_props.data_source_id === ''
         ? []
-        : selectDataFromSource[data_selector_mode](arr, {
-            selected_indexes,
-            diapason,
-          })
+        : selectDataFromSource[data_selector_mode](
+            sources[new_props.data_source_id].data,
+            {
+              selected_indexes,
+              diapason,
+            }
+          )
     yield put(changeEntity(id, { data }))
     yield put(setCardsCount())
   }
