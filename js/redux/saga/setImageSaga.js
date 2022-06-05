@@ -1,5 +1,5 @@
-import { put } from 'redux-saga/effects'
-import { setImageFile } from '../reducers/commonReducer'
+import { put, takeEvery } from 'redux-saga/effects'
+import { setImageFile, putImage } from '../reducers/commonReducer'
 import { dataURLtoBlob } from '../../utils'
 
 function* modifyImage(action) {
@@ -15,4 +15,6 @@ function* modifyImage(action) {
   yield put(setImageFile(file, data_url))
 }
 
-export default modifyImage
+export default function* worker() {
+  yield takeEvery(putImage, modifyImage)
+}

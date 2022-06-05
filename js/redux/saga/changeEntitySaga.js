@@ -1,4 +1,4 @@
-import { put, select } from 'redux-saga/effects'
+import { put, select, takeEvery } from 'redux-saga/effects'
 import { selectDataFromSource } from '../../utils'
 import { changeEntity, setCardsCount } from '../reducers/datasetReducer'
 
@@ -22,4 +22,6 @@ function* changeEntityDataSourceIDSaga(action) {
   }
 }
 
-export default changeEntityDataSourceIDSaga
+export default function* worker() {
+  yield takeEvery(changeEntity, changeEntityDataSourceIDSaga)
+}

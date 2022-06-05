@@ -1,5 +1,8 @@
-import { put } from 'redux-saga/effects'
-import { setNewState as setCommonState } from '../reducers/commonReducer'
+import { put, takeEvery } from 'redux-saga/effects'
+import {
+  loadState,
+  setNewState as setCommonState,
+} from '../reducers/commonReducer'
 import { setNewState as setDataSetState } from '../reducers/datasetReducer'
 import { dataURLtoBlob } from '../../utils'
 
@@ -23,4 +26,6 @@ function* loadingState(action) {
   yield put(setDataSetState(action.payload.dataSet))
 }
 
-export default loadingState
+export default function* worker() {
+  yield takeEvery(loadState, loadingState)
+}

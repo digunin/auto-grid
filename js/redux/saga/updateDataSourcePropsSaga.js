@@ -1,8 +1,12 @@
-import { put, select } from 'redux-saga/effects'
+import { put, select, takeEvery } from 'redux-saga/effects'
 import { selectDataFromSource } from '../../utils'
-import { setCardsCount, setEntitiesData } from '../reducers/datasetReducer'
+import {
+  setCardsCount,
+  setEntitiesData,
+  setDataSourceProps,
+} from '../reducers/datasetReducer'
 
-export function* updateDataSourcePropsSaga(action) {
+function* updateDataSourcePropsSaga(action) {
   let dataSource = yield select((state) => state.dataSet.dataSource)
   let { data_selector_mode, selected_indexes, diapason } = dataSource
   let sourceNames = Object.keys(dataSource.sources)
@@ -19,4 +23,8 @@ export function* updateDataSourcePropsSaga(action) {
     )
   }
   yield put(setCardsCount())
+}
+
+export default function* worker() {
+  yield takeEvery(setDataSourceProps, updateDataSourcePropsSaga)
 }

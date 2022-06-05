@@ -1,8 +1,11 @@
-import { put, select } from 'redux-saga/effects'
-import { setDataSourceProps } from '../reducers/datasetReducer'
+import { put, select, takeEvery } from 'redux-saga/effects'
+import {
+  setDataSourceProps,
+  deleteDataSource,
+} from '../reducers/datasetReducer'
 import maxSourceLengthSelector from '../selectors/maxSourceLengthSelector'
 
-export function* deletDataSourceSaga(action) {
+function* deletDataSourceSaga(action) {
   let diapason = yield select((state) => state.dataSet.dataSource.diapason)
   let maxSourceLength = yield select(maxSourceLengthSelector)
   if (diapason.to > maxSourceLength) {
@@ -12,4 +15,8 @@ export function* deletDataSourceSaga(action) {
       })
     )
   }
+}
+
+export default function* worker() {
+  yield takeEvery(deleteDataSource, deletDataSourceSaga)
 }
