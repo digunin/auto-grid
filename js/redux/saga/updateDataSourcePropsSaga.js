@@ -6,7 +6,7 @@ import {
   setDataSourceProps,
 } from '../reducers/datasetReducer'
 
-function* updateDataSourcePropsSaga(action) {
+function* updateDataSourcePropsWorker(action) {
   let dataSource = yield select((state) => state.dataSet.dataSource)
   let { data_selector_mode, selected_indexes, diapason } = dataSource
   let sourceNames = Object.keys(dataSource.sources)
@@ -25,6 +25,6 @@ function* updateDataSourcePropsSaga(action) {
   yield put(setCardsCount())
 }
 
-export default function* worker() {
-  yield takeEvery(setDataSourceProps, updateDataSourcePropsSaga)
+export default function* updateDataSourcePropsWatcher() {
+  yield takeEvery(setDataSourceProps, updateDataSourcePropsWorker)
 }

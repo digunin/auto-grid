@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/effects'
 import { setImageFile, putImage } from '../reducers/commonReducer'
 import { dataURLtoBlob } from '../../utils'
 
-function* modifyImage(action) {
+function* modifyImageWorker(action) {
   let [file, data_url] = [{ content: null }, null]
   if (action.payload) {
     file = action.payload
@@ -15,6 +15,6 @@ function* modifyImage(action) {
   yield put(setImageFile(file, data_url))
 }
 
-export default function* worker() {
-  yield takeEvery(putImage, modifyImage)
+export default function* modifyImageWatcher() {
+  yield takeEvery(putImage, modifyImageWorker)
 }

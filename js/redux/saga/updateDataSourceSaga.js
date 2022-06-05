@@ -8,7 +8,7 @@ import {
 } from '../reducers/datasetReducer'
 import maxSourceLengthSelector from '../selectors/maxSourceLengthSelector'
 
-function* updateDataSourceSaga(action) {
+function* updateDataSourceWorker(action) {
   let dataSource = yield select((state) => state.dataSet.dataSource)
   let { data_selector_mode, selected_indexes, diapason } = dataSource
   let { name, data } = action.payload
@@ -29,6 +29,6 @@ function* updateDataSourceSaga(action) {
   }
 }
 
-export default function* worker() {
-  yield takeEvery(setDataSource, updateDataSourceSaga)
+export default function* updateDataSourceWatcher() {
+  yield takeEvery(setDataSource, updateDataSourceWorker)
 }

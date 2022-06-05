@@ -6,7 +6,7 @@ import {
 import { setNewState as setDataSetState } from '../reducers/datasetReducer'
 import { dataURLtoBlob } from '../../utils'
 
-function* loadingState(action) {
+function* loadingStateWorker(action) {
   let commonState = action.payload.common
   if (commonState.imagesDataURL?.front?.startsWith('data:image')) {
     commonState.frontImage.content = URL.createObjectURL(
@@ -26,6 +26,6 @@ function* loadingState(action) {
   yield put(setDataSetState(action.payload.dataSet))
 }
 
-export default function* worker() {
-  yield takeEvery(loadState, loadingState)
+export default function* loadingStateWatcher() {
+  yield takeEvery(loadState, loadingStateWorker)
 }

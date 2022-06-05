@@ -2,7 +2,7 @@ import { put, select, takeEvery } from 'redux-saga/effects'
 import { selectDataFromSource } from '../../utils'
 import { changeEntity, setCardsCount } from '../reducers/datasetReducer'
 
-function* changeEntityDataSourceIDSaga(action) {
+function* changeEntityDataSourceIDWorker(action) {
   let { id, new_props } = action.payload
   if ('data_source_id' in new_props) {
     let { dataSource } = yield select((state) => state.dataSet)
@@ -22,6 +22,6 @@ function* changeEntityDataSourceIDSaga(action) {
   }
 }
 
-export default function* worker() {
-  yield takeEvery(changeEntity, changeEntityDataSourceIDSaga)
+export default function* changeEntityWatcher() {
+  yield takeEvery(changeEntity, changeEntityDataSourceIDWorker)
 }

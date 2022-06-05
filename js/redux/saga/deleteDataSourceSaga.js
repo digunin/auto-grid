@@ -5,7 +5,7 @@ import {
 } from '../reducers/datasetReducer'
 import maxSourceLengthSelector from '../selectors/maxSourceLengthSelector'
 
-function* deletDataSourceSaga(action) {
+function* deletDataSourceWorker(action) {
   let diapason = yield select((state) => state.dataSet.dataSource.diapason)
   let maxSourceLength = yield select(maxSourceLengthSelector)
   if (diapason.to > maxSourceLength) {
@@ -17,6 +17,6 @@ function* deletDataSourceSaga(action) {
   }
 }
 
-export default function* worker() {
-  yield takeEvery(deleteDataSource, deletDataSourceSaga)
+export default function* deletDataSourceWatcher() {
+  yield takeEvery(deleteDataSource, deletDataSourceWorker)
 }

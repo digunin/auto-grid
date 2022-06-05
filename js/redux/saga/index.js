@@ -22,8 +22,8 @@ export default function* rootSaga() {
         try {
           yield call(saga)
           break
-        } catch {
-          console.log('saga crashed')
+        } catch (e) {
+          console.error(e)
         }
       }
     })
