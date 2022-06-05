@@ -5,6 +5,7 @@ import changeEntitySaga from './changeEntitySaga'
 import updateDataSourceSaga from './updateDataSourceSaga'
 import updateDataSourcePropsSaga from './updateDataSourcePropsSaga'
 import deletDataSourceSaga from './deleteDataSourceSaga'
+import setSystemFontsSaga from './setSystemFontsSaga'
 
 export default function* rootSaga() {
   const sagas = [
@@ -14,6 +15,7 @@ export default function* rootSaga() {
     updateDataSourceSaga,
     updateDataSourcePropsSaga,
     deletDataSourceSaga,
+    setSystemFontsSaga,
   ]
 
   const retrySagas = yield sagas.map((saga) => {

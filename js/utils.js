@@ -18,6 +18,12 @@ export const routesNames = {
   print: '/print',
 }
 
+export const tabNames = [
+  ['front', 'Лицевая сторона'],
+  ['back', 'Обратная сторона'],
+  ['data-source', 'Источник данных'],
+]
+
 export const getArrayWithIndexes = (count, shuffle = false) => {
   let array_with_indexes = []
   let tmp = []
