@@ -1,6 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import { defaultObjects } from './initialState'
-import { dataURLtoBlob } from '../../utils'
 
 const { reducer, actions } = createSlice({
   name: 'common',
@@ -39,7 +38,7 @@ const { reducer, actions } = createSlice({
     },
 
     setNewState: (state, action) => {
-      return { ...action.payload }
+      return { ...action.payload, systemFonts: state.systemFonts }
     },
   },
 })

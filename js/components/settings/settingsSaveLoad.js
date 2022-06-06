@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useFilePicker } from 'use-file-picker'
 import { loadState } from '@/redux/reducers/commonReducer'
 import { useDispatch, useSelector } from 'react-redux'
+import getStateForSave from '@/redux/selectors/getStateForSave'
 
 const SettingsSaveLoad = () => {
   const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
-  const stateStringify = JSON.stringify(useSelector((state) => state))
+  const stateStringify = JSON.stringify(useSelector(getStateForSave))
 
   const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
     readAs: 'Text', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
