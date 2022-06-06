@@ -15,7 +15,7 @@ export const defaultObjects = {
     fontWeight: 'normal',
     fontStyle: 'normal',
     textDecoration: 'none',
-    textBorderWidth: 1,
+    textBorderWidth: 0,
     textBorderColor: '#0074A7',
     rotate: 0,
     data_source_id: '',

@@ -1,10 +1,11 @@
 import { put, call } from 'redux-saga/effects'
-import { Detector, possibleFonts } from '../../utils'
+import { Detector } from '../../utils'
+import { systemFonts } from '../../fontFamilies'
 import { setSystemFonts } from '../reducers/commonReducer'
 
 function* setSystemFontsWorker() {
   let detector = new Detector()
-  let fonts = possibleFonts.filter((fontName) => detector.detect(fontName))
+  let fonts = systemFonts.filter((fontName) => detector.detect(fontName))
   yield put(setSystemFonts(fonts))
 }
 

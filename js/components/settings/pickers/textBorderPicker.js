@@ -4,6 +4,9 @@ import React from 'react'
 const TextBorderPicker = ({ onchange, selected }) => {
   return (
     <div className="picker-wrapper">
+      Обводка
+      <br />
+      <br />
       <div
         style={{
           display: 'flex',
