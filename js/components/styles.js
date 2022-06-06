@@ -26,6 +26,17 @@ const Styles = () => {
 
   let style_str = entities.map((entity) => {
     if (entity.type == 'txt') {
+      let txtShadow =
+        entity.textBorderWidth == 0
+          ? ''
+          : `text-shadow: ${entity.textBorderWidth}px 0 0 ${entity.textBorderColor},
+      ${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor},
+      0 ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+      -${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+      -${entity.textBorderWidth}px 0 0 ${entity.textBorderColor}, 
+      -${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
+      0 -${entity.textBorderWidth}px 0 ${entity.textBorderColor},
+      ${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor};`
       return `.${entity.id} {
         color: ${entity.color};
         font-size: ${entity.fontSize}pt;
@@ -40,14 +51,7 @@ const Styles = () => {
         text-align: ${entity.align};
         transform-origin: center;
         transform: rotate(${entity.rotate}deg) !important;
-        text-shadow: ${entity.textBorderWidth}px 0 0 ${entity.textBorderColor},
-        ${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor},
-        0 ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
-        -${entity.textBorderWidth}px ${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
-        -${entity.textBorderWidth}px 0 0 ${entity.textBorderColor}, 
-        -${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor}, 
-        0 -${entity.textBorderWidth}px 0 ${entity.textBorderColor},
-        ${entity.textBorderWidth}px -${entity.textBorderWidth}px 0 ${entity.textBorderColor};
+        ${txtShadow}
       }`
     }
     if (entity.type == 'barcode') {
