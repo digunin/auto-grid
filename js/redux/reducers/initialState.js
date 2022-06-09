@@ -71,6 +71,7 @@ export const defaultObjects = {
     active_settings_tab: 'front',
     active_settings_side: 'front',
     systemFonts: [],
+    stateSaving: false,
     printingMode: 'grid',
     needPrint: {
       front: true,

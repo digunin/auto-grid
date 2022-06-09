@@ -40,6 +40,10 @@ const { reducer, actions } = createSlice({
     setNewState: (state, action) => {
       return { ...action.payload, systemFonts: state.systemFonts }
     },
+
+    setStateSaving: (state, action) => {
+      state.stateSaving = action.payload
+    },
   },
 })
 
@@ -53,6 +57,7 @@ export const {
   changeSideNeedPrint,
   setImageFile,
   setNewState,
+  setStateSaving,
 } = actions
 
 export default reducer

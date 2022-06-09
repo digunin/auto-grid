@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useFilePicker } from 'use-file-picker'
-import { loadState } from '@/redux/reducers/commonReducer'
+import { loadState, setStateSaving } from '@/redux/reducers/commonReducer'
 import { useDispatch, useSelector } from 'react-redux'
-import getStateForSave from '@/redux/selectors/getStateForSave'
+import StateSaver from './stateSaver'
 
 const SettingsSaveLoad = () => {
   const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
-  const stateStringify = JSON.stringify(useSelector(getStateForSave))
+  const isStateSaving = useSelector((state) => state.common.stateSaving)
 
   const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
     readAs: 'Text', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
@@ -33,17 +33,11 @@ const SettingsSaveLoad = () => {
   return (
     <div className="picker-wrapper">
       <button onClick={() => openFileSelector()}>Загрузить настройки</button>
-      <a
-        className="as-button"
-        role="button"
-        href={URL.createObjectURL(
-          new Blob([stateStringify], { type: 'application/json' })
-        )}
-        download="PRINT.json"
-      >
+      <button onClick={() => dispatch(setStateSaving(true))}>
         Сохранить настройки
-      </a>
+      </button>
       {errorMessage && <span style={{ color: 'red' }}>{errorMessage}</span>}
+      {isStateSaving ? <StateSaver /> : null}
     </div>
   )
 }
