@@ -68,6 +68,16 @@ export const defaultObjects = {
       front: null,
       back: null,
     },
+    imageStyle: {
+      front: {
+        position: 'center',
+        fit: 'contain',
+      },
+      back: {
+        position: 'center',
+        fit: 'contain',
+      },
+    },
     active_settings_tab: 'front',
     active_settings_side: 'front',
     systemFonts: [],

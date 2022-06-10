@@ -1,7 +1,7 @@
 import React from 'react'
 
-const ImageComponent = ({ file }) => {
-  return <img className={'card-image'} src={file.content} />
+const ImageComponent = ({ file, side }) => {
+  return <img className={`card-image ${side}-image`} src={file.content} />
 }
 
 export default ImageComponent

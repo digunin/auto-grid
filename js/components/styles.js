@@ -1,12 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import printingSelector from '../redux/selectors/printingSelector'
+import getImageStyleSelector from '../redux/selectors/getImageStyleSelector'
 
 const Styles = () => {
   const entities = useSelector((state) => state.dataSet.entities)
   const scale = useSelector(
     (state) => state.common.blockInsideBlockWrapperScale
   )
+  const { frontStyle, backStyle } = useSelector(getImageStyleSelector)
   const { printingMode } = useSelector(printingSelector)
 
   const mediaStyle = `
@@ -97,6 +99,21 @@ const Styles = () => {
     transform-origin: center;
     transform: scale(${scale});
     transition: transform 0.2s;
+  }
+
+  .card-image{
+    width: var(--block-width);
+    height: var(--block-height);
+  }
+
+  .front-image {
+    object-position: ${frontStyle.position};
+    object-fit: ${frontStyle.fit};
+  }
+
+  .back-image {
+    object-position: ${backStyle.position};
+    object-fit: ${backStyle.fit};
   }
   `
 

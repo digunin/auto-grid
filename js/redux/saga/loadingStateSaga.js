@@ -44,6 +44,16 @@ function* loadingStateWorker(action) {
 
   commonState.blockInsideBlockWrapperScale =
     commonState.blockInsideBlockWrapperScale || 1.5
+  commonState.imageStyle = commonState.imageStyle || {
+    front: {
+      position: 'inherit',
+      fit: 'inherit',
+    },
+    back: {
+      position: 'inherit',
+      fit: 'inherit',
+    },
+  }
 
   if (commonState.imagesDataURL?.front?.startsWith('data:image')) {
     commonState.frontImage.content = URL.createObjectURL(

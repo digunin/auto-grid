@@ -19,7 +19,7 @@ const Block = ({
   )
   return (
     <div className={`block ${subclass ? subclass : ''}`}>
-      {bgImage && <ImageComponent file={bgImage} />}
+      {bgImage && <ImageComponent file={bgImage} side={side} />}
       <TxtBlock
         txt={txt}
         index={index}
