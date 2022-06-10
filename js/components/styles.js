@@ -4,7 +4,11 @@ import printingSelector from '../redux/selectors/printingSelector'
 
 const Styles = () => {
   const entities = useSelector((state) => state.dataSet.entities)
+  const scale = useSelector(
+    (state) => state.common.blockInsideBlockWrapperScale
+  )
   const { printingMode } = useSelector(printingSelector)
+
   const mediaStyle = `
   @media print {
     nav {
@@ -75,10 +79,32 @@ const Styles = () => {
       }`
     }
   })
+
+  let blockInsideBlockWrapperStyle = `
+  .block-wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--block-width)*${scale});
+    height: calc(var(--block-height)*${scale});
+    transition: width 0.2s, height 0.2s
+  }
+
+  .block-wrapper .block {
+    margin: 0 auto;
+    overflow: hidden;
+    transform-origin: center;
+    transform: scale(${scale});
+    transition: transform 0.2s;
+  }
+  `
+
   return (
     <style>
       {style_str}
       {mediaStyle}
+      {blockInsideBlockWrapperStyle}
     </style>
   )
 }

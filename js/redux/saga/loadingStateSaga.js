@@ -42,6 +42,9 @@ function* loadingStateWorker(action) {
     delete commonState.systemFonts
   }
 
+  commonState.blockInsideBlockWrapperScale =
+    commonState.blockInsideBlockWrapperScale || 1.5
+
   if (commonState.imagesDataURL?.front?.startsWith('data:image')) {
     commonState.frontImage.content = URL.createObjectURL(
       dataURLtoBlob(commonState.imagesDataURL.front)

@@ -17,6 +17,7 @@ import {
 } from '@/redux/reducers/commonReducer'
 import printingSelector from '@/redux/selectors/printingSelector'
 import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
+import SettingBlockScalePicker from './pickers/settingBlockScalePicker'
 
 const PrintSettings = () => {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ const PrintSettings = () => {
   return (
     <>
       <div className="static-pickers-wrapper">
+        <SettingBlockScalePicker />
         <div
           className="block-wrapper"
           onClick={() => dispatch(setSelected(null, active_settings_side))}

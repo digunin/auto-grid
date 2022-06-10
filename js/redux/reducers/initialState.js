@@ -77,5 +77,6 @@ export const defaultObjects = {
       front: true,
       back: true,
     },
+    blockInsideBlockWrapperScale: 1.5,
   },
 }

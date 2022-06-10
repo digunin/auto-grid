@@ -142,6 +142,7 @@ nav .nav-links a.active {
   margin-top: 2em;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1em
 }
 
 .tab-content button {
@@ -164,18 +165,6 @@ nav .nav-links a.active {
   font-family: Arial;
   font-size: 0.85rem;
   cursor: default;
-}
-
-.block-wrapper {
-  padding: 3cm;
-  margin: 0 auto;
-}
-
-.block-wrapper .block {
-  transform-origin: center;
-  margin: 0 auto;
-  transform: scale(1.5);
-  overflow: hidden;
 }
 
 .picker-wrapper {

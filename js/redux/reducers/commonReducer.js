@@ -44,6 +44,10 @@ const { reducer, actions } = createSlice({
     setStateSaving: (state, action) => {
       state.stateSaving = action.payload
     },
+
+    setBlockInsideBlockWrapperScale: (state, action) => {
+      state.blockInsideBlockWrapperScale = action.payload
+    },
   },
 })
 
@@ -58,6 +62,7 @@ export const {
   setImageFile,
   setNewState,
   setStateSaving,
+  setBlockInsideBlockWrapperScale,
 } = actions
 
 export default reducer
