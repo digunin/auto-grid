@@ -1,5 +1,9 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Block from '../block'
+import { setImagePosition } from '@/redux/reducers/commonReducer'
+import { imagePositions } from '../../utils'
+import getImageStyleSelector from '../../redux/selectors/getImageStyleSelector'
 
 const BlockWrapper = ({
   side,
@@ -8,16 +12,40 @@ const BlockWrapper = ({
   onEntityClick,
   selected_id,
 }) => {
+  const dispatch = useDispatch()
+  const clickHandler = (position) => {
+    dispatch(setImagePosition(position))
+  }
+  const { frontStyle, backStyle } = useSelector(getImageStyleSelector)
+  const { position } = side === 'front' ? frontStyle : backStyle
+
   return (
     <div className="block-wrapper" onClick={onclick}>
-      <Block
-        selected_id={selected_id}
-        onclick={onEntityClick}
-        subclass={subclass}
-        index={0}
-        inSetting={true}
-        side={side}
-      />
+      {imagePositions.map((pos) => {
+        if (pos === 'center') {
+          return (
+            <Block
+              key="block-key"
+              selected_id={selected_id}
+              onclick={onEntityClick}
+              subclass={subclass}
+              index={0}
+              inSetting={true}
+              side={side}
+            />
+          )
+        } else {
+          let active = pos === position ? 'active' : ''
+          let onClickParam = active === '' ? pos : 'center'
+          return (
+            <div
+              key={`pos-button-${pos}`}
+              onClick={() => clickHandler(onClickParam)}
+              className={`position-button ${pos} ${active}`}
+            ></div>
+          )
+        }
+      })}
     </div>
   )
 }

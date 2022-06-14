@@ -2,17 +2,8 @@ import React from 'react'
 import useImageControlButtons from './useImageControlButtons'
 
 const ImageControlButtons = () => {
-  const {
-    scales,
-    fits,
-    positions,
-    currentScale,
-    currentFit,
-    currentPosition,
-    handleScale,
-    handleFit,
-    handlePosition,
-  } = useImageControlButtons()
+  const { scales, fits, currentScale, currentFit, handleScale, handleFit } =
+    useImageControlButtons()
 
   return (
     <div className="picker-wrapper">
@@ -53,25 +44,6 @@ const ImageControlButtons = () => {
             )
           })}
         </div>
-      </div>
-      <div>
-        {positions.map((pos) => {
-          let style = {
-            boxShadow:
-              pos === currentPosition
-                ? '0 0 5px 5px var(--active-color)'
-                : 'inherit',
-          }
-          return (
-            <button
-              key={`pos-button-${pos}`}
-              style={style}
-              onClick={() => handlePosition(pos)}
-            >
-              {pos}
-            </button>
-          )
-        })}
       </div>
     </div>
   )

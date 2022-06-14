@@ -75,6 +75,18 @@ export const dataSelectorModeInfo = [
   ['print-selected', 'Печатать выбранные'],
 ]
 
+export const imagePositions = [
+  'top left',
+  'top',
+  'top right',
+  'left',
+  'center',
+  'right',
+  'bottom left',
+  'bottom',
+  'bottom right',
+]
+
 export const selectDataFromSource = {
   [dataSelectorModeInfo[0][0]]: (arr) => arr,
   [dataSelectorModeInfo[1][0]]: (arr, { diapason: { from, to } }) => {

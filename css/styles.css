@@ -62,6 +62,10 @@
       var(--block-width)
   );
   --right-column-pos-top: var(--left-column-pos-top);
+
+  --position-button-min-size: 25px;
+  --position-button-color: red;
+  --position-button-border-width: 3px
 }
 
 nav {
@@ -217,6 +221,25 @@ nav .nav-links a.active {
 .right-column {
   top: var(--right-column-pos-top);
   left: var(--right-column-pos-left);
+}
+
+.position-button {
+  background-color: var(--light-grey-color);
+  min-width: var(--position-button-min-size);
+  min-height: var(--position-button-min-size);
+}
+
+.position-button.active.left {
+  border-left: var(--position-button-border-width) solid var(--position-button-color)
+}
+.position-button.active.right {
+  border-right: var(--position-button-border-width) solid var(--position-button-color)
+}
+.position-button.active.top {
+  border-top: var(--position-button-border-width) solid var(--position-button-color)
+}
+.position-button.active.bottom {
+  border-bottom: var(--position-button-border-width) solid var(--position-button-color)
 }
 
 .block {

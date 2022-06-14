@@ -85,18 +85,16 @@ const Styles = () => {
   let blockInsideBlockWrapperStyle = `
   .block-wrapper {
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(var(--block-width)*${scale});
-    height: calc(var(--block-height)*${scale});
-    transition: width 0.2s, height 0.2s
+    display: grid;
+    grid-template-columns: var(--position-button-min-size) calc(var(--block-width)*${scale}) var(--position-button-min-size);
+    grid-template-rows: var(--position-button-min-size) calc(var(--block-height)*${scale}) var(--position-button-min-size);
+    transition: width 0.2s, height 0.2s, grid-template 0.2s
   }
 
   .block-wrapper .block {
     margin: 0 auto;
     overflow: hidden;
-    transform-origin: center;
+    transform-origin: top;
     transform: scale(${scale});
     transition: transform 0.2s;
   }
