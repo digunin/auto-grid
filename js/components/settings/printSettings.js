@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Block from '../block'
 import AddEntities from './addEntities'
 import AllEntities from './allEntities'
 import BarcodeSettings from './barcodeSettings'
@@ -18,6 +17,7 @@ import {
 import printingSelector from '@/redux/selectors/printingSelector'
 import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
 import ImageControlButtons from './pickers/imageControlButtons'
+import BlockWrapper from './blockWrapper'
 
 const PrintSettings = () => {
   const dispatch = useDispatch()
@@ -27,21 +27,15 @@ const PrintSettings = () => {
     <>
       <div className="static-pickers-wrapper">
         <ImageControlButtons />
-        <div
-          className="block-wrapper"
-          onClick={() => dispatch(setSelected(null, active_settings_side))}
-        >
-          <Block
-            selected_id={selected?.id}
-            onclick={(id) => {
-              dispatch(setSelected(id, active_settings_side))
-            }}
-            subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
-            index={0}
-            inSetting={true}
-            side={active_settings_side}
-          />
-        </div>
+        <BlockWrapper
+          side={active_settings_side}
+          subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
+          onclick={() => dispatch(setSelected(null, active_settings_side))}
+          onEntityClick={(id) => {
+            dispatch(setSelected(id, active_settings_side))
+          }}
+          selected_id={selected?.id}
+        />
         <AllEntities />
         <SettingsSaveLoad />
         <AddEntities />
