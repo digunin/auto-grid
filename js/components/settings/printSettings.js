@@ -13,6 +13,7 @@ import { setSelected } from '@/redux/reducers/datasetReducer'
 import {
   changeSideNeedPrint,
   setPrintingMode,
+  enableDrag,
 } from '@/redux/reducers/commonReducer'
 import printingSelector from '@/redux/selectors/printingSelector'
 import getSelectedEntitySelector from '@/redux/selectors/getSelectedEntitySelector'
@@ -33,10 +34,12 @@ const PrintSettings = () => {
           on_mouse_down={() =>
             dispatch(setSelected(null, active_settings_side))
           }
+          on_mouse_up={() => dispatch(enableDrag(false))}
           onEntityMouseDown={(id, event) => {
             event.stopPropagation()
             if (event.button === 0) {
               dispatch(setSelected(id, active_settings_side))
+              dispatch(enableDrag(true))
             }
           }}
           selected_id={selected?.id}

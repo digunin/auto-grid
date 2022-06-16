@@ -88,5 +88,6 @@ export const defaultObjects = {
       back: true,
     },
     blockInsideBlockWrapperScale: 1.5,
+    dragEnabled: false,
   },
 }

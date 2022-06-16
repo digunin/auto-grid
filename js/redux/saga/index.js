@@ -6,6 +6,7 @@ import updateDataSourceSaga from './updateDataSourceSaga'
 import updateDataSourcePropsSaga from './updateDataSourcePropsSaga'
 import deletDataSourceSaga from './deleteDataSourceSaga'
 import setSystemFontsSaga from './setSystemFontsSaga'
+import dragAndDropSaga from './dragAndDropSaga'
 
 export default function* rootSaga() {
   const sagas = [
@@ -16,6 +17,7 @@ export default function* rootSaga() {
     updateDataSourcePropsSaga,
     deletDataSourceSaga,
     setSystemFontsSaga,
+    dragAndDropSaga,
   ]
 
   const retrySagas = yield sagas.map((saga) => {

@@ -9,6 +9,7 @@ const BlockWrapper = ({
   side,
   subclass,
   on_mouse_down,
+  on_mouse_up,
   onEntityMouseDown,
   selected_id,
 }) => {
@@ -20,7 +21,11 @@ const BlockWrapper = ({
   const { position } = side === 'front' ? frontStyle : backStyle
 
   return (
-    <div className="block-wrapper" onMouseDown={on_mouse_down}>
+    <div
+      className="block-wrapper"
+      onMouseDown={on_mouse_down}
+      onMouseUp={on_mouse_up}
+    >
       {imagePositions.map((pos) => {
         if (pos === 'center') {
           return (

@@ -58,6 +58,10 @@ const { reducer, actions } = createSlice({
       const side = state.active_settings_side
       state.imageStyle[side].fit = action.payload
     },
+
+    enableDrag: (state, action) => {
+      state.dragEnabled = action.payload
+    },
   },
 })
 
@@ -75,6 +79,7 @@ export const {
   setBlockInsideBlockWrapperScale,
   setImagePosition,
   setImageFit,
+  enableDrag,
 } = actions
 
 export default reducer
