@@ -1,6 +1,12 @@
 import React from 'react'
 
-const TxtBlock = ({ txt, selected_id, onclick, index, inSetting }) => {
+const TxtBlock = ({
+  txt,
+  selected_id,
+  onEntityMouseDown,
+  index,
+  inSetting,
+}) => {
   return (
     <>
       {txt.map((text) => {
@@ -8,9 +14,8 @@ const TxtBlock = ({ txt, selected_id, onclick, index, inSetting }) => {
         return (
           printText && (
             <div
-              onClick={(e) => {
-                e.stopPropagation()
-                onclick(text.id)
+              onMouseDown={(e) => {
+                onEntityMouseDown(text.id, e)
               }}
               key={text.id}
               className={`numbering ${text.id} ${

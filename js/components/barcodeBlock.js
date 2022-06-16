@@ -4,7 +4,13 @@ import Barcode from './barcode'
 import { changeEntity } from '../redux/reducers/datasetReducer'
 import { useDispatch } from 'react-redux'
 
-const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
+const BarcodeBlock = ({
+  barcodes,
+  selected_id,
+  onEntityMouseDown,
+  index,
+  inSetting,
+}) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -47,10 +53,7 @@ const BarcodeBlock = ({ barcodes, selected_id, onclick, index, inSetting }) => {
               resetKeys={[barcode.format]}
             >
               <Barcode
-                onclick={(e) => {
-                  e.stopPropagation()
-                  onclick(barcode.id)
-                }}
+                onEntityMouseDown={onEntityMouseDown}
                 subclass={`${barcode.id}${
                   barcode.id === selected_id ? ' selected' : ''
                 }`}

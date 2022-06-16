@@ -1,7 +1,7 @@
 import React from 'react'
 import { useBarcode } from 'react-barcodes'
 
-const Barcode = ({ subclass, value, onclick, barcode }) => {
+const Barcode = ({ subclass, value, onEntityMouseDown, barcode }) => {
   const { inputRef } = useBarcode({
     value: value,
     options: {
@@ -20,7 +20,11 @@ const Barcode = ({ subclass, value, onclick, barcode }) => {
   })
 
   return (
-    <svg onClick={onclick} className={`barcode ${subclass}`} ref={inputRef} />
+    <svg
+      onMouseDown={(e) => onEntityMouseDown(barcode.id, e)}
+      className={`barcode ${subclass}`}
+      ref={inputRef}
+    />
   )
 }
 

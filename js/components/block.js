@@ -10,7 +10,7 @@ const Block = ({
   index,
   side,
   subclass,
-  onclick,
+  onEntityMouseDown,
   selected_id = null,
   inSetting = false,
 }) => {
@@ -23,20 +23,20 @@ const Block = ({
       <TxtBlock
         txt={txt}
         index={index}
-        onclick={onclick}
+        onEntityMouseDown={onEntityMouseDown}
         selected_id={selected_id}
         inSetting={inSetting}
       />
       <QRCodeBlock
         qrcodes={qrcodes}
         index={index}
-        onclick={onclick}
+        onEntityMouseDown={onEntityMouseDown}
         selected_id={selected_id}
         inSetting={inSetting}
       />
       <BarcodeBlock
         index={index}
-        onclick={onclick}
+        onEntityMouseDown={onEntityMouseDown}
         selected_id={selected_id}
         barcodes={barcodes}
         inSetting={inSetting}

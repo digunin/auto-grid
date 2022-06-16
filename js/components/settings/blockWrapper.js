@@ -8,8 +8,8 @@ import getImageStyleSelector from '../../redux/selectors/getImageStyleSelector'
 const BlockWrapper = ({
   side,
   subclass,
-  onclick,
-  onEntityClick,
+  on_mouse_down,
+  onEntityMouseDown,
   selected_id,
 }) => {
   const dispatch = useDispatch()
@@ -20,14 +20,14 @@ const BlockWrapper = ({
   const { position } = side === 'front' ? frontStyle : backStyle
 
   return (
-    <div className="block-wrapper" onClick={onclick}>
+    <div className="block-wrapper" onMouseDown={on_mouse_down}>
       {imagePositions.map((pos) => {
         if (pos === 'center') {
           return (
             <Block
               key="block-key"
               selected_id={selected_id}
-              onclick={onEntityClick}
+              onEntityMouseDown={onEntityMouseDown}
               subclass={subclass}
               index={0}
               inSetting={true}

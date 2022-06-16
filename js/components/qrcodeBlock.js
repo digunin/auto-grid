@@ -1,7 +1,13 @@
 import React from 'react'
 import QR_Code from './qrcode'
 
-const QRCodeBlock = ({ qrcodes, selected_id, onclick, index, inSetting }) => {
+const QRCodeBlock = ({
+  qrcodes,
+  selected_id,
+  onEntityMouseDown,
+  index,
+  inSetting,
+}) => {
   return (
     <>
       {qrcodes.map((qrcode) => {
@@ -11,10 +17,7 @@ const QRCodeBlock = ({ qrcodes, selected_id, onclick, index, inSetting }) => {
         return (
           printQR && (
             <QR_Code
-              onclick={(e) => {
-                e.stopPropagation()
-                onclick(qrcode.id)
-              }}
+              onEntityMouseDown={onEntityMouseDown}
               subclass={`${qrcode.id}${
                 qrcode.id === selected_id ? ' selected' : ''
               }`}

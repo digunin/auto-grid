@@ -30,9 +30,14 @@ const PrintSettings = () => {
         <BlockWrapper
           side={active_settings_side}
           subclass={printingMode === 'grid' ? 'grid-block' : 'sublime-block'}
-          onclick={() => dispatch(setSelected(null, active_settings_side))}
-          onEntityClick={(id) => {
-            dispatch(setSelected(id, active_settings_side))
+          on_mouse_down={() =>
+            dispatch(setSelected(null, active_settings_side))
+          }
+          onEntityMouseDown={(id, event) => {
+            event.stopPropagation()
+            if (event.button === 0) {
+              dispatch(setSelected(id, active_settings_side))
+            }
           }}
           selected_id={selected?.id}
         />
