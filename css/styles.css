@@ -2,8 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color-adjust: exact !important;
-  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
 }
 
 :root {
@@ -36,11 +35,11 @@
   --light-mark-line-width: 0.1mm;
   --topleft-light-mark-top: 59.8mm;
   --topleft-light-mark-from-middle: 96.8mm;
-  --topright-light-mark-top: 57.1mm;
+  --topright-light-mark-top: 58mm;
   --topright-light-mark-from-middle: 96.8mm;
   --bottomleft-light-mark-top: 230.3mm;
   --bottomleft-light-mark-from-middle: 97mm;
-  --bottomright-light-mark-top: 227.8mm;
+  --bottomright-light-mark-top: 228mm;
   --bottomright-light-mark-from-middle: 96.7mm;
 
   --magnetic-stripe-marker-from-top: 6mm;
