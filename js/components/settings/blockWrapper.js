@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Block from '../block'
-import { setImagePosition } from '@/redux/reducers/commonReducer'
+import { setImagePosition, mouseMoving } from '@/redux/reducers/commonReducer'
 import { imagePositions } from '../../utils'
 import getImageStyleSelector from '../../redux/selectors/getImageStyleSelector'
 
@@ -33,6 +33,7 @@ const BlockWrapper = ({
               key="block-key"
               selected_id={selected_id}
               onEntityMouseDown={onEntityMouseDown}
+              on_mouse_move={(e) => dispatch(mouseMoving(e))}
               subclass={subclass}
               index={0}
               inSetting={true}

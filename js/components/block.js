@@ -11,14 +11,25 @@ const Block = ({
   side,
   subclass,
   onEntityMouseDown,
+  on_mouse_move,
   selected_id = null,
   inSetting = false,
 }) => {
   const { bgImage, txt, barcodes, qrcodes } = useSelector(
     separatedEntitiesSelector(side)
   )
+
+  const mouseMoveHandler =
+    on_mouse_move ||
+    function () {
+      return
+    }
+
   return (
-    <div className={`block ${subclass ? subclass : ''}`}>
+    <div
+      className={`block ${subclass ? subclass : ''}`}
+      onMouseMove={mouseMoveHandler}
+    >
       {bgImage && <ImageComponent file={bgImage} side={side} />}
       <TxtBlock
         txt={txt}

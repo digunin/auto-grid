@@ -67,6 +67,7 @@ const { reducer, actions } = createSlice({
 
 export const putImage = createAction('common/put_image')
 export const loadState = createAction('load_state')
+export const mouseMoving = createAction('common/mouse-move')
 
 export const {
   setActiveSettingsTab,
