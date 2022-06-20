@@ -9,7 +9,7 @@ const BlockWrapper = ({
   side,
   subclass,
   on_mouse_down,
-  on_mouse_up,
+  reset_drag,
   onEntityMouseDown,
   selected_id,
 }) => {
@@ -24,7 +24,7 @@ const BlockWrapper = ({
     <div
       className="block-wrapper"
       onMouseDown={on_mouse_down}
-      onMouseUp={on_mouse_up}
+      onMouseUp={reset_drag}
     >
       {imagePositions.map((pos) => {
         if (pos === 'center') {
@@ -33,6 +33,7 @@ const BlockWrapper = ({
               key="block-key"
               selected_id={selected_id}
               onEntityMouseDown={onEntityMouseDown}
+              reset_drag={reset_drag}
               on_mouse_move={(e) => dispatch(mouseMoving(e))}
               subclass={subclass}
               index={0}

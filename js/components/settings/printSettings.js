@@ -34,7 +34,7 @@ const PrintSettings = () => {
           on_mouse_down={() =>
             dispatch(setSelected(null, active_settings_side))
           }
-          on_mouse_up={() => dispatch(enableDrag(false))}
+          reset_drag={() => dispatch(enableDrag(false))}
           onEntityMouseDown={(id, event) => {
             event.stopPropagation()
             if (event.button === 0) {

@@ -12,6 +12,7 @@ const Block = ({
   subclass,
   onEntityMouseDown,
   on_mouse_move,
+  reset_drag,
   selected_id = null,
   inSetting = false,
 }) => {
@@ -29,6 +30,7 @@ const Block = ({
     <div
       className={`block ${subclass ? subclass : ''}`}
       onMouseMove={mouseMoveHandler}
+      onMouseLeave={reset_drag}
     >
       {bgImage && <ImageComponent file={bgImage} side={side} />}
       <TxtBlock
