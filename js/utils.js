@@ -218,3 +218,51 @@ export function dataURLtoBlob(dataurl) {
 
 // примерно половина объема localStorage
 export const maxDataURL_length = 2511000
+
+export function getPageOffsetRect(elem) {
+  var box = elem.getBoundingClientRect()
+  var body = document.body
+  var docElem = document.documentElement
+
+  // поддержка IE
+  var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop
+  var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft
+  var clientTop = docElem.clientTop || body.clientTop || 0
+  var clientLeft = docElem.clientLeft || body.clientLeft || 0
+
+  var x = box.left + scrollLeft - clientLeft
+  var y = box.top + scrollTop - clientTop
+  return {
+    x: Math.round(x),
+    y: Math.round(y),
+    width: Math.round(box.width),
+    height: Math.round(box.height),
+  }
+}
+
+export function getNewEntityPos(pixelRect, mmRect) {
+  const scale = pixelRect.width / mmRect.width
+
+  const pixelEntityPointer = {
+    x: pixelRect.x + mmRect.pointer.x * scale,
+    y: pixelRect.y + mmRect.pointer.y * scale,
+  }
+
+  const pixelOffset = {
+    x: pixelRect.pointer.x - pixelEntityPointer.x,
+    y: pixelRect.pointer.y - pixelEntityPointer.y,
+  }
+
+  const mmOffset = {
+    x: pixelOffset.x / scale,
+    y: pixelOffset.y / scale,
+  }
+
+  let left = mmRect.pointer.x + mmOffset.x
+  let top = mmRect.pointer.y + mmOffset.y
+
+  return {
+    left: left.toFixed(1),
+    top: top.toFixed(1),
+  }
+}
