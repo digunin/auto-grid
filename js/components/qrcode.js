@@ -5,9 +5,9 @@ const QR_Code = ({ subclass, value, onEntityMouseDown, qrcode }) => {
   return (
     <QRCode
       onMouseDown={(e) => {
-        onEntityMouseDown(qrcode.id, e)
+        onEntityMouseDown(qrcode, e)
       }}
-      className={`qrcode ${subclass}`}
+      className={`entity qrcode ${subclass}`}
       bgColor={qrcode.lightColor}
       fgColor={qrcode.darkColor}
       level={qrcode.level}

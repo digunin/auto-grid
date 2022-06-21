@@ -243,6 +243,11 @@ nav .nav-links a.active {
 
 .block {
   position: relative;
+  user-select: none
+}
+
+.entity {
+  user-select:none
 }
 
 .grid-block {

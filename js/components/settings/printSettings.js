@@ -35,11 +35,16 @@ const PrintSettings = () => {
             dispatch(setSelected(null, active_settings_side))
           }
           reset_drag={() => dispatch(enableDrag(false))}
-          onEntityMouseDown={(id, event) => {
+          onEntityMouseDown={({ id, left, top }, event) => {
             event.stopPropagation()
             if (event.button === 0) {
               dispatch(setSelected(id, active_settings_side))
-              dispatch(enableDrag(true))
+              dispatch(
+                enableDrag({
+                  mouseStart: { x: event.pageX, y: event.pageY },
+                  entityStart: { x: left, y: top },
+                })
+              )
             }
           }}
           selected_id={selected?.id}

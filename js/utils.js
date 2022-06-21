@@ -240,26 +240,19 @@ export function getPageOffsetRect(elem) {
   }
 }
 
-export function getNewEntityPos(pixelRect, mmRect) {
-  const scale = pixelRect.width / mmRect.width
-
-  const pixelEntityPointer = {
-    x: pixelRect.x + mmRect.pointer.x * scale,
-    y: pixelRect.y + mmRect.pointer.y * scale,
+export function getNewEntityPos({ scale, startPoints, currentPoint }) {
+  let pixelOffset = {
+    x: currentPoint.x - startPoints.mouseStart.x,
+    y: currentPoint.y - startPoints.mouseStart.y,
   }
 
-  const pixelOffset = {
-    x: pixelRect.pointer.x - pixelEntityPointer.x,
-    y: pixelRect.pointer.y - pixelEntityPointer.y,
-  }
-
-  const mmOffset = {
+  let mmOffset = {
     x: pixelOffset.x / scale,
     y: pixelOffset.y / scale,
   }
 
-  let left = mmRect.pointer.x + mmOffset.x
-  let top = mmRect.pointer.y + mmOffset.y
+  let left = Number(startPoints.entityStart.x) + mmOffset.x
+  let top = Number(startPoints.entityStart.y) + mmOffset.y
 
   return {
     left: left.toFixed(1),

@@ -15,10 +15,10 @@ const TxtBlock = ({
           printText && (
             <div
               onMouseDown={(e) => {
-                onEntityMouseDown(text.id, e)
+                onEntityMouseDown(text, e)
               }}
               key={text.id}
-              className={`numbering ${text.id} ${
+              className={`entity numbering ${text.id} ${
                 selected_id === text.id ? 'selected' : ''
               }`}
             >

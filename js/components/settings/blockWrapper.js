@@ -34,7 +34,9 @@ const BlockWrapper = ({
               selected_id={selected_id}
               onEntityMouseDown={onEntityMouseDown}
               reset_drag={reset_drag}
-              on_mouse_move={(e) => dispatch(mouseMoving(e))}
+              on_mouse_move={(e) =>
+                dispatch(mouseMoving({ pageX: e.pageX, pageY: e.pageY }))
+              }
               subclass={subclass}
               index={0}
               inSetting={true}

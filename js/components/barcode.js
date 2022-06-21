@@ -21,8 +21,8 @@ const Barcode = ({ subclass, value, onEntityMouseDown, barcode }) => {
 
   return (
     <svg
-      onMouseDown={(e) => onEntityMouseDown(barcode.id, e)}
-      className={`barcode ${subclass}`}
+      onMouseDown={(e) => onEntityMouseDown(barcode, e)}
+      className={`entity barcode ${subclass}`}
       ref={inputRef}
     />
   )
