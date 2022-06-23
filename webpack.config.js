@@ -1,13 +1,17 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: {
     main: './js/index.js',
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: isDev ? '[name].[contenthash].js' : '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -21,6 +25,7 @@ module.exports = {
       template: './index.html',
     }),
     new CleanWebpackPlugin(),
+    new CopyPlugin({ patterns: ['./js/fontFamilies.js'] }),
   ],
   optimization: {
     splitChunks: {
