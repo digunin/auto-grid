@@ -9,13 +9,13 @@ function Select({
   multiple = true,
   disabled = false,
   onchange,
+  orderNumberPad,
 }) {
   const { onclick } = useSelect(selectedValues, onchange, multiple, disabled)
   return (
     <div
       style={{
         height: `calc(${size} * var(--option-height)`,
-        overflowY: 'auto',
       }}
       className={disabled ? 'select-input select-disabled' : 'select-input'}
       id="select-input-element"
@@ -32,7 +32,7 @@ function Select({
           <Option
             key={`${i}-${value}`}
             value={i}
-            text={`${`${i + 1}`.padEnd(10, '\u00A0')}${value}`}
+            text={`${`${i + 1}`.padEnd(orderNumberPad, '\u00A0')}${value}`}
             className={className}
           />
         )

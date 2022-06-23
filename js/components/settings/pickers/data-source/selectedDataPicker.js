@@ -24,6 +24,7 @@ const SelectedDataPicker = ({ onSingleSelection }) => {
       onchange={onchange}
       multiple={isMultiple}
       disabled={isDisabled}
+      orderNumberPad={String(selectedDataSource.data.length).length + 2}
     />
   )
 }
