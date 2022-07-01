@@ -25,13 +25,8 @@ module.exports = {
       template: './index.html',
     }),
     new CleanWebpackPlugin(),
-    new CopyPlugin({ patterns: ['./js/fontFamilies.js'] }),
+    new CopyPlugin({ patterns: ['./js/fontFamilies.js', './css/styles.css'] }),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
   devtool: 'source-map',
   devServer: {
     port: 5500,
