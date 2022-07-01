@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import useDiapasonPicker from './useDiapasonPicker'
 
 const DiapasonPicker = ({ onchange, onfocus, max, from = 1, to = max }) => {
@@ -9,18 +9,29 @@ const DiapasonPicker = ({ onchange, onfocus, max, from = 1, to = max }) => {
     to
   )
 
+  const fromRef = useRef()
+  const toRef = useRef()
+
   return (
     <div>
       <span>{`С${'\t'}`}</span>
       <input
-        onFocus={() => onfocus('from')}
+        ref={fromRef}
+        onFocus={() => {
+          fromRef.current.setSelectionRange(0, String(from).length)
+          onfocus('from')
+        }}
         onChange={(e) => onFromChange(e.target.value)}
         value={diapason.from}
       />
       <br />
       <span>{`По${'\t'}`}</span>
       <input
-        onFocus={() => onfocus('to')}
+        ref={toRef}
+        onFocus={() => {
+          toRef.current.setSelectionRange(0, String(to).length)
+          onfocus('to')
+        }}
         onChange={(e) => onToChange(e.target.value)}
         value={diapason.to}
       />
