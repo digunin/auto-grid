@@ -1,9 +1,9 @@
 import React from 'react'
-import { QRCode } from 'react-qr-svg'
+import { QRCodeSVG } from 'qrcode.react'
 
 const QR_Code = ({ subclass, value, onEntityMouseDown, qrcode }) => {
   return (
-    <QRCode
+    <QRCodeSVG
       onMouseDown={(e) => {
         onEntityMouseDown(qrcode, e)
       }}
