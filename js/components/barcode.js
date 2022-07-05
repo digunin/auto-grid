@@ -1,5 +1,5 @@
 import React from 'react'
-import { useBarcode } from 'react-barcodes'
+import { useBarcode } from 'next-barcode'
 
 const Barcode = ({ subclass, value, onEntityMouseDown, barcode }) => {
   const { inputRef } = useBarcode({

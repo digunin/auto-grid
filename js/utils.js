@@ -66,6 +66,11 @@ export const barcodeFormats = [
   ['code128b', 'CODE128-B'],
   ['code128c', 'CODE128-C'],
   ['code39', 'CODE39'],
+  ['ean8', 'EAN-8'],
+  ['ean5', 'EAN-5'],
+  ['ean2', 'EAN-2'],
+  ['itf', 'ITF'],
+  ['itf14', 'ITF 14'],
 ]
 
 // Нельзя менять порядок элементов в массиве
