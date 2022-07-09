@@ -87,23 +87,22 @@ nav .nav-links {
   flex-grow: 1;
   display: flex;
   font-size: 1.5rem;
-  justify-content: center;
+  justify-content: start;
   gap: 3rem;
 }
 
 nav .nav-links a {
   text-decoration: none;
   color: white;
-  transition: 0.2s;
+  transition:  0.5s;
 }
 
 nav .nav-links a:hover {
-  color: var(--active-color);
+  text-decoration: underline;
 }
 
 nav .nav-links a.active {
   color: var(--active-color);
-  text-decoration: underline;
 }
 
 .print-setting {
