@@ -16,6 +16,7 @@ export const routesNames = {
   home: '/',
   setting: '/setting',
   print: '/print',
+  about: '/about',
 }
 
 export const tabNames = [

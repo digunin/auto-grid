@@ -7,13 +7,13 @@ const NavBar = () => {
     <nav>
       <div className="nav-links">
         <NavLink activeClassName="active" exact to={routesNames.home}>
-          Домой
+          Настройки печати
         </NavLink>
-        {/* <NavLink activeClassName="active" to={routesNames.setting}>
-          Настройка печати
-        </NavLink> */}
         <NavLink activeClassName="active" to={routesNames.print}>
           Страница для печати
+        </NavLink>
+        <NavLink activeClassName="active" to={routesNames.about}>
+          О программе
         </NavLink>
       </div>
     </nav>

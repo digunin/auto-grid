@@ -7,11 +7,14 @@
 }
 
 :root {
+  font-family: sans-serif;
   padding-top: var(--navHeight);
 
-  --navHeight: 3rem;
+  --navHeight: 2.5rem;
+  --navbar-bg-color: var(--light-grey-color);
   --active-color: rgb(70, 136, 236);
   --secondary-color: #f1f1f1;
+  --secondary-text-color: gray;
   --light-grey-color: rgb(240,240,240);
   --disabled-color: rgb(165,165,165);
   --option-height: 1.15rem;
@@ -70,7 +73,7 @@
 
 nav {
   width: 100%;
-  background-color: rgb(200, 200, 200);
+  background-color: var(--navbar-bg-color);
   height: var(--navHeight);
   padding: 1rem;
   position: fixed;
@@ -81,19 +84,20 @@ nav {
   align-items: center;
   display: flex;
   z-index: 999999;
+  box-shadow: 0 0 10px;
 }
 
 nav .nav-links {
   flex-grow: 1;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   justify-content: start;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 nav .nav-links a {
   text-decoration: none;
-  color: white;
+  color: var(--secondary-text-color);
   transition:  0.5s;
 }
 
@@ -121,7 +125,7 @@ nav .nav-links a.active {
 .tab button {
   flex-grow: 1;
   background-color: inherit;
-  color: gray;
+  color: var(--secondary-text-color);
   float: left;
   border: none;
   outline: none;

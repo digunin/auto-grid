@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import TabContent from './tabContent'
+import TabContent from '../components/settings/tabContent'
 import { setActiveSettingsTab } from '@/redux/reducers/commonReducer'
-import { tabNames } from '../../utils'
+import { tabNames } from '../utils'
 
-const Setting = () => {
+const Settings = () => {
   const dispatch = useDispatch()
 
   const active_settings_tab = useSelector(
@@ -33,4 +33,4 @@ const Setting = () => {
   )
 }
 
-export default Setting
+export default Settings
