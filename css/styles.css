@@ -456,3 +456,12 @@ nav .nav-links a.active {
 .select-disabled .option-selected{
   background-color: var(--disabled-color)
 }
+
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
