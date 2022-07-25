@@ -463,5 +463,19 @@ nav .nav-links a.active {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  align-items: center;
+}
+
+.about-page section .header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-page section .section-content{
+  max-height: 0;
+  transition: max-height 0.3s;
+  overflow: hidden;
+}
+
+.about-page section .section-content.show{
+  max-height: 600px;
 }
