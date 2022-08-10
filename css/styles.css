@@ -470,6 +470,10 @@ nav .nav-links a.active {
   justify-content: space-between;
 }
 
+.about-page section{
+  padding: 1em;
+}
+
 .about-page section .section-content{
   max-height: 0;
   transition: max-height 0.3s;
@@ -477,5 +481,14 @@ nav .nav-links a.active {
 }
 
 .about-page section .section-content.show{
-  max-height: 600px;
+  max-height: 6000px;
+}
+
+.about-page ul{
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.about-page ul li{
+  padding-left: 1em;
 }

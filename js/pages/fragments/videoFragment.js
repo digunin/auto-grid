@@ -2,7 +2,7 @@ import React from 'react'
 
 const VideoFragment = ({ src, width = 'auto' }) => {
   return (
-    <video width={width} autoPlay loop controls>
+    <video width={width} loop controls>
       <source src={src} />
     </video>
   )
