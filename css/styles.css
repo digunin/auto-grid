@@ -492,3 +492,11 @@ nav .nav-links a.active {
 .about-page ul li{
   padding-left: 1em;
 }
+
+.about-page ul li span{
+  display: block;
+}
+
+.about-page ul li span:first-of-type {
+  display: inline;
+}
