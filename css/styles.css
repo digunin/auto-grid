@@ -460,28 +460,53 @@ nav .nav-links a.active {
 .about-page {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.about-page section .header{
-  display: flex;
-  justify-content: space-between;
 }
 
 .about-page section{
-  padding: 1em;
+  border-top: 1px solid var(--disabled-color);
+}
+
+.about-page section:last-child{
+  border-bottom: 1px solid var(--disabled-color);;
+}
+
+.about-page section .header button{
+  all: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  padding: 0.5em;
+  cursor: pointer;
+  background-color: var(--light-grey-color);
+}
+
+.about-page section .header button:hover{
+  background-color: var(--disabled-color);
+  color:white;
+}
+
+.about-page section .header button svg{
+  height: 1em;
+  color: inherit
+}
+
+.about-page section .header button rect{
+  fill: currentColor;
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+
+.about-page section .header button .vert{
+  transform: rotateZ(90deg);
 }
 
 .about-page section .section-content{
   max-height: 0;
-  transition: max-height 0.3s;
+  transition: max-height;
+  transition-timing-function: linear;
+  transition-duration: 0.3s;
   overflow: hidden;
-}
-
-.about-page section .section-content.show{
-  max-height: 6000px;
 }
 
 .about-page ul{
