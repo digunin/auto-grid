@@ -2,9 +2,12 @@ import React from 'react'
 
 const DefinitionFragment = ({ term, children }) => {
   return (
-    <>
-      <em>{term}</em> - {children}
-    </>
+    <div className="def-fragment">
+      <em>
+        <b>{term}</b>
+      </em>{' '}
+      - {children}
+    </div>
   )
 }
 

@@ -614,3 +614,18 @@ nav .nav-links a.active {
   transition-duration: 0.3s;
   overflow: hidden;
 }
+
+.about-page section .def-fragment {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.about-page section .def-fragment em:first-of-type,
+.about-page section .def-fragment span:first-of-type {
+  background-color: rgba(28, 223, 64, 0.3);
+}
+
+.about-page section p {
+  text-indent: 1em;
+  margin: 5px;
+}
