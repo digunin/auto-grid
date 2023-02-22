@@ -15,8 +15,8 @@
   --active-color: rgb(70, 136, 236);
   --secondary-color: #f1f1f1;
   --secondary-text-color: gray;
-  --light-grey-color: rgb(240,240,240);
-  --disabled-color: rgb(165,165,165);
+  --light-grey-color: rgb(240, 240, 240);
+  --disabled-color: rgb(165, 165, 165);
   --option-height: 1.15rem;
   --option-pad: 0.1rem;
 
@@ -68,7 +68,7 @@
 
   --position-button-min-size: 25px;
   --position-button-color: red;
-  --position-button-border-width: 3px
+  --position-button-border-width: 3px;
 }
 
 nav {
@@ -98,7 +98,7 @@ nav .nav-links {
 nav .nav-links a {
   text-decoration: none;
   color: var(--secondary-text-color);
-  transition:  0.5s;
+  transition: 0.5s;
 }
 
 nav .nav-links a:hover {
@@ -149,7 +149,7 @@ nav .nav-links a.active {
   margin-top: 2em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1em
+  grid-gap: 1em;
 }
 
 .tab-content button {
@@ -233,25 +233,29 @@ nav .nav-links a.active {
 }
 
 .position-button.active.left {
-  border-left: var(--position-button-border-width) solid var(--position-button-color)
+  border-left: var(--position-button-border-width) solid
+    var(--position-button-color);
 }
 .position-button.active.right {
-  border-right: var(--position-button-border-width) solid var(--position-button-color)
+  border-right: var(--position-button-border-width) solid
+    var(--position-button-color);
 }
 .position-button.active.top {
-  border-top: var(--position-button-border-width) solid var(--position-button-color)
+  border-top: var(--position-button-border-width) solid
+    var(--position-button-color);
 }
 .position-button.active.bottom {
-  border-bottom: var(--position-button-border-width) solid var(--position-button-color)
+  border-bottom: var(--position-button-border-width) solid
+    var(--position-button-color);
 }
 
 .block {
   position: relative;
-  user-select: none
+  user-select: none;
 }
 
 .entity {
-  user-select:none
+  user-select: none;
 }
 
 .grid-block {
@@ -422,39 +426,39 @@ nav .nav-links a.active {
   left: calc(var(--magnetic-stripe-marker-from-block) + var(--block-width));
 }
 
-.option-element{
+.option-element {
   display: flex;
   align-items: center;
   height: var(--option-height);
   padding: var(--option-pad);
-  padding-left: calc(var(--option-pad)*2);
+  padding-left: calc(var(--option-pad) * 2);
   font-family: monospace;
   font-size: 0.8rem;
   user-select: none;
   white-space: nowrap;
 }
 
-.option-element:nth-child(2n){
+.option-element:nth-child(2n) {
   background-color: var(--light-grey-color);
 }
 
-.option-element.option-selected{
+.option-element.option-selected {
   background-color: var(--active-color);
-  color:white
+  color: white;
 }
 
-.select-input{
+.select-input {
   overflow: auto;
   font-family: 'monospace';
   box-shadow: 0 0 1px 0 black;
 }
 
-.select-disabled{
-  color:var(--disabled-color)
+.select-disabled {
+  color: var(--disabled-color);
 }
 
-.select-disabled .option-selected{
-  background-color: var(--disabled-color)
+.select-disabled .option-selected {
+  background-color: var(--disabled-color);
 }
 
 .about-page {
@@ -462,15 +466,15 @@ nav .nav-links a.active {
   margin: 0 auto;
 }
 
-.about-page section{
+.about-page section {
   border-top: 1px solid var(--disabled-color);
 }
 
-.about-page section:last-child{
-  border-bottom: 1px solid var(--disabled-color);;
+.about-page section:last-child {
+  border-bottom: 1px solid var(--disabled-color);
 }
 
-.about-page section .header button{
+.about-page section .header button {
   all: inherit;
   width: 100%;
   display: flex;
@@ -481,47 +485,30 @@ nav .nav-links a.active {
   background-color: var(--light-grey-color);
 }
 
-.about-page section .header button:hover{
+.about-page section .header button:hover {
   background-color: var(--disabled-color);
-  color:white;
+  color: white;
 }
 
-.about-page section .header button svg{
+.about-page section .header button svg {
   height: 1em;
-  color: inherit
+  color: inherit;
 }
 
-.about-page section .header button rect{
+.about-page section .header button rect {
   fill: currentColor;
   transform-origin: center;
   transition: transform 0.2s;
 }
 
-.about-page section .header button .vert{
+.about-page section .header button .vert {
   transform: rotateZ(90deg);
 }
 
-.about-page section .section-content{
+.about-page section .section-content {
   max-height: 0;
   transition: max-height;
   transition-timing-function: linear;
   transition-duration: 0.3s;
   overflow: hidden;
-}
-
-.about-page ul{
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-.about-page ul li{
-  padding-left: 1em;
-}
-
-.about-page ul li span{
-  display: block;
-}
-
-.about-page ul li span:first-of-type {
-  display: inline;
 }
