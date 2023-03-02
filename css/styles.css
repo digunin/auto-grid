@@ -613,6 +613,7 @@ nav .nav-links a.active {
   transition-timing-function: linear;
   transition-duration: 0.3s;
   overflow: hidden;
+  padding: 0 1rem;
 }
 
 .about-page section .def-fragment {
@@ -621,7 +622,7 @@ nav .nav-links a.active {
 }
 
 .about-page section .def-fragment em:first-of-type,
-.about-page section .def-fragment span:first-of-type {
+.about-page section .def-fragment > span:first-of-type {
   background-color: rgba(28, 223, 64, 0.3);
 }
 
