@@ -1,11 +1,12 @@
 import React from 'react'
+import withWrapper from './withWrapper'
 
-const VideoFragment = ({ src, width = 'auto' }) => {
+const VideoFragment = ({ src, width = 'auto', style = {} }) => {
   return (
-    <video width={width} loop controls>
+    <video style={style} width={width} loop controls>
       <source src={src} />
     </video>
   )
 }
 
-export default VideoFragment
+export default withWrapper(VideoFragment)
