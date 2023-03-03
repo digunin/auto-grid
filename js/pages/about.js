@@ -60,10 +60,13 @@ const About = () => {
           </p>
 
           <p>
-            В нашем случае макеты карт нужно располагать на листе пластика в две
-            колонки по 5 карт
+            В нашем случае макеты карт нужно располагать на листе пластика{' '}
+            <VideoFragment
+              text="в две
+            колонки по 5 карт"
+              src={video_1}
+            />
           </p>
-          <ImageFragment src={img_1} />
         </DefinitionFragment>
         <DefinitionFragment term={'Персонализация карт'}>
           <span>

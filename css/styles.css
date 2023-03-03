@@ -630,3 +630,24 @@ nav .nav-links a.active {
   text-indent: 1em;
   margin: 5px;
 }
+
+.about-page .media-fragment {
+  position: absolute;
+}
+
+.about-page .media-fragment span {
+  display: grid;
+}
+
+.about-page .media-fragment img,
+.about-page .media-fragment video {
+  max-width: 100%;
+}
+
+.preview-fragment {
+  max-width: 200px;
+}
+
+.fullview-fragment {
+  max-width: 500px;
+}

@@ -4,13 +4,21 @@ const withWrapper = (Fragment) => {
   const vmNames = {
     default: 0,
     preview: 1,
-    full: 2,
+    fullview: 2,
   }
   function Wrapper({ text, ...props }) {
     const [viewMode, setViewMode] = useState(vmNames.default)
     const mouseEnterHandler = (event) => setViewMode(vmNames.preview)
     const mouseLeaveHandler = (event) => setViewMode(vmNames.default)
-    const clickHandler = (event) => setViewMode(vmNames.full)
+    const clickHandler = (event) => setViewMode(vmNames.fullview)
+
+    const classname =
+      viewMode !== vmNames.default
+        ? viewMode == vmNames.preview
+          ? 'preview-fragment'
+          : 'fullview-fragment'
+        : null
+
     return (
       <>
         <span
@@ -22,7 +30,11 @@ const withWrapper = (Fragment) => {
         >
           {text}
         </span>
-        {viewMode == vmNames.preview && <Fragment {...props} />}
+        {viewMode !== vmNames.default && (
+          <span className={`media-fragment ${classname}`}>
+            <Fragment {...props} />
+          </span>
+        )}
       </>
     )
   }
