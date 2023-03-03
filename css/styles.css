@@ -633,21 +633,44 @@ nav .nav-links a.active {
 
 .about-page .media-fragment {
   position: absolute;
+  display: grid;
+  place-items: center;
 }
 
-.about-page .media-fragment span {
-  display: grid;
+.media-fragment-link {
+  text-decoration: underline;
+  color: gray;
+  cursor: pointer;
 }
 
 .about-page .media-fragment img,
 .about-page .media-fragment video {
-  max-width: 100%;
+  max-width: 90%;
 }
 
 .preview-fragment {
   max-width: 200px;
 }
 
-.fullview-fragment {
-  max-width: 500px;
+.about-page .fullview-fragment {
+  background-color: rgb(50, 50, 50, 0.9);
+  position: fixed;
+  transition: 0.1s;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.about-page .close-fullview {
+  color: white;
+  position: fixed;
+  right: 0;
+  top: var(--navHeight);
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 9;
 }

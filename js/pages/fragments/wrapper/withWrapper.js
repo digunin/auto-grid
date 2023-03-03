@@ -9,8 +9,12 @@ const withWrapper = (Fragment) => {
   function Wrapper({ text, ...props }) {
     const [viewMode, setViewMode] = useState(vmNames.default)
     const mouseEnterHandler = (event) => setViewMode(vmNames.preview)
-    const mouseLeaveHandler = (event) => setViewMode(vmNames.default)
+    const mouseLeaveHandler = (event) =>
+      viewMode !== vmNames.fullview && setViewMode(vmNames.default)
     const clickHandler = (event) => setViewMode(vmNames.fullview)
+    const fullviewClickHandler = (event) => {
+      if (event.target.tagName == 'SPAN') setViewMode(vmNames.default)
+    }
 
     const classname =
       viewMode !== vmNames.default
@@ -22,7 +26,6 @@ const withWrapper = (Fragment) => {
     return (
       <>
         <span
-          style={{ textDecoration: 'underline', color: 'gray' }}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
           onClick={clickHandler}
@@ -30,9 +33,16 @@ const withWrapper = (Fragment) => {
         >
           {text}
         </span>
+
         {viewMode !== vmNames.default && (
-          <span className={`media-fragment ${classname}`}>
+          <span
+            onClick={fullviewClickHandler}
+            className={`media-fragment ${classname}`}
+          >
             <Fragment {...props} />
+            {viewMode == vmNames.fullview && (
+              <span className="close-fullview">&#10006;</span>
+            )}
           </span>
         )}
       </>

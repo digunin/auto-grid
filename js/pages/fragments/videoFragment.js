@@ -1,9 +1,9 @@
 import React from 'react'
 import withWrapper from './wrapper/withWrapper'
 
-const VideoFragment = ({ src, width = 'auto', style = {} }) => {
+const VideoFragment = ({ src, width = 'auto' }) => {
   return (
-    <video style={style} width={width} loop controls>
+    <video width={width} loop controls autoPlay>
       <source src={src} />
     </video>
   )
