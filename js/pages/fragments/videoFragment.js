@@ -1,5 +1,5 @@
 import React from 'react'
-import withWrapper from './withWrapper'
+import withWrapper from './wrapper/withWrapper'
 
 const VideoFragment = ({ src, width = 'auto', style = {} }) => {
   return (
