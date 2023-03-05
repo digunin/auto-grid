@@ -15,6 +15,7 @@ const withWrapper = (Fragment) => {
       mouseLeaveHandler,
       clickHandler,
       fullviewClickHandler,
+      previewPosition,
     } = useWrapper(viewModeNames)
 
     return (
@@ -30,6 +31,7 @@ const withWrapper = (Fragment) => {
 
         {viewMode !== viewModeNames.default && (
           <span
+            style={previewPosition}
             onClick={fullviewClickHandler}
             className={`media-fragment ${viewModeClassname}`}
           >
