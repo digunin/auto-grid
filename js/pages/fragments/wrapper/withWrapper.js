@@ -1,27 +1,21 @@
 import React, { useState } from 'react'
+import useWrapper from './useWrapper'
 
 const withWrapper = (Fragment) => {
-  const vmNames = {
+  const viewModeNames = {
     default: 0,
     preview: 1,
     fullview: 2,
   }
   function Wrapper({ text, ...props }) {
-    const [viewMode, setViewMode] = useState(vmNames.default)
-    const mouseEnterHandler = (event) => setViewMode(vmNames.preview)
-    const mouseLeaveHandler = (event) =>
-      viewMode !== vmNames.fullview && setViewMode(vmNames.default)
-    const clickHandler = (event) => setViewMode(vmNames.fullview)
-    const fullviewClickHandler = (event) => {
-      if (event.target.tagName == 'SPAN') setViewMode(vmNames.default)
-    }
-
-    const classname =
-      viewMode !== vmNames.default
-        ? viewMode == vmNames.preview
-          ? 'preview-fragment'
-          : 'fullview-fragment'
-        : null
+    const {
+      viewMode,
+      viewModeClassname,
+      mouseEnterHandler,
+      mouseLeaveHandler,
+      clickHandler,
+      fullviewClickHandler,
+    } = useWrapper(viewModeNames)
 
     return (
       <>
@@ -34,13 +28,13 @@ const withWrapper = (Fragment) => {
           {text}
         </span>
 
-        {viewMode !== vmNames.default && (
+        {viewMode !== viewModeNames.default && (
           <span
             onClick={fullviewClickHandler}
-            className={`media-fragment ${classname}`}
+            className={`media-fragment ${viewModeClassname}`}
           >
             <Fragment {...props} />
-            {viewMode == vmNames.fullview && (
+            {viewMode == viewModeNames.fullview && (
               <span className="close-fullview">&#10006;</span>
             )}
           </span>
