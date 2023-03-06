@@ -16,7 +16,10 @@ const useWrapper = (viewModeNames) => {
   }
   const mouseLeaveHandler = (event) =>
     viewMode !== viewModeNames.fullview && setViewMode(viewModeNames.default)
-  const clickHandler = (event) => setViewMode(viewModeNames.fullview)
+  const clickHandler = (event) => {
+    setViewMode(viewModeNames.fullview)
+    setPreviewPosition({})
+  }
   const fullviewClickHandler = (event) => {
     if (event.target.tagName == 'SPAN') setViewMode(viewModeNames.default)
   }

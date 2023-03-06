@@ -655,7 +655,6 @@ nav .nav-links a.active {
 .about-page .fullview-fragment {
   background-color: rgb(50, 50, 50, 0.9);
   position: fixed;
-  transition: 0.1s;
   top: 0;
   left: 0;
   bottom: 0;
