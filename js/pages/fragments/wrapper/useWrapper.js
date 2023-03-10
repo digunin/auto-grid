@@ -1,16 +1,32 @@
 import { useState } from 'react'
 
+const fragmentWidth = 300
+const halfFragmentWidth = fragmentWidth / 2
+
 const useWrapper = (viewModeNames) => {
   const [viewMode, setViewMode] = useState(viewModeNames.default)
   const [previewPosition, setPreviewPosition] = useState({})
 
   const mouseEnterHandler = (event) => {
-    const { top } = event.target.getBoundingClientRect()
+    const { top, bottom } = event.target.getBoundingClientRect()
     const { clientX } = event
-    const { scrollX, scrollY, innerHeight } = window
+    const { scrollX, scrollY, innerHeight, innerWidth } = window
+    let tmp = {
+      left: Math.max(
+        0,
+        Math.min(
+          clientX + scrollX - halfFragmentWidth,
+          innerWidth - fragmentWidth
+        )
+      ),
+    }
+    if (top < fragmentWidth) {
+      tmp.top = `${bottom + scrollY + 5}px`
+    } else {
+      tmp.bottom = `${innerHeight - scrollY - top + 5}px`
+    }
     setPreviewPosition({
-      left: `${clientX + scrollX}px`,
-      bottom: `${innerHeight - scrollY - top + 5}px`,
+      ...tmp,
     })
     setViewMode(viewModeNames.preview)
   }
