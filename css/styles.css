@@ -10,7 +10,7 @@
   font-family: sans-serif;
   padding-top: var(--navHeight);
 
-  --fragmentwidth: 300px;
+  --fragmentwidth: 250px;
 
   --navHeight: 2.5rem;
   --navbar-bg-color: var(--light-grey-color);
@@ -647,7 +647,8 @@ nav .nav-links a.active {
 
 .about-page .media-fragment img,
 .about-page .media-fragment video {
-  max-width: 90%;
+  max-width: 95%;
+  max-height: 90vh;
 }
 
 .preview-fragment {
@@ -657,7 +658,7 @@ nav .nav-links a.active {
 .about-page .fullview-fragment {
   background-color: rgb(50, 50, 50, 0.9);
   position: fixed;
-  top: 0;
+  top: var(--navHeight);
   left: 0;
   bottom: 0;
   right: 0;

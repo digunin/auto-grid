@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const fragmentWidth = 300
+const fragmentWidth = 250
 const halfFragmentWidth = fragmentWidth / 2
 
 const useWrapper = (viewModeNames) => {
@@ -20,7 +20,7 @@ const useWrapper = (viewModeNames) => {
         )
       ),
     }
-    if (top < fragmentWidth) {
+    if (top < innerHeight / 2) {
       tmp.top = `${bottom + scrollY + 5}px`
     } else {
       tmp.bottom = `${innerHeight - scrollY - top + 5}px`

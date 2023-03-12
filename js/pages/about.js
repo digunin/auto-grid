@@ -2,7 +2,7 @@ import React from 'react'
 import VideoFragment from './fragments/videoFragment'
 import ImageFragment from './fragments/imageFragment'
 import video_1 from '../../media/video/video_1.mp4'
-import img_1 from '../../media/image/img_1.jpg'
+import two_columns from '../../media/image/two-columns.png'
 import SectionFragment from './fragments/sectionFragment'
 import DefinitionFragment from './fragments/definitionFragment'
 
@@ -53,7 +53,7 @@ const About = () => {
             используется{' '}
             <ImageFragment
               text="модель с пятью вырубными элементами"
-              src={img_1}
+              src={two_columns}
             />{' '}
             (к сожалению, конструкция вырубщика не позволяет сделать нормальные
             фотографии с общим планом).
@@ -61,10 +61,10 @@ const About = () => {
 
           <p>
             В нашем случае макеты карт нужно располагать на листе пластика{' '}
-            <VideoFragment
+            <ImageFragment
               text="в две
             колонки по 5 карт"
-              src={video_1}
+              src={two_columns}
             />
           </p>
         </DefinitionFragment>
