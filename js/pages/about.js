@@ -1,8 +1,11 @@
 import React from 'react'
 import VideoFragment from './fragments/videoFragment'
 import ImageFragment from './fragments/imageFragment'
-import video_1 from '../../media/video/video_1.mp4'
+import cutter_5_cards from '../../media/video/cutter_5_cards.mp4'
+import offset_print from '../../media/video/offset_print.mp4'
+import five_cutter_units from '../../media/video/five_cutter_units.mp4'
 import two_columns from '../../media/image/two-columns.png'
+import getFontFamilies from '../../media/image/getFontFamilies.png'
 import SectionFragment from './fragments/sectionFragment'
 import DefinitionFragment from './fragments/definitionFragment'
 
@@ -17,7 +20,11 @@ const About = () => {
       </p>
       <SectionFragment title="Если вам непонятен предыдущий абзац...">
         <DefinitionFragment term="Офсетная печать">
-          <span>печать на пластиковых заготовках.</span>
+          <span>
+            <VideoFragment src={offset_print}>
+              печать на пластиковых заготовках.
+            </VideoFragment>{' '}
+          </span>
           <p>
             Заготовка по сути уже является готовой ламинированной картой белого
             цвета. Офсетным этот способ называется из-за метода передачи краски
@@ -51,11 +58,13 @@ const About = () => {
             сторонами и склеиваются в ламинаторе, затем вырубаются на вырубщике.
             Вырубщик определяет расположение макетов карт на листе. У нас
             используется{' '}
-            <ImageFragment src={two_columns}>
+            <VideoFragment src={cutter_5_cards}>
               модель с пятью вырубными элементами
-            </ImageFragment>{' '}
+            </VideoFragment>{' '}
             (к сожалению, конструкция вырубщика не позволяет сделать нормальные
-            фотографии с общим планом).
+            фотографии с общим планом,{' '}
+            <VideoFragment src={five_cutter_units}>вид снизу</VideoFragment>
+            ).
           </p>
 
           <p>
@@ -331,7 +340,10 @@ const About = () => {
             возможность выбрать шрифт для текста, но самостоятельно получить
             список шрифтов, установленных в системе, оно не может. Список
             шрифтов создается заранее и хранится в файле fontFamilies.js на
-            сервере. Хорошо, что есть python, скрипт getFontFamilies.py
+            сервере. Хорошо, что есть python, скрипт{' '}
+            <ImageFragment src={getFontFamilies}>
+              getFontFamilies.py
+            </ImageFragment>{' '}
             избавляет от ручного составления списка.
           </p>
         </DefinitionFragment>
