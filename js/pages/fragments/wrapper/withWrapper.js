@@ -7,7 +7,7 @@ const withWrapper = (Fragment) => {
     preview: 1,
     fullview: 2,
   }
-  function Wrapper({ text, ...props }) {
+  function Wrapper({ children, ...props }) {
     const {
       viewMode,
       viewModeClassname,
@@ -26,7 +26,7 @@ const withWrapper = (Fragment) => {
           onClick={clickHandler}
           className="media-fragment-link"
         >
-          {text}
+          {children}
         </span>
 
         {viewMode !== viewModeNames.default && (
