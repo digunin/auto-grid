@@ -1,5 +1,4 @@
-from tkinter import *
-from tkinter import font
+from tkinter import Tk, font
 
 root = Tk()
 fonts = list(font.families())
