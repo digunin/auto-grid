@@ -26,21 +26,13 @@ export const tabNames = [
 ]
 
 export const getArrayWithIndexes = (count, shuffle = false) => {
-  let array_with_indexes = []
-  let tmp = []
-  let baseArray = []
-  for (let i = 0; i < count; i++) {
-    baseArray.push(i)
-  }
+  let baseArray = [...Array(count).keys()]
   if (!shuffle) return baseArray
 
   baseArray = shuffleForGrid(baseArray)
-  for (let i in baseArray) {
-    tmp.push(baseArray[i])
-    if (tmp.length === 10) {
-      array_with_indexes.push(tmp)
-      tmp = []
-    }
+  let array_with_indexes = []
+  while (baseArray.length > 0) {
+    array_with_indexes.push(baseArray.splice(0, 10))
   }
   return array_with_indexes
 }
