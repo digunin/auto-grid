@@ -5,7 +5,7 @@ const DataGenerator = ({ onchange, amount = 10 }) => {
 
   let startPart = useRef({
     prefix: '',
-    variable: '0000',
+    variable: '',
     suffix: '',
     amount: amount,
   })
