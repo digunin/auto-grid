@@ -10,6 +10,6 @@ for fnt in fonts:
         tmp.append(fnt)
 
 with open('./js/fontFamilies.js', 'w', encoding="utf-8") as out:
-    out.write("export const systemFonts = [\n'")
+    out.write("var loaded_sys_fonts_ = [\n'")
     out.write("',\n'".join(tmp))
     out.write("'\n]\n")
