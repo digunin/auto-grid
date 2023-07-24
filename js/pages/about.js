@@ -6,6 +6,7 @@ import offset_print from '../../media/video/offset_print.mp4'
 import five_cutter_units from '../../media/video/five_cutter_units.mp4'
 import two_columns from '../../media/image/two-columns.png'
 import getFontFamilies from '../../media/image/getFontFamilies.png'
+import barcode_sublime from '../../media/video/barcode-sublime.mp4'
 import SectionFragment from './fragments/sectionFragment'
 import DefinitionFragment from './fragments/definitionFragment'
 
@@ -92,7 +93,7 @@ const About = () => {
           </p>
           <p>
             Обычно персонализация - это постпечатная обработка, т.е.
-            персонализируются уже готовые карты на сублимационном принтере
+            персонализируются уже готовые карты на <VideoFragment src={barcode_sublime}>сублимационном принтере</VideoFragment>
             (принтер, который печатает не чернилами/тонером, а переносит краску
             с красящей ленты на карту путём нагрева).
           </p>
