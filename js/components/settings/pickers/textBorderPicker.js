@@ -1,5 +1,5 @@
-import { ColorPicker, createColor } from 'material-ui-color'
-import React from 'react'
+import { ColorPicker, createColor } from "material-ui-color";
+import React from "react";
 
 const TextBorderPicker = ({ onchange, selected }) => {
   return (
@@ -9,11 +9,11 @@ const TextBorderPicker = ({ onchange, selected }) => {
       <br />
       <div
         style={{
-          display: 'flex',
-          flexFlow: 'flow',
-          gap: '5px',
-          alignItems: 'start',
-          justifyContent: 'space-around',
+          display: "flex",
+          flexFlow: "flow",
+          gap: "5px",
+          alignItems: "start",
+          justifyContent: "space-around",
         }}
       >
         <label>
@@ -27,7 +27,7 @@ const TextBorderPicker = ({ onchange, selected }) => {
             max="3"
             step="0.1"
             onChange={(e) => {
-              onchange({ textBorderWidth: e.target.value })
+              onchange({ textBorderWidth: e.target.value });
             }}
           />
         </label>
@@ -36,13 +36,13 @@ const TextBorderPicker = ({ onchange, selected }) => {
           <ColorPicker
             value={createColor(selected?.textBorderColor)}
             onChange={(value) => {
-              onchange({ textBorderColor: `#${value.hex}` })
+              onchange({ textBorderColor: `#${value.hex}` });
             }}
           />
         </label>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TextBorderPicker
+export default TextBorderPicker;
