@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import useWrapper from './useWrapper'
+import React, { useState } from "react";
+import useWrapper from "./useWrapper";
 
 const withWrapper = (Fragment) => {
   const viewModeNames = {
     default: 0,
     preview: 1,
     fullview: 2,
-  }
+  };
   function Wrapper({ children, ...props }) {
     const {
       viewMode,
@@ -16,7 +16,7 @@ const withWrapper = (Fragment) => {
       clickHandler,
       fullviewClickHandler,
       previewPosition,
-    } = useWrapper(viewModeNames)
+    } = useWrapper(viewModeNames);
 
     return (
       <>
@@ -42,9 +42,9 @@ const withWrapper = (Fragment) => {
           </span>
         )}
       </>
-    )
+    );
   }
-  return Wrapper
-}
+  return Wrapper;
+};
 
-export default withWrapper
+export default withWrapper;
