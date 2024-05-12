@@ -5,13 +5,19 @@ const halfFragmentWidth = fragmentWidth / 2;
 
 const useWrapper = (viewModeNames) => {
   const [viewMode, setViewMode] = useState(viewModeNames.default);
-  const [previewPosition, setPreviewPosition] = useState({});
+  const [anchorPosition, setAnchorPosition] = useState({ top: 0, left: 0 });
+  const [transformOrigin, setTransformOrigin] = useState({
+    vertical: "top",
+    horizontal: "left",
+  });
 
   const mouseEnterHandler = (event) => {
-    const { top, bottom } = event.target.getBoundingClientRect();
-    const { clientX } = event;
-    const { scrollX, scrollY, innerHeight, innerWidth } = window;
-    let tmp = {
+    const { clientX, clientY } = event;
+    const { scrollX, innerWidth } = window;
+    console.log(top);
+    const [top, vertical] =
+      clientY < 70 ? [clientY + 2, "top"] : [clientY - 2, "bottom"];
+    setAnchorPosition({
       left: Math.max(
         0,
         Math.min(
@@ -19,41 +25,32 @@ const useWrapper = (viewModeNames) => {
           innerWidth - fragmentWidth
         )
       ),
-    };
-    if (top < innerHeight / 2) {
-      tmp.top = `${bottom + scrollY + 5}px`;
-    } else {
-      tmp.bottom = `${innerHeight - scrollY - top + 5}px`;
-    }
-    setPreviewPosition({
-      ...tmp,
+      top,
     });
+    setTransformOrigin({ horizontal: "left", vertical });
     setViewMode(viewModeNames.preview);
   };
-  const mouseLeaveHandler = (event) =>
+
+  const mouseLeaveHandler = (event) => {
     viewMode !== viewModeNames.fullview && setViewMode(viewModeNames.default);
-  const clickHandler = (event) => {
-    setViewMode(viewModeNames.fullview);
-    setPreviewPosition({});
-  };
-  const fullviewClickHandler = (event) => {
-    if (event.target.tagName == "SPAN") setViewMode(viewModeNames.default);
   };
 
-  const viewModeClassname =
-    viewMode !== viewModeNames.default
-      ? viewMode == viewModeNames.preview
-        ? "preview-fragment"
-        : "fullview-fragment"
-      : null;
+  const clickHandler = (event) => {
+    setViewMode(viewModeNames.fullview);
+  };
+
+  const fullviewClickHandler = (event) => {
+    setViewMode(viewModeNames.default);
+  };
+
   return {
     mouseEnterHandler,
     mouseLeaveHandler,
     clickHandler,
     fullviewClickHandler,
-    viewModeClassname,
     viewMode,
-    previewPosition,
+    anchorPosition,
+    transformOrigin,
   };
 };
 

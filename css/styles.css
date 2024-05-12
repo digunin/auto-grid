@@ -591,7 +591,6 @@ nav .nav-links a.active {
 }
 
 .about-page .media-fragment {
-  position: absolute;
   display: grid;
   place-items: center;
 }
@@ -602,15 +601,10 @@ nav .nav-links a.active {
   cursor: pointer;
 }
 
-.about-page .media-fragment img,
-.about-page .media-fragment video {
-  max-width: 95%;
-  max-height: 90vh;
-}
-
-.preview-fragment {
+.media-fragment img,
+.media-fragment video {
   max-width: var(--fragmentwidth);
-  border: 1px solid red;
+  max-height: 90vh;
 }
 
 .about-page .fullview-fragment {

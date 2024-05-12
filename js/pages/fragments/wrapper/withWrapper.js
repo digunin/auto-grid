@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import useWrapper from "./useWrapper";
+import { Typography, Popover } from "@mui/material";
 
 const withWrapper = (Fragment) => {
   const viewModeNames = {
@@ -10,37 +11,53 @@ const withWrapper = (Fragment) => {
   function Wrapper({ children, ...props }) {
     const {
       viewMode,
-      viewModeClassname,
       mouseEnterHandler,
       mouseLeaveHandler,
       clickHandler,
-      fullviewClickHandler,
-      previewPosition,
+      anchorPosition,
+      transformOrigin,
     } = useWrapper(viewModeNames);
 
     return (
       <>
-        <span
+        <Typography
+          component="span"
+          aria-owns={
+            viewMode === viewModeNames.preview
+              ? "mouse-over-popover"
+              : undefined
+          }
+          aria-haspopup="true"
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
           onClick={clickHandler}
           className="media-fragment-link"
         >
           {children}
-        </span>
+        </Typography>
 
-        {viewMode !== viewModeNames.default && (
-          <span
-            style={previewPosition}
-            onClick={fullviewClickHandler}
-            className={`media-fragment ${viewModeClassname}`}
+        <Popover
+          id="mouse-over-popover"
+          sx={{
+            pointerEvents: "none",
+          }}
+          open={viewMode === viewModeNames.preview}
+          anchorReference="anchorPosition"
+          anchorPosition={anchorPosition}
+          transformOrigin={transformOrigin}
+          onClose={mouseLeaveHandler}
+          disableRestoreFocus
+        >
+          <Typography
+            sx={{
+              backgroundColor: "rgba(28, 223, 64, 0.3)",
+              padding: "3px",
+            }}
+            component="p"
           >
-            <Fragment {...props} />
-            {viewMode == viewModeNames.fullview && (
-              <span className="close-fullview">&#10006;</span>
-            )}
-          </span>
-        )}
+            Нажмите для просмотра
+          </Typography>
+        </Popover>
       </>
     );
   }
