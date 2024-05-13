@@ -1,11 +1,11 @@
-import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import NavBar from './components/navbar'
-import { routesNames } from './utils'
-import Settings from './pages/settings'
-import Print from './pages/print'
-import About from './pages/about'
-import StyleTag from './components/styles'
+import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import NavBar from "./components/navbar";
+import { routesNames } from "./utils";
+import Settings from "./pages/settings";
+import Print from "./pages/print";
+import About from "./pages/about";
+import StyleTag from "./components/styles";
 
 const App = () => {
   return (
@@ -21,8 +21,9 @@ const App = () => {
       <Route path={routesNames.about}>
         <About />
       </Route>
+      <Redirect to={routesNames.home} />
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

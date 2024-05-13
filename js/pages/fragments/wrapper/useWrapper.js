@@ -14,7 +14,6 @@ const useWrapper = (viewModeNames) => {
   const mouseEnterHandler = (event) => {
     const { clientX, clientY } = event;
     const { scrollX, innerWidth } = window;
-    console.log(top);
     const [top, vertical] =
       clientY < 70 ? [clientY + 2, "top"] : [clientY - 2, "bottom"];
     setAnchorPosition({
