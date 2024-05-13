@@ -1,6 +1,6 @@
 import React from "react";
 import useWrapper from "./useWrapper";
-import { Typography, Popover } from "@mui/material";
+import { Typography, Popover, Modal, Box } from "@mui/material";
 
 const withWrapper = (Fragment) => {
   const viewModeNames = {
@@ -14,6 +14,7 @@ const withWrapper = (Fragment) => {
       mouseEnterHandler,
       mouseLeaveHandler,
       clickHandler,
+      fullviewClickHandler,
       anchorPosition,
       transformOrigin,
     } = useWrapper(viewModeNames);
@@ -58,6 +59,18 @@ const withWrapper = (Fragment) => {
             Нажмите для просмотра
           </Typography>
         </Popover>
+
+        <Modal
+          className="media-fragment fullview-fragment"
+          open={viewMode === viewModeNames.fullview}
+          onClose={fullviewClickHandler}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <>
+            <Fragment {...props} />
+          </>
+        </Modal>
       </>
     );
   }

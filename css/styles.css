@@ -590,11 +590,6 @@ nav .nav-links a.active {
   margin: 5px;
 }
 
-.about-page .media-fragment {
-  display: grid;
-  place-items: center;
-}
-
 .media-fragment-link {
   text-decoration: underline;
   color: gray;
@@ -603,28 +598,14 @@ nav .nav-links a.active {
 
 .media-fragment img,
 .media-fragment video {
-  max-width: var(--fragmentwidth);
+  position: absolute;
+  max-width: 90vw;
   max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.about-page .fullview-fragment {
-  background-color: rgb(50, 50, 50, 0.9);
-  position: fixed;
+.media-fragment.fullview-fragment {
   top: var(--navHeight);
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.about-page .close-fullview {
-  color: white;
-  position: fixed;
-  right: 0;
-  top: var(--navHeight);
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 2rem;
-  padding: 1rem;
-  cursor: pointer;
-  z-index: 9;
 }

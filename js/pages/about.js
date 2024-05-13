@@ -14,6 +14,8 @@ import two_columns from "../../media/image/two-columns.png";
 import getFontFamilies from "../../media/image/getFontFamilies.png";
 import shuffleForGrid from "../../media/image/shuffle-for-grid.png";
 import getArrayWithIndexes from "../../media/image/get-array-with-indexes.png";
+import mouseMovingWorker from "../../media/image/mouse-moving-worker.png";
+import getPageOffsetRect from "../../media/image/get-page-offset-rect.png";
 
 const About = () => {
   const width = "300px";
@@ -300,14 +302,21 @@ const About = () => {
                 По событию onMouseDown в состояние (dragEnabled) записываются
                 координаты курсора и позиция объекта (left и top), на который
                 кликнули (если кликнуть не по объекту, то selectedItem будет
-                пустым и mouseMovingWorker не станет ничего делать), а по
-                onMouseUp - записывается false. Этот параметр так же является
-                флагом для mouseMovingWorker, если false, то движение мыши
-                игнорируется
+                пустым и{" "}
+                <ImageFragment src={mouseMovingWorker}>
+                  mouseMovingWorker
+                </ImageFragment>{" "}
+                не станет ничего делать), а по onMouseUp - записывается false.
+                Этот параметр так же является флагом для mouseMovingWorker, если
+                false, то движение мыши игнорируется
               </p>
               <p>
-                Функция getPageOffsetRect приводит блок с макетом карты и курсор
-                мыши к общей системе отсчета
+                Функция{" "}
+                <ImageFragment src={getPageOffsetRect}>
+                  getPageOffsetRect
+                </ImageFragment>{" "}
+                приводит блок с макетом карты и курсор мыши к общей системе
+                отсчета
               </p>
               <p>
                 Макет карты имеет стандартный размер 90x57 в миллиметрах, в
