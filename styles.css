@@ -10,7 +10,7 @@
   font-family: sans-serif;
   padding-top: var(--navHeight);
 
-  --fragmentwidth: 250px;
+  --fragmentwidth: 200px;
 
   --navHeight: 2.5rem;
   --navbar-bg-color: var(--light-grey-color);
@@ -596,14 +596,30 @@ nav .nav-links a.active {
   cursor: pointer;
 }
 
-.media-fragment img,
-.media-fragment video {
-  position: absolute;
+.media-fragment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-fragment.fullview-fragment img,
+.media-fragment.fullview-fragment video {
   max-width: 90vw;
   max-height: 90vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.media-fragment.preview-fragment {
+  height: calc(var(--fragmentwidth) * 0.7);
+  max-width: var(--fragmentwidth);
+  background-color: rgb(28, 28, 28);
+  overflow: hidden;
+}
+
+.media-fragment.preview-fragment img,
+.media-fragment.preview-fragment video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .media-fragment.fullview-fragment {
